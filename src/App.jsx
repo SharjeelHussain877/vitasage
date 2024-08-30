@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 function Routing() {
   return (
     <Routes>
+      <Route path="/*" element={<Main />} />
       <Route path="/auth/*" element={<Auth />} />
       <Route
         path="*"
