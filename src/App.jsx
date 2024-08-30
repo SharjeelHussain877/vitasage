@@ -2,7 +2,11 @@ import React from 'react';
 import Auth from './page/Auth';
 import Main from './page/Main';
 import { Route, Routes } from 'react-router-dom';
-
+// import { Table } from '../src/components/Table'
+// import { ProductCard } from '../src/components/Card'
+// import { ProductBeauty } from '../src/components/ProductBeauty'
+// import { AddProduct } from './components/Products';
+// import  Card from '../src/components/Card/card'
 function Routing() {
   return (
     <Routes>
