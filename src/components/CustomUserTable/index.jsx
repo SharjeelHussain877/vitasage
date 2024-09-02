@@ -177,8 +177,8 @@ export default function CustomUserTable({ users }) {
     );
     
     return (
-        <Card className="h-full w-full ">
-            <CardHeader floated={false} shadow={false} className="rounded-none">
+        <Card className="min-h-screen w-full">
+            <CardHeader floated={false} shadow={false} className="rounded-none py-2">
                 <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
                     <Input
                         label="Search"
@@ -186,14 +186,14 @@ export default function CustomUserTable({ users }) {
                     />
                 </div>
             </CardHeader>
-            <CardBody className="px-0  overflow-x-scroll">
+            <CardBody className="px-0  overflow-x-scroll lg:overflow-x-hidden">
                 <table className="mt-4 w-full table-auto text-left">
                     <thead>
                         <tr>
                             {TABLE_HEAD.map((head) => (
                                 <th
                                     key={head}
-                                    className="border-y min-w-32 border-blue-gray-100 bg-blue-gray-50/50 p-4">
+                                    className="border-y min-w-32 border-blue-gray-100 p-4">
                                     <Typography
                                         variant="small"
                                         color="blue-gray"
@@ -261,7 +261,7 @@ export default function CustomUserTable({ users }) {
                     </tbody>
                 </table>
             </CardBody>
-            <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
+            <CardFooter className="flex items-center justify-between">
                 <Typography variant="small" color="blue-gray" className="font-normal">
                     Page 1 of 10
                 </Typography>

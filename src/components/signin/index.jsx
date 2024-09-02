@@ -4,6 +4,7 @@ import {
     Card,
     Button,
     Typography,
+    Radio,
 } from "@material-tailwind/react";
 import { NavLink } from 'react-router-dom';
 import { FaRegEyeSlash } from "react-icons/fa";
@@ -22,7 +23,42 @@ function SignIn() {
             <Typography variant="h4" className='text-white lg:text-gray-800'>
                 Sign In
             </Typography>
-            <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+            <form className="mt-4 mb-2 w-80 max-w-screen-lg sm:w-96">
+                <div className='mb-4 ml-[-8px] flex flex-col'>
+                    <Radio
+                        name="type"
+                        label={
+                            <Typography
+                                color="blue-gray"
+                                className="flex font-medium text-blue-gray-500"
+                            >
+                                Sign in as a super admin
+                            </Typography>
+                        }
+                    />
+                    <Radio
+                        name="type"
+                        label={
+                            <Typography
+                                color="blue-gray"
+                                className="flex font-medium text-blue-gray-500"
+                            >
+                                Sign in as an admin
+                            </Typography>
+                        }
+                    />
+                    <Radio
+                        name="type"
+                        label={
+                            <Typography
+                                color="blue-gray"
+                                className="flex font-medium text-blue-gray-500"
+                            >
+                                Sign in as an operator
+                            </Typography>
+                        }
+                    />
+                </div>
                 <div className="mb-1 flex flex-col gap-6">
                     <Typography variant="h6" className="-mb-6 text-gray-200 lg:text-gray-800">
                         Your Email

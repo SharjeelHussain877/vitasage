@@ -23,7 +23,7 @@ import { LiaTimesSolid } from "react-icons/lia";
 import { ProductCard } from "../Card";
 
 
-export default function ProductBeauty() {
+export default function BeautyProducts() {
     const [open, setOpen] = useState(false);
     const [currentData, setCurrentData] = useState(null);
 
@@ -34,7 +34,7 @@ export default function ProductBeauty() {
     };
 
     return (
-        <Card className="h-auto rounded-lg border w-full ">
+        <Card className="min-h-screen rounded-lg border w-full">
             <CardBody >
                 <Input
                     placeholder="Search Products"
@@ -73,18 +73,16 @@ export default function ProductBeauty() {
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td className="border-b border-blue-gray-50 ">
-
+                                                <td className="border-b border-blue-gray-50 z-10">
                                                     <Menu placement="bottom-end">
                                                         <MenuHandler>
                                                             <IconButton className="bg-transparent shadow-none focus:shadow-none">
                                                                 <BsThreeDotsVertical className="h-4 w-4" color="black" />
-
                                                             </IconButton>
                                                         </MenuHandler>
                                                         <MenuList >
-                                                            <MenuItem className="flex  gap-3"><CiEdit /> Edit</MenuItem>
-                                                            <MenuItem className="flex  gap-3"><IoTrashOutline color="red" />Delete</MenuItem>
+                                                            <MenuItem className="flex gap-3"><CiEdit /> Edit</MenuItem>
+                                                            <MenuItem className="flex gap-3"><IoTrashOutline color="red" />Delete</MenuItem>
                                                         </MenuList>
                                                     </Menu>
                                                 </td>

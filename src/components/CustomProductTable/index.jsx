@@ -16,8 +16,8 @@ const TABLE_HEAD = ["name", "email", "subscription plan", "action"];
 export default function CustomProductTable({ users }) {
     const [open, setOpen] = useState(false);
     const [currentData, setCurrentData] = useState(null);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [rowsPerPage, setRowsPerPage] = useState(10);
+    // const [currentPage, setCurrentPage] = useState(1);
+    // const [rowsPerPage, setRowsPerPage] = useState(10);
 
     const handleOpen = (id) => {
         const findCurrentProduct = products.find(elem => elem.id === id)

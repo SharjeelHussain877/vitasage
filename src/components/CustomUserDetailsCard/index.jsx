@@ -45,7 +45,7 @@ export default function CustomUserDetailsCard({ name, lastname, email, subscript
             </Typography>
             <Card className="h-full w-full shadow-none  border">
 
-                <table className="w-full  ">
+                <table className="w-full">
 
                     <tbody>
                         <tr >
@@ -62,7 +62,7 @@ export default function CustomUserDetailsCard({ name, lastname, email, subscript
                                 <Typography
                                     variant="small"
                                     color="blue-gray"
-                                    className="font-semibold text-gray-900 capitalize"
+                                    className="font-semibold text-gray-900 capitalize min-w-36"
                                 >
                                     {name}
                                 </Typography>
@@ -82,7 +82,7 @@ export default function CustomUserDetailsCard({ name, lastname, email, subscript
                                 <Typography
                                     variant="small"
                                     color="blue-gray"
-                                    className="font-semibold text-gray-900 capitalize"
+                                    className="font-semibold text-gray-900 capitalize min-w-36"
                                 >
                                     {name}
                                 </Typography>
@@ -102,7 +102,7 @@ export default function CustomUserDetailsCard({ name, lastname, email, subscript
                                 <Typography
                                     variant="small"
                                     color="blue-gray"
-                                    className="font-semibold text-gray-900 capitalize"
+                                    className="font-semibold text-gray-900 capitalize min-w-36"
                                 >
                                     {email}
                                 </Typography>
@@ -119,7 +119,7 @@ export default function CustomUserDetailsCard({ name, lastname, email, subscript
             </Typography>
             <Card className="h-full w-full shadow-none  border">
 
-                <table className="w-full  ">
+                <table className="w-full">
 
                     <tbody>
                         <tr >
@@ -136,7 +136,7 @@ export default function CustomUserDetailsCard({ name, lastname, email, subscript
                                 <Typography
                                     variant="small"
                                     color="blue-gray"
-                                    className="font-semibold  text-gray-900 capitalize"
+                                    className="font-semibold text-gray-900 capitalize min-w-36"
                                 >
                                     {subscriptionPlan}
                                 </Typography>
@@ -156,7 +156,7 @@ export default function CustomUserDetailsCard({ name, lastname, email, subscript
                                 <Typography
                                     variant="small"
                                     color="blue-gray"
-                                    className="font-semibold  text-gray-900 capitalize"
+                                    className="font-semibold text-gray-900 capitalize min-w-36"
                                 >
                                     {startDate}
                                 </Typography>
@@ -176,7 +176,7 @@ export default function CustomUserDetailsCard({ name, lastname, email, subscript
                                 <Typography
                                     variant="small"
                                     color="blue-gray"
-                                    className="font-semibold  text-gray-900 capitalize"
+                                    className="font-semibold text-gray-900 capitalize min-w-36"
                                 >
                                     {endDate}
                                 </Typography>

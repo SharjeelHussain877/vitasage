@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom';
 import { Button, Typography } from '@material-tailwind/react';
 import CustomProductTable from '../components/CustomProductTable';
 import CustomUserTable from '../components/CustomUserTable';
-import ProductBeauty from '../components/ProductBeauty';
+import BeautyProducts from '../components/BeautyProducts';
 import { users } from '../constants';
 import { IoAddSharp } from "react-icons/io5";
 import { AddProduct } from '../components/AddProduct';
@@ -18,7 +18,7 @@ function DashboardRoute() {
     <Routes>
       <Route path="users" element={<CustomUserTable users={users} />} />
       <Route path="products" element={<CustomProductTable />} />
-      <Route path="beauty-products" element={<ProductBeauty />} />
+      <Route path="beauty-products" element={<BeautyProducts />} />
       <Route path="add-product/*" element={<AddProductRoutes />} />
     </Routes>
   );
