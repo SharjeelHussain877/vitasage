@@ -36,7 +36,7 @@ export default function CustomSideBar() {
   };
 
   return (
-    <Card className="h-[calc(100vh)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 bg-primary rounded-bl-none rounded-tl-none">
+    <Card className="h-[calc(100vh)] fixed w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 bg-primary rounded-bl-none rounded-tl-none">
       <div className="mb-2 p-4">
         <img src={drawerIcon} className="w-20" />
       </div>
@@ -91,6 +91,16 @@ export default function CustomSideBar() {
           link='/add-product/edit'
           prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
           text='Edit product'
+        />
+        <CustomListItem
+          link='/auth/sign-in'
+          prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
+          text='Sign in'
+        />
+        <CustomListItem
+          link='/auth/sign-up'
+          prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
+          text='Sign up'
         />
 
       </List>

@@ -3,7 +3,6 @@ import {
     CardHeader,
     CardBody,
     Typography,
-  
 } from "@material-tailwind/react";
 
 export function ProductCard({img, title, tag, date, id}) {

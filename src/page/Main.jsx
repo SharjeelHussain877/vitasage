@@ -42,11 +42,11 @@ const Main = () => {
 
   return (
     <main className='max-w-screen-2xl mx-auto'>
-      <div className='flex'>
-        <div>
+      <div className='grid grid-cols-12'>
+        <div className='h-full hidden lg:block lg:col-span-4 xl:col-span-3'>
           <CustomSideBar />
         </div>
-        <div className='flex-grow m-4'>
+        <div className='flex-grow m-4 col-span-12 lg:col-span-8 xl:col-span-9'>
           <Typography
             variant="h3"
             className="font-bold leading-none capitalize text-gray-800 ps-4 my-4 flex justify-between">
