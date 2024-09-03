@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { CiSearch } from "react-icons/ci";
-import { beauty_products } from "../../constants";
+import { products } from "../../constants";
 import { CiEdit } from "react-icons/ci";
 import { IoTrashOutline } from "react-icons/io5";
 import {
@@ -21,14 +21,16 @@ import {
 import NoData from "../NoData";
 import { LiaTimesSolid } from "react-icons/lia";
 import { ProductCard } from "../Card";
+import { Link } from "react-router-dom";
 
 
 export default function BeautyProducts() {
     const [open, setOpen] = useState(false);
     const [currentData, setCurrentData] = useState(null);
+    const [beautyProducts, setBeautyProducts] = useState(products.length && products.filter(elem => elem.category == 'beauty'));
 
     const handleOpen = (id) => {
-        const findCurrentProduct = beauty_products.find(elem => elem.id === id)
+        const findCurrentProduct = products.find(elem => elem.id === id)
         setCurrentData(findCurrentProduct)
         setOpen(!open)
     };
@@ -48,8 +50,8 @@ export default function BeautyProducts() {
                 <table className=" w-full  table-auto my-5  ">
                     <tbody className=" ">
                         {
-                            beauty_products?.length ?
-                                beauty_products?.map(
+                            beautyProducts?.length ?
+                                beautyProducts?.map(
                                     ({ img, tag, title, id }, index) => {
                                         const classes = " border-b border-blue-gray-50 py-4  h-full";
                                         return (
@@ -73,7 +75,7 @@ export default function BeautyProducts() {
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td className="border-b border-blue-gray-50 z-10">
+                                                <td className="border-b border-blue-gray-50 z-10 max-w-2">
                                                     <Menu placement="bottom-end">
                                                         <MenuHandler>
                                                             <IconButton className="bg-transparent shadow-none focus:shadow-none">
@@ -81,7 +83,11 @@ export default function BeautyProducts() {
                                                             </IconButton>
                                                         </MenuHandler>
                                                         <MenuList >
-                                                            <MenuItem className="flex gap-3"><CiEdit /> Edit</MenuItem>
+                                                            <Link to={`/dashboard/edit?id=${id}`}>
+                                                                <MenuItem className='flex items-center gap-2 capitalize tracking-wide'>
+                                                                    <CiEdit size={20} />edit
+                                                                </MenuItem>
+                                                            </Link>
                                                             <MenuItem className="flex gap-3"><IoTrashOutline color="red" />Delete</MenuItem>
                                                         </MenuList>
                                                     </Menu>

@@ -14,9 +14,6 @@ const EditProduct = () => {
     const [uploadedFile, setUploadedFile] = useState(null)
     const [currentProducts, setCurrentProducts] = useState(products.find(elem => elem.id === Number(id)))
 
-    console.log(currentProducts)
-
-
     return (
         <section className=''>
             <Card className='w-full p-2 px-4 border shadow-none'>

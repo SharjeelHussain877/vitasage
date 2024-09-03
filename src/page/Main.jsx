@@ -11,6 +11,7 @@ import { AddProduct } from '../components/AddProduct';
 import BulkProduct from '../components/BulkProduct';
 import EditProduct from '../components/EditProduct';
 import { MdKeyboardBackspace } from 'react-icons/md';
+import CustomRightSidebar from '../components/CustomRightSidebar';
 
 
 function DashboardRoute() {
@@ -19,7 +20,9 @@ function DashboardRoute() {
     <Routes>
       <Route path="/" element={<Navigate to="users" />} />
       <Route path="users" element={<CustomUserTable users={users} />} />
+      <Route path="inventory" element={<CustomProductTable />} />
       <Route path="products" element={<CustomProductTable />} />
+      <Route path="customers" element={<CustomUserTable users={users} />} />
       <Route path="beauty-products" element={<BeautyProducts />} />
       <Route path="add-product/*" element={<AddProductRoutes />} />
       <Route path="edit" element={<EditProduct />} />
@@ -42,13 +45,19 @@ const Main = () => {
   const pathSegments = location.pathname.split("/");
   const lastSegment = pathSegments[pathSegments.length - 1];
 
+  const [openRight, setOpenRight] = React.useState(false);
+
+  const openDrawerRight = () => setOpenRight(true);
+  const closeDrawerRight = () => setOpenRight(false);
+
   return (
-    <main className='max-w-screen-2xl mx-auto'>
-      <div className='grid grid-cols-12'>
-        <div className='h-full hidden lg:block lg:col-span-4 xl:col-span-3'>
+    // max-w-screen-2xl
+    <main className='mx-auto'>
+      <div className='flex'>
+        <div className='h-full hidden lg:block w-[340px] xl:w-[280px]'>
           <CustomSideBar />
         </div>
-        <div className='flex-grow m-4 col-span-12 lg:col-span-8 xl:col-span-9'>
+        <div className='flex-grow m-4'>
           {
             lastSegment.replace(/[\/-]/g, ' ') === "bulk" && (
               <Link to={'/dashboard/add-product'} >
@@ -67,7 +76,7 @@ const Main = () => {
               </Link>
             )
           }
-
+          
           <Typography
             variant="h3"
             className="font-bold leading-none capitalize text-gray-800 ps-4 my-4 flex justify-between">
@@ -81,8 +90,12 @@ const Main = () => {
                 </Link>
               )
             }
+            <Button onClick={openDrawerRight}>Open Drawer</Button>
           </Typography>
           <DashboardRoute />
+        </div>
+        <div>
+          <CustomRightSidebar openDrawerRight={openDrawerRight} closeDrawerRight={closeDrawerRight} openRight={openRight} />
         </div>
       </div>
     </main>

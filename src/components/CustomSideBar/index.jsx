@@ -36,7 +36,7 @@ export default function CustomSideBar() {
   };
 
   return (
-    <Card className="h-[calc(100vh)] fixed w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 bg-primary rounded-bl-none rounded-tl-none">
+    <Card className="h-[calc(100vh)] scrollbar-hide overflow-y-auto overflow-x-hidden fixed w-full max-w-[16rem] p-4 shadow-xl shadow-blue-gray-900/5 bg-primary rounded-bl-none rounded-tl-none">
       <div className="mb-2 p-4">
         <img src={drawerIcon} className="w-20" />
       </div>
@@ -48,13 +48,13 @@ export default function CustomSideBar() {
         />
 
         <CustomListItem
-          // link='/dashboard/Inventory'
+          link='/dashboard/inventory'
           prefix={<TbPointFilled size={24} className="h-5 w-5 text-white" />}
           text='Inventory'
         />
 
         <CustomListItem
-          link='/dashboard/users'
+          link='/dashboard/customers'
           prefix={<TbPointFilled size={24} className="h-5 w-5 text-white" />}
           text='Customers'
         />

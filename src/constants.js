@@ -234,11 +234,12 @@ const products = [
     id: 2
   },
   {
-    img: productImg_1,
+    img: product1,
     title: "Jane Doe",
     tag: "Neutrogena",
     online: false,
     date: "25/05/18",
+    category: "beauty",
     id: 3
   },
   {
@@ -258,11 +259,12 @@ const products = [
     id: 5
   },
   {
-    img: productImg_2,
+    img: product1,
     title: "Tony Stark",
     tag: "Nivea",
     online: true,
     date: "12/08/18",
+    category: "beauty",
     id: 6
   },
   {
@@ -282,11 +284,12 @@ const products = [
     id: 8
   },
   {
-    img: productImg_1,
+    img: product1,
     title: "Peter Parker",
     tag: "Head & Shoulders",
     online: true,
     date: "22/11/18",
+    category: "beauty",
     id: 9
   },
   {
@@ -298,11 +301,12 @@ const products = [
     id: 10
   },
   {
-    img: productImg_1,
+    img: product1,
     title: "Natasha Romanoff",
     tag: "Tresemme",
     online: true,
     date: "05/01/19",
+    category: "beauty",
     id: 11
   },
   {
@@ -322,11 +326,12 @@ const products = [
     id: 13
   },
   {
-    img: productImg_2,
+    img: product1,
     title: "Stephen Strange",
     tag: "Neutrogena",
     online: false,
     date: "18/04/19",
+    category: "beauty",
     id: 14
   },
   {
@@ -346,11 +351,12 @@ const products = [
     id: 16
   },
   {
-    img: productImg_1,
+    img: product1,
     title: "Carol Danvers",
     tag: "L'Oréal",
     online: true,
     date: "29/07/19",
+    category: "beauty",
     id: 17
   },
   {
@@ -370,53 +376,54 @@ const products = [
     id: 19
   },
   {
-    img: productImg_2,
+    img: product1,
     title: "T'Challa",
     tag: "Tresemme",
     online: false,
     date: "07/10/19",
+    category: "beauty",
     id: 20
   }
 ];
 
-const beauty_products = [
-  {
-    id: 1,
-    img: product1,
-    tag: "Aveeno",
-    title: "Mild Cherry Blossom Eye Cream Skin Care",
-  },
-  {
-    id: 2,
-    img: product1,
-    tag: "Aveeno",
-    title: "Mild Cherry Blossom Eye Cream Skin Care",
-  },
-  {
-    id: 3,
-    img: product1,
-    tag: "Aveeno",
-    title: "Mild Cherry Blossom Eye Cream Skin Care",
-  },
-  {
-    id: 4,
-    img: product1,
-    tag: "Aveeno",
-    title: "Mild Cherry Blossom Eye Cream Skin Care",
-  },
-  {
-    id: 5,
-    img: product1,
-    tag: "Aveeno",
-    title: "Mild Cherry Blossom Eye Cream Skin Care",
-  },
-  {
-    id: 6,
-    img: product1,
-    tag: "Aveeno",
-    title: "Mild Cherry Blossom Eye Cream Skin Care",
-  },
+// const beauty_products = [
+//   {
+//     id: 1,
+//     img: product1,
+//     tag: "Aveeno",
+//     title: "Mild Cherry Blossom Eye Cream Skin Care",
+//   },
+//   {
+//     id: 2,
+//     img: product1,
+//     tag: "Aveeno",
+//     title: "Mild Cherry Blossom Eye Cream Skin Care",
+//   },
+//   {
+//     id: 3,
+//     img: product1,
+//     tag: "Aveeno",
+//     title: "Mild Cherry Blossom Eye Cream Skin Care",
+//   },
+//   {
+//     id: 4,
+//     img: product1,
+//     tag: "Aveeno",
+//     title: "Mild Cherry Blossom Eye Cream Skin Care",
+//   },
+//   {
+//     id: 5,
+//     img: product1,
+//     tag: "Aveeno",
+//     title: "Mild Cherry Blossom Eye Cream Skin Care",
+//   },
+//   {
+//     id: 6,
+//     img: product1,
+//     tag: "Aveeno",
+//     title: "Mild Cherry Blossom Eye Cream Skin Care",
+//   },
 
-];
+// ];
 
-export { users, products, beauty_products }
+export { users, products }

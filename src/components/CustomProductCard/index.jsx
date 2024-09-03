@@ -14,8 +14,8 @@ import { Link } from 'react-router-dom';
 
 const CustomCard = ({ img, title, date, tag, id, handleOpen }) => {
   return (
-    <Card className="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-white mb-auto p-4 py-6">
-      <img className="w-full h-44 object-cover rounded-lg" src={img} alt={title} onClick={() => handleOpen(id)} />
+    <Card className="w-full sm:max-w-[240px] rounded-2xl overflow-hidden shadow-lg bg-white mb-auto p-4 py-6">
+      <img className="w-full sm:max-w-[240px] h-44 object-cover rounded-lg" src={img} alt={title} onClick={() => handleOpen(id)} />
       <div className="flex justify-between items-center mt-3">
         <div className="flex-grow">
           <h2 className="font-bold text-md">{title}</h2>
