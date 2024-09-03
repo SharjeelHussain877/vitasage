@@ -4,6 +4,7 @@ import { Button, Card, Typography } from '@material-tailwind/react'
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { GoTrash } from 'react-icons/go';
+import { Link } from 'react-router-dom';
 
 export const AddProduct = () => {
     const [uploadedFile, setUploadedFile] = useState(null)
@@ -87,7 +88,9 @@ export const AddProduct = () => {
                     <div className="grid grid-cols-2 py-5">
                         <div className="col-span-2 sm:col-span-1">
                             <Button className='w-full sm:w-auto'>
+                                <Link to={'/dashboard/add-product/bulk'}>
                                 Bulk Upload
+                                </Link>
                             </Button>
                         </div>
                         <div className="flex justify-end gap-2 col-span-2 sm:col-span-1">

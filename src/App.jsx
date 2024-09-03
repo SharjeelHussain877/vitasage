@@ -1,12 +1,13 @@
 import React from 'react';
 import Auth from './page/Auth';
 import Main from './page/Main';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 function Routing() {
   return (
     <Routes>
-      <Route path="/*" element={<Main />} />
+      <Route path="/" element={<Navigate to={true ? "/dashboard/users" : "/auth/sign-in"} />} />
+      <Route path="/dashboard/*" element={<Main />} />
       <Route path="/auth/*" element={<Auth />} />
       <Route
         path="*"

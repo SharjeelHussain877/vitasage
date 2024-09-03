@@ -9,18 +9,18 @@ import {
 } from "@material-tailwind/react";
 import { BiEditAlt } from "react-icons/bi";
 import { GoTrash } from "react-icons/go";
+import { Link } from 'react-router-dom';
 
 
 const CustomCard = ({ img, title, date, tag, id, handleOpen }) => {
   return (
-    <Card className="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-white mb-auto p-4 py-6" onClick={() => handleOpen(id)}>
-      <img className="w-full h-44 object-cover rounded-lg" src={img} alt={title} />
+    <Card className="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-white mb-auto p-4 py-6">
+      <img className="w-full h-44 object-cover rounded-lg" src={img} alt={title} onClick={() => handleOpen(id)} />
       <div className="flex justify-between items-center mt-3">
         <div className="flex-grow">
           <h2 className="font-bold text-md">{title}</h2>
         </div>
         <div className="relative">
-
           <Menu placement="bottom-end">
             <MenuHandler>
               <IconButton className='bg-transparent shadow-none hover:shadow-none'>
@@ -28,7 +28,11 @@ const CustomCard = ({ img, title, date, tag, id, handleOpen }) => {
               </IconButton>
             </MenuHandler>
             <MenuList className='p-2'>
-              <MenuItem className='flex items-center gap-2 capitalize tracking-wide'><BiEditAlt size={20} /> edit </MenuItem>
+              <Link to={`/dashboard/edit?id=${id}`}>
+                <MenuItem className='flex items-center gap-2 capitalize tracking-wide'>
+                  <BiEditAlt size={20} />edit
+                </MenuItem>
+              </Link>
               <MenuItem className='flex items-center gap-2 capitalize tracking-wide'><GoTrash size={20} color='red' /> delete </MenuItem>
             </MenuList>
           </Menu>

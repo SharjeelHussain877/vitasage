@@ -13,6 +13,7 @@ import { IoIosArrowDown, IoIosArrowUp, IoIosArrowForward } from "react-icons/io"
 import { IoBarChart } from "react-icons/io5";
 import drawerIcon from "./../../assets/drawer-icon.svg";
 import { NavLink } from "react-router-dom";
+import { TbPointFilled } from "react-icons/tb";
 
 const CustomListItem = ({ text, prefix, link = "#" }) => {
   return (
@@ -26,6 +27,7 @@ const CustomListItem = ({ text, prefix, link = "#" }) => {
     </NavLink>
   )
 }
+
 export default function CustomSideBar() {
   const [open, setOpen] = React.useState(0);
 
@@ -38,7 +40,25 @@ export default function CustomSideBar() {
       <div className="mb-2 p-4">
         <img src={drawerIcon} className="w-20" />
       </div>
-      <List className="">
+      <List>
+        <CustomListItem
+          link='/dashboard/users'
+          prefix={<TbPointFilled size={24} className="h-5 w-5 text-white" />}
+          text='Dashboard'
+        />
+
+        <CustomListItem
+          // link='/dashboard/Inventory'
+          prefix={<TbPointFilled size={24} className="h-5 w-5 text-white" />}
+          text='Inventory'
+        />
+
+        <CustomListItem
+          link='/dashboard/users'
+          prefix={<TbPointFilled size={24} className="h-5 w-5 text-white" />}
+          text='Customers'
+        />
+
         <Accordion
           open={open === 1}
           icon={
@@ -46,61 +66,168 @@ export default function CustomSideBar() {
               size={24}
               className={`mx-auto h-4 w-4 transition-transform  ${open === 1 ? "rotate-180" : ""}`}
             />
-          }
-        >
+          }>
           <ListItem className="p-0" selected={open === 1}>
-            <AccordionHeader onClick={() => handleOpen(1)} className="border-b-0 p-3 text-white hover:text-white hover:bg-primary-500">
+            <AccordionHeader onClick={() => handleOpen(1)} className="border-b-0 p-3 text-white hover:text-white hover:bg-primary-500 rounded-lg">
               <ListItemPrefix>
-                <IoBarChart className="h-5 w-5 text-white" />
+                <TbPointFilled className="h-5 w-5 text-white" />
               </ListItemPrefix>
               <Typography color="blue-gray" className="mr-auto font-normal text-white">
-                Dashboard
+                Products
               </Typography>
             </AccordionHeader>
           </ListItem>
-          <AccordionBody className="py-1">
+          <AccordionBody className="py-1 pl-6">
             <List className="p-0">
               <CustomListItem
-                link='/users'
-                prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
-                text='users'
+                link='/dashboard/products'
+                // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
+                text='show all products'
               />
               <CustomListItem
-                link='/products'
-                prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
-                text='products'
+                link='/dashboard/add-product'
+                // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
+                text='add product'
               />
               <CustomListItem
-                link='/beauty-products'
-                prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
+                link='/dashboard/beauty-products'
+                // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
                 text='beauty products'
               />
             </List>
           </AccordionBody>
         </Accordion>
 
+        <Accordion
+          open={open === 2}
+          icon={
+            <IoIosArrowDown
+              size={24}
+              className={`mx-auto h-4 w-4 transition-transform  ${open === 2 ? "rotate-180" : ""}`}
+            />
+          }>
+          <ListItem className="p-0" selected={open === 2}>
+            <AccordionHeader onClick={() => handleOpen(2)} className="border-b-0 p-3 text-white hover:text-white hover:bg-primary-500">
+              <ListItemPrefix>
+                <TbPointFilled className="h-5 w-5 text-white" />
+              </ListItemPrefix>
+              <Typography color="blue-gray" className="mr-auto font-normal text-white">
+                Categories
+              </Typography>
+            </AccordionHeader>
+          </ListItem>
+          <AccordionBody className="py-1 pl-6">
+            <List className="p-0">
+              <CustomListItem
+                // link='/dashboard/beauty-products'
+                // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
+                text='create category'
+              />
+              <CustomListItem
+                // link='/dashboard/products'
+                // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
+                text='show all categories'
+              />
+            </List>
+          </AccordionBody>
+        </Accordion>
+
+        <Accordion
+          open={open === 3}
+          icon={
+            <IoIosArrowDown
+              size={24}
+              className={`mx-auto h-4 w-4 transition-transform  ${open === 3 ? "rotate-180" : ""}`}
+            />
+          }>
+          <ListItem className="p-0" selected={open === 3}>
+            <AccordionHeader onClick={() => handleOpen(3)} className="border-b-0 p-3 text-white hover:text-white hover:bg-primary-500">
+              <ListItemPrefix>
+                <TbPointFilled className="h-5 w-5 text-white" />
+              </ListItemPrefix>
+              <Typography color="blue-gray" className="mr-auto font-normal text-white">
+                Order
+              </Typography>
+            </AccordionHeader>
+          </ListItem>
+          <AccordionBody className="py-1 pl-6">
+            <List className="p-0">
+              <CustomListItem
+                // link='/dashboard/users'
+                // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
+                text='show order'
+              />
+              <CustomListItem
+                // link='/dashboard/products'
+                // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
+                text='Place order'
+              />
+            </List>
+          </AccordionBody>
+        </Accordion>
+
+        <Accordion
+          open={open === 4}
+          icon={
+            <IoIosArrowDown
+              size={24}
+              className={`mx-auto h-4 w-4 transition-transform  ${open === 4 ? "rotate-180" : ""}`}
+            />
+          }>
+          <ListItem className="p-0" selected={open === 4}>
+            <AccordionHeader onClick={() => handleOpen(4)} className="border-b-0 p-3 text-white hover:text-white hover:bg-primary-500">
+              <ListItemPrefix>
+                <TbPointFilled className="h-5 w-5 text-white" />
+              </ListItemPrefix>
+              <Typography color="blue-gray" className="mr-auto font-normal text-white">
+                suppliers
+              </Typography>
+            </AccordionHeader>
+          </ListItem>
+          <AccordionBody className="py-1 pl-6">
+            <List className="p-0">
+              <CustomListItem
+                // link='/dashboard/users'
+                // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
+                text=' Show all suppliers'
+              />
+              <CustomListItem
+                // link='/dashboard/products'
+                // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
+                text='Add Supplier'
+              />
+              <CustomListItem
+                // link='/dashboard/beauty-products'
+                // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
+                text='Purchase order'
+              />
+              <CustomListItem
+                // link='/dashboard/beauty-products'
+                // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
+                text='Supplier deliveries'
+              />
+            </List>
+          </AccordionBody>
+        </Accordion>
+
+
         <CustomListItem
-          link='/add-product'
-          prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
-          text='Add product'
-        />
-       
-        <CustomListItem
-          link='/add-product/edit'
-          prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
-          text='Edit product'
-        />
-        <CustomListItem
-          link='/auth/sign-in'
-          prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
-          text='Sign in'
-        />
-        <CustomListItem
-          link='/auth/sign-up'
-          prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
-          text='Sign up'
+          // link='/dashboard/add-product/bulk'
+          prefix={<TbPointFilled className="h-5 w-5 text-white" />}
+          text='Sections'
         />
 
+        <CustomListItem
+          // link='/dashboard/add-product/bulk'
+          prefix={<TbPointFilled className="h-5 w-5 text-white" />}
+          text='Lifespan'
+        />
+
+        <CustomListItem
+          // link='/dashboard/add-product/bulk'
+          prefix={<TbPointFilled className="h-5 w-5 text-white" />}
+          text='Reports'
+        />
       </List>
     </Card>
   );

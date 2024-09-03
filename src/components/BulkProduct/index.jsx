@@ -4,32 +4,13 @@ import { IoCloudUploadOutline } from "react-icons/io5";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { GoTrash } from 'react-icons/go';
 
-const Inputs = ({ Label }) => {
-  return (
-    <div><Typography
-      variant="small"
-      color="blue-gray"
-      className=" font-semibold  "
-    >
-      {Label}
-    </Typography>
-      <Input
-        type="text"
-        className=" !border-t-blue-gray-200 w-full focus:!border-t-gray-900 shadow-none"
-        labelProps={{
-          className: "before:content-none after:content-none",
-        }}
-      /></div>
-  )
-}
-
 const BulkProduct = () => {
     const [uploadedFile, setUploadedFile] = useState(null)
 
     return (
         <>
-            <section className='w-full'>
-                <Card className='w-full p-8 border shadow-md'>
+            <section className='w-full min-h-screen'>
+                <Card className='w-full p-8 border shadow-none'>
                     <div className='w-full max-w-xl md:min-w-96 mx-auto'>
                         <Typography className="mt-3 font-bold text-gray-800">
                             Upload CSV
@@ -38,7 +19,7 @@ const BulkProduct = () => {
                             uploadedFile ? (
                                 <Card className='flex flex-row items-center justify-between p-4 my-2'>
                                     <div className='flex items-center gap-4'>
-                                        <img src={uploadedFile && URL.createObjectURL(uploadedFile)} alt='file error' className='h-36 w-36 rounded-lg object-cover' />
+                                        {/* <img src={uploadedFile && URL.createObjectURL(uploadedFile)} alt='file error' className='h-36 w-36 rounded-lg object-cover' /> */}
                                         <h3>{uploadedFile?.name}</h3>
                                     </div>
                                     <div>
@@ -81,7 +62,7 @@ const BulkProduct = () => {
                             uploadedFile ? (
                                 <Card className='flex flex-row items-center justify-between p-4 my-2 '>
                                     <div className='flex items-center gap-4'>
-                                        <img src={uploadedFile && URL.createObjectURL(uploadedFile)} alt='file error' className='h-36 w-36 rounded-lg object-cover' />
+                                        {/* <img src={uploadedFile && URL.createObjectURL(uploadedFile)} alt='file error' className='h-36 w-36 rounded-lg object-cover' /> */}
                                         <h3>{uploadedFile?.name}</h3>
                                     </div>
                                     <div>

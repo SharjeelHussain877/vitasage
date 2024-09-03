@@ -1,7 +1,6 @@
 import React, { Suspense, lazy } from 'react'
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
 import CustomSpinner from '../components/Loader';
-import { Navigate } from 'react-router-dom';
 import svg from './../assets/icon.svg'
 
 const SignIn = lazy(() => import('../components/signin'));
@@ -10,6 +9,7 @@ const SignUp = lazy(() => import('../components/signup'));
 function FormRoute() {
   return (
     <Routes>
+      <Route path="/" element={<Navigate to="sign-in" />} />
       <Route path="/sign-in" element={<SignIn />} />
       <Route path="/sign-up" element={<SignUp />} />
     </Routes>

@@ -10,7 +10,7 @@ const users = [
     name: 'Sharjeel Hussain',
     phone: "03252105103",
     email: "sharjeel@gmail.com",
-    subscriptionPlan: "annual", // annual, monthly
+    subscriptionPlan: "annual",
     startDate: "start Date",
     endDate: "End Date", 
   },

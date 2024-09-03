@@ -53,8 +53,8 @@ export default function BeautyProducts() {
                                     ({ img, tag, title, id }, index) => {
                                         const classes = " border-b border-blue-gray-50 py-4  h-full";
                                         return (
-                                            <tr className="h-full cursor-pointer" key={index} onClick={() => handleOpen(id)}>
-                                                <td className={classes}>
+                                            <tr className="h-full cursor-pointer" key={index}>
+                                                <td className={classes} onClick={() => handleOpen(id)}>
                                                     <div className="flex items-center gap-3">
                                                         <Avatar src={img} className="h-16  w-16" variant="rounded" alt="product" />
                                                         <div className="flex flex-col">
