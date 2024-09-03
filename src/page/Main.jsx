@@ -12,6 +12,7 @@ import BulkProduct from '../components/BulkProduct';
 import EditProduct from '../components/EditProduct';
 import { MdKeyboardBackspace } from 'react-icons/md';
 import CustomRightSidebar from '../components/CustomRightSidebar';
+import { BsCart } from "react-icons/bs";
 
 
 function DashboardRoute() {
@@ -76,21 +77,23 @@ const Main = () => {
               </Link>
             )
           }
-          
+
           <Typography
             variant="h3"
             className="font-bold leading-none capitalize text-gray-800 ps-4 my-4 flex justify-between">
             {lastSegment.replace(/[\/-]/g, ' ')}
-            {
-              lastSegment.replace(/[\/-]/g, ' ').toLocaleLowerCase().trim() === 'products' && (
-                <Link to={'/dashboard/add-product'}>
-                  <Button className='flex items-center gap-1 p-2 bg-primary'>
-                    <IoAddSharp size={24} className='m-0 p-0' />Add product
-                  </Button>
-                </Link>
-              )
-            }
-            <Button onClick={openDrawerRight}>Open Drawer</Button>
+            <div className='flex flex-wrap items-center gap-2'>
+              {
+                lastSegment.replace(/[\/-]/g, ' ').toLocaleLowerCase().trim() === 'products' && (
+                  <Link to={'/dashboard/add-product'}>
+                    <Button className='flex items-center gap-1 p-2 bg-primary'>
+                      <IoAddSharp size={24} className='m-0 p-0' />Add product
+                    </Button>
+                  </Link>
+                )
+              }
+              <Button onClick={openDrawerRight} className='flex items-center gap-1 bg-primary'><BsCart size={18} className='m-0 p-0' />Cart</Button>
+            </div>
           </Typography>
           <DashboardRoute />
         </div>

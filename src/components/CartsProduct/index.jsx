@@ -21,7 +21,7 @@ function CartItems() {
 
     return (
         <Card className="w-70 shadow-none relative border-[1px] border-gray-400 select-none">
-            <RxCross2 className="absolute right-2 top-2 bg-transparent" />
+            <RxCross2 className="absolute right-2 top-2 bg-transparent z-10 cursor-pointer hover:text-black" />
             <CardHeader shadow={false} floated={false} className="flex gap-2 rounded-none">
                 <img
                     src="https://images.unsplash.com/photo-1629367494173-c78a56567877?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80"
@@ -44,8 +44,7 @@ function CartItems() {
                     </div>
                 </div>
             </CardHeader>
-            <CardBody>
-
+            <CardBody className="mt-[-1.5rem]">
                 <Typography
                     variant="small"
                     color="gray"
