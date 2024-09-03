@@ -11,8 +11,6 @@ import { products } from '../../constants';
 import { LiaTimesSolid } from "react-icons/lia";
 import { ProductCard } from '../Card';
 
-const TABLE_HEAD = ["name", "email", "subscription plan", "action"];
-
 export default function CustomProductTable({ users }) {
     const [open, setOpen] = useState(false);
     const [currentData, setCurrentData] = useState(null);
@@ -44,8 +42,8 @@ export default function CustomProductTable({ users }) {
     // );
 
     return (
-        <>
-            <Card className="h-full w-full p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5  gap-4 ">
+        <section className='min-h-screen w-full'>
+            <Card className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {
                     products?.map((elem, index) => (
                         <CustomCard
@@ -56,7 +54,7 @@ export default function CustomProductTable({ users }) {
                     ))
                 }
             </Card>
-            <>
+            <section>
                 <Dialog
                     open={open}
                     size="sm"
@@ -72,7 +70,7 @@ export default function CustomProductTable({ users }) {
                         <ProductCard {...currentData} />
                     </DialogBody>
                 </Dialog>
-            </>
-        </>
+            </section>
+        </section>
     );
 }

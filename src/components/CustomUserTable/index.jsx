@@ -76,7 +76,7 @@ export default function CustomUserTable({ users }) {
                     />
                 </div>
             </CardHeader>
-            <CardBody className="px-0  overflow-x-scroll lg:overflow-x-hidden">
+            <CardBody className="px-0 !overflow-x-auto lg:overflow-x-hidden w-full">
                 <table className="mt-4 w-full table-auto text-left">
                     <thead>
                         <tr>

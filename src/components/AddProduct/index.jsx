@@ -5,13 +5,47 @@ import { IoCloudUploadOutline } from "react-icons/io5";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { GoTrash } from 'react-icons/go';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 export const AddProduct = () => {
     const [uploadedFile, setUploadedFile] = useState(null)
 
+    const { control, register, watch, getValues, setValue, handleSubmit } = useForm({
+        defaultValues: {
+            name: "",
+            categoryId: "",
+            date: "",
+            description: "",
+            id: "",
+            img: null,
+            online: "",
+            purchasePrice: "",
+            salePrice: "",
+            tag: "",
+            unit: "",
+            formulation: ""
+        },
+    })
+
+    const { name, categoryId, date, description, id, img, online, purchasePrice, salePrice, tag, unit, formulation } = getValues()
+
+    const onSubmit = (data) => console.log(data)
+
+    const handleFileChange = (e) => {
+        const files = e.target.files;
+        if (files.length > 0) {
+            const file = files[0];
+            const fileURL = URL.createObjectURL(file);
+            setUploadedFile(fileURL)
+            setValue('img', files);
+        }
+    };
+
+    console.log(getValues())
+
     return (
         <>
-            <section className=''>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <Card className='w-full p-2 border shadow-md'>
                     <div>
                         <Typography className="mt-3 font-bold text-[#212636]">
@@ -42,7 +76,7 @@ export const AddProduct = () => {
                                                 id="file-upload"
                                                 type="file"
                                                 className="hidden"
-                                                onChange={(e) => setUploadedFile(e?.target?.files[0])} // Handle the file selection here
+                                                onChange={handleFileChange} // Handle the file selection here
                                             />
                                         </div>
                                     </div>
@@ -89,7 +123,7 @@ export const AddProduct = () => {
                         <div className="col-span-2 sm:col-span-1">
                             <Button className='w-full sm:w-auto'>
                                 <Link to={'/dashboard/add-product/bulk'}>
-                                Bulk Upload
+                                    Bulk Upload
                                 </Link>
                             </Button>
                         </div>
@@ -97,7 +131,7 @@ export const AddProduct = () => {
                             <Button className='bg-white text-black border'>
                                 Cancel
                             </Button>
-                            <Button className='bg-primary'>
+                            <Button type='submit' className='bg-primary'>
                                 Add
                             </Button>
                         </div>
@@ -105,7 +139,7 @@ export const AddProduct = () => {
 
 
                 </Card>
-            </section>
+            </form>
         </>
     )
 }

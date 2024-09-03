@@ -1,0 +1,163 @@
+Users [icon: user, color: red] {
+  id number PK
+  name string
+  role string
+  password string
+  hasAccess boolean
+  NOTE createdBy and updatedBy are auditable fields
+}
+
+Products [icon: box] {
+  id number PK
+  name string
+  description string
+  image string
+  unit string
+  purchasePrice number
+  salePrice number
+  categoryId number
+  barcodeIds number[]
+  qrcodeIds number[]
+}
+
+BarCodes [icon:bar-chart-2] {
+  id number PK
+  barCode string
+  productId number
+}
+
+QRCodes [icon:qr-code] {
+  id number PK
+  qrCode string
+  productId number
+}
+
+Categories [icon: list] {
+  id number PK
+  name string
+  description string
+  image string
+}
+
+Inventory [icon:store] {
+  id number PK
+  productId number
+  quantity number
+  lifespanId number
+  sectionId number
+}
+
+Lifespans [icon: leaf] {
+  id number PK
+  mfgDate date
+  expDate date
+}
+
+Sections [icon:warehouse] {
+  id number PK
+  name string
+  description string
+}
+
+OrderEntries [icon: terminal] {
+  id number PK
+  productId number
+  quantity number
+  orderId number
+  totalPrice number
+}
+
+Orders [icon: shopping-cart] {
+  id number PK
+  customerId number
+  orderEntriesIds number[]
+  orderStatus enum
+  invoiceNumber number
+  discountPercent number
+  taxPercent number
+  paymentMethod number
+  paymentStatus enum
+  finalPrice number
+}
+
+Customers [icon: users] {
+  id number PK
+  name string
+  email string
+  contactNumber string
+  invoiceIds number[]
+  address string
+}
+
+CashEntries [icon: wallet] {
+  id number PK
+  transactionType enum ('SO', 'order', 'expense')
+  transactionId number
+  amount number
+  description string
+}
+
+Suppliers [icon: truck] {
+  id number PK
+  name string
+  email string
+  contactNumber number
+  address number
+  description string
+}
+
+POs [icon:edit] {
+  id number PK
+  POEntriesIds number[]
+  supplierId number
+}
+
+POEntries {
+  id number PK
+  productId number
+  quantity number
+}
+
+SOs [icon: clipboard] {
+  id number PK
+  POId number
+  SOEntriesIds number[]
+  image string
+  supplierId number
+}
+
+SOEntries {
+  id number PK
+  productId number
+  quantity number
+}
+
+Products.categoryId - Categories.id
+Products.barcodeIds < BarCodes.id
+Products.qrcodeIds < QRCodes.id
+
+BarCodes.productId - Products.id
+QRCodes.productId - Products.id
+
+Inventory.productId - Products.id
+Inventory.lifespanId - Lifespans.id
+Inventory.sectionId - Sections.id
+
+OrderEntries.productId - Products.id
+OrderEntries.orderId - Orders.id
+
+Orders.customerId - Customers.id
+Orders.orderEntriesIds < OrderEntries.id
+
+Customers.invoiceIds < Orders.id
+
+CashEntries.transactionId - Orders.id
+CashEntries.transactionId - SOs.id
+
+SOs.SOEntriesIds < SOEntries.id
+SOs.POId - POs.id
+SOs.supplierId - Suppliers.id
+
+POs.POEntriesIds < POEntries.id
+POs.supplierId - Suppliers.id
+

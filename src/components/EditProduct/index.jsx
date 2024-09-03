@@ -1,21 +1,47 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom';
 import { Button, Card, Typography, Input } from '@material-tailwind/react'
+import { GoTrash } from "react-icons/go";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { IoIosInformationCircleOutline } from "react-icons/io";
-import { GoTrash } from "react-icons/go";
 import { products } from '../../constants';
-import { useSearchParams } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 const EditProduct = () => {
     const [searchParams] = useSearchParams()
 
-    const id = searchParams.get('id');
+    const paramId = searchParams.get('id');
 
     const [uploadedFile, setUploadedFile] = useState(null)
-    const [currentProducts, setCurrentProducts] = useState(products.find(elem => elem.id === Number(id)))
+    const [currentProducts, setCurrentProducts] = useState(products.find(elem => elem.id === Number(paramId)))
+
+
+    useEffect(() => {
+        setUploadedFile(currentProducts.img)
+    }, [currentProducts])
+
+    const { control, register, watch, getValues, setValue, handleSubmit } = useForm({
+        defaultValues: { ...currentProducts, formulation: "" },
+    })
+
+    const { name, categoryId, date, description, id, img, online, purchasePrice, salePrice, tag, unit, formulation } = getValues()
+
+    const onSubmit = (data) => console.log(data)
+
+    const handleFileChange = (e) => {
+        const files = e.target.files;
+        if (files.length > 0) {
+            const file = files[0];
+            const fileURL = URL.createObjectURL(file);
+            setUploadedFile(fileURL)
+            setValue('img', files);
+        }
+    };
+
+    console.log(getValues())
 
     return (
-        <section className=''>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <Card className='w-full p-2 px-4 border shadow-none'>
                 <div>
                     <Typography className="mt-3 font-bold text-[#212636]">
@@ -25,8 +51,8 @@ const EditProduct = () => {
                         uploadedFile ? (
                             <Card className='flex flex-row items-center justify-between p-4 my-2'>
                                 <div className='flex items-center gap-4'>
-                                    <img src={uploadedFile && URL.createObjectURL(uploadedFile)} alt='file error' className='h-36 w-36 rounded-lg object-cover' />
-                                    <h3>{uploadedFile?.name}</h3>
+                                    <img src={uploadedFile && uploadedFile} alt='file error' className='h-36 w-36 rounded-lg object-cover' />
+                                    <h3>{uploadedFile}</h3>
                                 </div>
                                 <div>
                                     <GoTrash size={20} onClick={() => setUploadedFile(null)} className='cursor-pointer' />
@@ -46,7 +72,7 @@ const EditProduct = () => {
                                             id="file-upload"
                                             type="file"
                                             className="hidden"
-                                            onChange={(e) => setUploadedFile(e?.target?.files[0])} // Handle the file selection here
+                                            onChange={handleFileChange} // Handle the file selection here
                                         />
                                     </div>
                                 </div>
@@ -62,31 +88,31 @@ const EditProduct = () => {
 
                 </div>
                 <div className="grid  grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className='md:col-span-2'><CustomTextField Label={"Product Name"} value={currentProducts.title} /></div>
-                    <div className='md:col-span-2'><CustomTextField Label={"Brand"} value={currentProducts.tag} /></div>
+                    <div className='md:col-span-2'><CustomTextField label={"name"} value={name || ""} register={register} /></div>
+                    <div className='md:col-span-2'><CustomTextField label={"Brand"} value={tag || ""} register={register} /></div>
                     <div className="">
-                        <CustomTextField Label={"Formulation"} />
+                        <CustomTextField label={"Formulation"} value={formulation || ""} register={register} />
                     </div>
                     <div>
-                        <CustomTextField Label={"Description and Size"} />
+                        <CustomTextField label={"Description and Size"} value={online || ""} register={register} />
                     </div>
                     <div className="">
-                        <CustomTextField Label={"Main Uses "} />
+                        <CustomTextField label={"Main Uses "} value={getValues()?.tag || ""} register={register} />
                     </div>
                     <div>
-                        <CustomTextField Label={"Active Ingredients"} />
+                        <CustomTextField label={"Active Ingredients"} value={getValues()?.tag || ""} register={register} />
                     </div>
                     <div className="">
-                        <CustomTextField Label={"Dosage"} />
+                        <CustomTextField label={"Dosage"} value={getValues()?.tag || ""} register={register} />
                     </div>
                     <div>
-                        <CustomTextField Label={"Side Effects"} />
+                        <CustomTextField label={"Side Effects"} value={getValues()?.tag || ""} register={register} />
                     </div>
                     <div className="">
-                        <CustomTextField Label={"Potential Allergens "} />
+                        <CustomTextField label={"Potential Allergens"} value={getValues()?.tag || ""} register={register} />
                     </div>
                     <div>
-                        <CustomTextField Label={" Manufacturer"} />
+                        <CustomTextField label={"Manufacturer"} value={getValues()?.tag || ""} register={register} />
                     </div>
 
                 </div>
@@ -97,7 +123,7 @@ const EditProduct = () => {
                         <Button className='bg-white text-black border'>
                             Cancel
                         </Button>
-                        <Button className='bg-primary'>
+                        <Button type='submit' className='bg-primary' onClick={handleSubmit(onSubmit)}>
                             Save changes
                         </Button>
                     </div>
@@ -105,27 +131,30 @@ const EditProduct = () => {
 
 
             </Card>
-        </section>
+        </form>
     )
 }
 
 
-const CustomTextField = ({ Label, value }) => {
+const CustomTextField = ({ label, value, register, }) => {
+
     return (
         <div>
             <Typography
                 variant="small"
                 color="blue-gray"
                 className="mb-1 font-semibold capitalize">
-                {Label}
+                {label}
             </Typography>
             <Input
-                value={value}
+                {...register(label?.toLowerCase()?.replace(/\s+/g, ''), { required: true, maxLength: 20 })}
+                defaultValue={value}
                 type="text"
                 className="!border !border-gray-300 bg-white text-gray-900 shadow-lg shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 placeholder:opacity-100 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
                 labelProps={{
                     className: "hidden",
                 }}
+                // readOnly
                 containerProps={{ className: "min-w-[100px]" }} />
         </div>
     )

@@ -27,7 +27,7 @@ import { Link } from "react-router-dom";
 export default function BeautyProducts() {
     const [open, setOpen] = useState(false);
     const [currentData, setCurrentData] = useState(null);
-    const [beautyProducts, setBeautyProducts] = useState(products.length && products.filter(elem => elem.category == 'beauty'));
+    const [beautyProducts, setBeautyProducts] = useState(products.length && products.filter(elem => elem.categoryId == 1));
 
     const handleOpen = (id) => {
         const findCurrentProduct = products.find(elem => elem.id === id)
@@ -52,7 +52,7 @@ export default function BeautyProducts() {
                         {
                             beautyProducts?.length ?
                                 beautyProducts?.map(
-                                    ({ img, tag, title, id }, index) => {
+                                    ({ img, tag, name, id }, index) => {
                                         const classes = " border-b border-blue-gray-50 py-4  h-full";
                                         return (
                                             <tr className="h-full cursor-pointer" key={index}>
@@ -70,7 +70,7 @@ export default function BeautyProducts() {
                                                                 color="blue-gray"
                                                                 className="opacity-1 pt-2 lg:font-bold  font-normal text-[#212636]"
                                                             >
-                                                                {title}
+                                                                {name}
                                                             </Typography>
                                                         </div>
                                                     </div>
