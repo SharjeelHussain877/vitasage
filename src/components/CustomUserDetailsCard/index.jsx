@@ -1,35 +1,11 @@
 import { Avatar, Card, Typography } from "@material-tailwind/react";
-import profileImg from './../../assets/icon.svg'
 
-const TABLE_ROWS = [
-    {
-        Title: "First Name",
-        Description: "Dannie",
-        subTitle: "plan",
-        subDescrip: "Annual Plan",
-    },
-    {
-        Title: "Last Name",
-        Description: "Russell",
-        subTitle: "Start Date",
-        subDescrip: "January 24,2024"
 
-    },
-    {
-        Title: "Email",
-        Description: "albert@gmail.com",
-        subTitle: "End Date",
-        subDescrip: "January 24,2025"
-
-    },
-
-];
-
-export default function CustomUserDetailsCard({ name, lastname, email, subscriptionPlan, startDate, endDate }) {
+export default function CustomUserDetailsCard({ lastName,firstName,  email, subscriptionPlan, startDate, endDate, profile_image }) {
     return (
         <div>
             <div className="flex items-center gap-3">
-                <Avatar src={profileImg} alt={"profile image"} />
+                <Avatar src={profile_image} alt={"profile image"} />
                 <div>
                     <Typography color="blue-gray" variant="h4">
                         Dianne Russell
@@ -64,7 +40,7 @@ export default function CustomUserDetailsCard({ name, lastname, email, subscript
                                     color="blue-gray"
                                     className="font-semibold text-gray-900 capitalize min-w-36"
                                 >
-                                    {name}
+                                    {firstName}
                                 </Typography>
                             </td>
                         </tr>
@@ -84,7 +60,7 @@ export default function CustomUserDetailsCard({ name, lastname, email, subscript
                                     color="blue-gray"
                                     className="font-semibold text-gray-900 capitalize min-w-36"
                                 >
-                                    {name}
+                                    {lastName}
                                 </Typography>
                             </td>
                         </tr>

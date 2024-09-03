@@ -7,7 +7,8 @@ const users = [
   {
     uid: 1,
     profile_image: icon,
-    name: 'Sharjeel Hussain',
+    firstName: 'Sharjeel',
+    lastName: 'Hussain',
     phone: "03252105103",
     email: "sharjeel@gmail.com",
     subscriptionPlan: "annual",
@@ -17,7 +18,8 @@ const users = [
   {
     uid: 2,
     profile_image: icon,
-    name: 'Ayesha Khan',
+    firstName: 'Ayesha',
+    lastName: 'Khan',
     phone: "03252345678",
     email: "ayesha.khan@example.com",
     subscriptionPlan: "monthly",
@@ -27,7 +29,8 @@ const users = [
   {
     uid: 3,
     profile_image: icon,
-    name: 'Ahmed Ali',
+    firstName: 'Ahmed',
+    lastName: 'Ali',
     phone: "03257654321",
     email: "ahmed.ali@example.com",
     subscriptionPlan: "annual",
@@ -37,7 +40,8 @@ const users = [
   {
     uid: 4,
     profile_image: icon,
-    name: 'Sara Malik',
+    firstName: 'Sara',
+    lastName: 'Malik',
     phone: "03251234567",
     email: "sara.malik@example.com",
     subscriptionPlan: "monthly",
@@ -47,7 +51,8 @@ const users = [
   {
     uid: 5,
     profile_image: icon,
-    name: 'Bilal Siddiqui',
+    firstName: 'Bilal',
+    lastName: 'Siddiqui',
     phone: "03259876543",
     email: "bilal.siddiqui@example.com",
     subscriptionPlan: "annual",
@@ -57,7 +62,8 @@ const users = [
   {
     uid: 6,
     profile_image: icon,
-    name: 'Hina Aslam',
+    firstName: 'Hina',
+    lastName: 'Aslam',
     phone: "03253456789",
     email: "hina.aslam@example.com",
     subscriptionPlan: "monthly",
@@ -67,7 +73,8 @@ const users = [
   {
     uid: 7,
     profile_image: icon,
-    name: 'Zain Ul Abidin',
+    firstName: 'Zain Ul',
+    lastName: 'Abidin',
     phone: "03257651234",
     email: "zain.abidin@example.com",
     subscriptionPlan: "annual",
@@ -77,7 +84,8 @@ const users = [
   {
     uid: 8,
     profile_image: icon,
-    name: 'Mariam Raza',
+    firstName: 'Mariam',
+    lastName: 'Raza',
     phone: "03253456987",
     email: "mariam.raza@example.com",
     subscriptionPlan: "monthly",
@@ -87,7 +95,8 @@ const users = [
   {
     uid: 9,
     profile_image: icon,
-    name: 'Omar Farooq',
+    firstName: 'Omar',
+    lastName: 'Farooq',
     phone: "03251239876",
     email: "omar.farooq@example.com",
     subscriptionPlan: "annual",
@@ -97,7 +106,8 @@ const users = [
   {
     uid: 10,
     profile_image: icon,
-    name: 'Hassan Iqbal',
+    firstName: 'Hassan',
+    lastName: 'Iqbal',
     phone: "03257658765",
     email: "hassan.iqbal@example.com",
     subscriptionPlan: "monthly",
@@ -107,7 +117,8 @@ const users = [
   {
     uid: 11,
     profile_image: icon,
-    name: 'Nida Tariq',
+    firstName: 'Nida',
+    lastName: 'Tariq',
     phone: "03252349876",
     email: "nida.tariq@example.com",
     subscriptionPlan: "annual",
@@ -117,7 +128,8 @@ const users = [
   {
     uid: 12,
     profile_image: icon,
-    name: 'Usman Sheikh',
+    firstName: 'Usman',
+    lastName: 'Sheikh',
     phone: "03259872345",
     email: "usman.sheikh@example.com",
     subscriptionPlan: "monthly",
@@ -127,7 +139,8 @@ const users = [
   {
     uid: 13,
     profile_image: icon,
-    name: 'Hira Qureshi',
+    firstName: 'Hira',
+    lastName: 'Qureshi',
     phone: "03257623489",
     email: "hira.qureshi@example.com",
     subscriptionPlan: "annual",
@@ -137,7 +150,8 @@ const users = [
   {
     uid: 14,
     profile_image: icon,
-    name: 'Ali Haider',
+    firstName: 'Ali',
+    lastName: 'Haider',
     phone: "03252123987",
     email: "ali.haider@example.com",
     subscriptionPlan: "monthly",
@@ -147,7 +161,8 @@ const users = [
   {
     uid: 15,
     profile_image: icon,
-    name: 'Fatima Khalid',
+    firstName: 'Fatima',
+    lastName: 'Khalid',
     phone: "03254321987",
     email: "fatima.khalid@example.com",
     subscriptionPlan: "annual",
@@ -157,7 +172,8 @@ const users = [
   {
     uid: 16,
     profile_image: icon,
-    name: 'Kamran Javed',
+    firstName: 'Kamran',
+    lastName: 'Javed',
     phone: "03257651923",
     email: "kamran.javed@example.com",
     subscriptionPlan: "monthly",
@@ -167,7 +183,9 @@ const users = [
   {
     uid: 17,
     profile_image: icon,
-    name: 'Sana Ahmed',
+    name: ' ',
+    firstName: 'Hina',
+    lastName: 'Ahmed',
     phone: "03251234987",
     email: "sana.ahmed@example.com",
     subscriptionPlan: "annual",
@@ -177,7 +195,8 @@ const users = [
   {
     uid: 18,
     profile_image: icon,
-    name: 'Raza Shah',
+    firstName: 'Raza',
+    lastName: 'Shah',
     phone: "03254329871",
     email: "raza.shah@example.com",
     subscriptionPlan: "monthly",
@@ -187,7 +206,8 @@ const users = [
   {
     uid: 19,
     profile_image: icon,
-    name: 'Amina Butt',
+    firstName: 'Amina',
+    lastName: 'Butt',
     phone: "03258764321",
     email: "amina.butt@example.com",
     subscriptionPlan: "annual",
@@ -197,7 +217,8 @@ const users = [
   {
     uid: 20,
     profile_image: icon,
-    name: 'Fahad Khan',
+    firstName: 'Fahad',
+    lastName: 'Khan',
     phone: "03257649871",
     email: "fahad.khan@example.com",
     subscriptionPlan: "monthly",
@@ -207,7 +228,8 @@ const users = [
   {
     uid: 21,
     profile_image: icon,
-    name: 'Zara Saeed',
+    firstName: 'Zara',
+    lastName: 'Saeed',
     phone: "03252348765",
     email: "zara.saeed@example.com",
     subscriptionPlan: "annual",

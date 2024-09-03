@@ -97,23 +97,23 @@ export default function CustomUserTable({ users }) {
                     </thead>
                     <tbody>
                         {displayedData.map(
-                            ({ profile_image, name, email, subscriptionPlan,uid }, index) => {
+                            ({ profile_image, firstName, lastName, email, subscriptionPlan,uid }, index) => {
                                 const isLast = index === displayedData.length - 1;
                                 const classes = isLast
                                     ? "p-3"
                                     : "p-3 border-b border-blue-gray-50";
 
                                 return (
-                                    <tr key={name}>
+                                    <tr key={index}>
                                         <td className={classes}>
                                             <div className="flex items-center gap-3">
-                                                <Avatar src={profile_image} alt={name} size="sm" />
+                                                <Avatar src={profile_image} alt={firstName} size="sm" />
                                                 <Typography
                                                     variant="small"
                                                     color="blue-gray"
                                                     className="font-normal"
                                                 >
-                                                    {name}
+                                                    {`${firstName} ${lastName}`} 
                                                 </Typography>
                                             </div>
                                         </td>

@@ -19,9 +19,13 @@ const CustomListItem = ({ text, prefix, link = "#" }) => {
   return (
     <NavLink to={link}>
       <ListItem className="text-white hover:text-white active:text-white focus:text-white hover:bg-primary-500 active:bg-transparent focus:bg-primary select-none">
-        <ListItemPrefix>
-          {prefix}
-        </ListItemPrefix>
+        {
+          prefix && (
+            <ListItemPrefix>
+              {prefix}
+            </ListItemPrefix>
+          )
+        }
         {text}
       </ListItem>
     </NavLink>
