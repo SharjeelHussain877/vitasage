@@ -5,14 +5,22 @@ import {
   Typography,
   IconButton,
 } from "@material-tailwind/react";
+import CartItems from "../CartsProduct";
 
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
 
-export default function CustomRightSidebar({openDrawerRight, closeDrawerRight, openRight}) {
+} from "@material-tailwind/react";
+
+export default function CustomRightSidebar({ openDrawerRight, closeDrawerRight, openRight }) {
 
   return (
     <React.Fragment>
       <Drawer
-      overlay={false}
+        overlay={false}
         placement="right"
         open={openRight}
         onClose={closeDrawerRight}
@@ -20,7 +28,7 @@ export default function CustomRightSidebar({openDrawerRight, closeDrawerRight, o
       >
         <div className="mb-6 flex items-center justify-between">
           <Typography variant="h5" color="blue-gray">
-            Material Tailwind
+            Cart Items
           </Typography>
           <IconButton
             variant="text"
@@ -43,15 +51,24 @@ export default function CustomRightSidebar({openDrawerRight, closeDrawerRight, o
             </svg>
           </IconButton>
         </div>
-        <Typography color="gray" className="mb-8 pr-4 font-normal">
-          Material Tailwind features multiple React and HTML components, all
-          written with Tailwind CSS classes and Material Design guidelines.
-        </Typography>
-        <div className="flex gap-2">
-          <Button size="sm" variant="outlined">
-            Documentation
-          </Button>
-          <Button size="sm">Get Started</Button>
+        <CartItems />
+        <div className="absolute bottom-2 w-full bg-red-200">
+          <Card color="gray" variant="gradient" className="w-full max-w-[20rem] p-8">
+            <CardBody className="p-0">
+
+            </CardBody>
+            <CardFooter className="mt-12 p-0">
+              <Button
+                size="lg"
+                color="white"
+                className="hover:scale-[1.02] focus:scale-[1.02] active:scale-100"
+                ripple={false}
+                fullWidth={true}
+              >
+                Buy Now
+              </Button>
+            </CardFooter>
+          </Card>
         </div>
       </Drawer>
     </React.Fragment>
