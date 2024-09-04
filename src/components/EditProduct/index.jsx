@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 import { Button, Card, Typography, Input } from '@material-tailwind/react'
-import { GoTrash } from "react-icons/go";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { IoIosInformationCircleOutline } from "react-icons/io";
-import { products } from '../../constants';
-import { useForm } from 'react-hook-form';
+import { GoTrash } from "react-icons/go";
+import { showToast } from '../../utils/toastify';
+import CustomDropdown from '../CustomDropdown';
+import { products, categories } from '../../constants';
+
+const category = categories.map(v => ({ value: v.id, label: v.name }))
+
+const formatLabel = (label) =>
+    label.toLowerCase().replace(/(?:\s+|^)(\w)/g, (match, p1, offset) =>
+        offset ? p1.toUpperCase() : match).replace(/\s+/g, '');
 
 const EditProduct = () => {
     const [searchParams] = useSearchParams()
+    const navigate = useNavigate()
 
     const paramId = searchParams.get('id');
 
@@ -20,13 +29,34 @@ const EditProduct = () => {
         setUploadedFile(currentProducts.img)
     }, [currentProducts])
 
-    const { control, register, watch, getValues, setValue, handleSubmit } = useForm({
-        defaultValues: { ...currentProducts, formulation: "" },
+    const { register, getValues, setValue, handleSubmit, clearErrors, setError, reset, formState: { errors } } = useForm({
+        defaultValues: currentProducts,
     })
 
-    const { name, categoryId, date, description, id, img, online, purchasePrice, salePrice, tag, unit, formulation } = getValues()
+    const { name, categoryId, date, description, id, img, online, purchasePrice, salePrice, tag, unit, } = getValues()
 
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = (data) => {
+        if (!data.categoryId) {
+            setError('categoryId', {
+                type: 'required',
+                message: 'Category is required',
+            });
+            return;
+        }
+        if (!data.img) {
+            setError('img', {
+                type: 'required',
+                message: 'image is required',
+            });
+            return;
+        }
+        setUploadedFile(null)
+        clearErrors();
+        reset()
+        showToast('success', "Save changes successfully!")
+        console.log(data)
+        navigate(-1)
+    }
 
     const handleFileChange = (e) => {
         const files = e.target.files;
@@ -35,10 +65,14 @@ const EditProduct = () => {
             const fileURL = URL.createObjectURL(file);
             setUploadedFile(fileURL)
             setValue('img', files);
+            clearErrors('img');
         }
     };
 
-    console.log(getValues())
+    function handleSetValue(v) {
+        clearErrors('categoryId');
+        setValue('categoryId', v.value)
+    }
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -59,60 +93,88 @@ const EditProduct = () => {
                                 </div>
                             </Card>
                         ) : (
-                            <div className='flex items-center flex-col border border-dotted bg-gray-100 rounded-xl py-7 my-2'>
-                                <div className='bg-white shadow-lg w-12 h-12 p-4 rounded-full'>
-                                    <div className="flex items-center ">
-                                        <label
-                                            htmlFor="file-upload"
-                                            className="flex items-center cursor-pointer "
-                                        >
+                            <label
+                                htmlFor="file-upload"
+                                className="cursor-pointer"
+                            >
+                                <div className='flex items-center flex-col border border-dotted bg-gray-100 rounded-xl py-7 my-2'>
+                                    <div className='bg-white shadow-lg w-12 h-12 p-4 rounded-full'>
+                                        <div className="flex items-center" htmlFor="file-upload">
                                             <IoCloudUploadOutline size={20} />
-                                        </label>
-                                        <input
-                                            id="file-upload"
-                                            type="file"
-                                            className="hidden"
-                                            onChange={handleFileChange} // Handle the file selection here
-                                        />
+                                            <input
+                                                id="file-upload"
+                                                type="file"
+                                                className="hidden"
+                                                onChange={handleFileChange} // Handle the file selection here
+                                            />
+                                        </div>
                                     </div>
+                                    <Typography variant="small" className="mt-3 font-normal text-gray-500">
+                                        Click to upload or drag and drop
+                                    </Typography>
+                                    <Typography variant="small" className="mt-3 font-normal flex items-center gap-1 text-gray-600">
+                                        <IoIosInformationCircleOutline />   JPG, JPEG and Png (Max. File size: 25 MB)
+                                    </Typography>
                                 </div>
-                                <Typography variant="small" className="mt-3 font-normal text-gray-500">
-                                    Click to upload or drag and drop
-                                </Typography>
-                                <Typography variant="small" className="mt-3 font-normal flex items-center gap-1 text-gray-600">
-                                    <IoIosInformationCircleOutline />   JPG, JPEG and Png (Max. File size: 25 MB)
-                                </Typography>
-                            </div>
+                            </label>
                         )
                     }
-
+                    {
+                        errors && (
+                            <p className='text-red-900 ms-1 text-sm'>{errors?.img?.message}</p>
+                        )
+                    }
                 </div>
                 <div className="grid  grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className='md:col-span-2'><CustomTextField label={"name"} value={name || ""} register={register} /></div>
-                    <div className='md:col-span-2'><CustomTextField label={"Brand"} value={tag || ""} register={register} /></div>
-                    <div className="">
-                        <CustomTextField label={"Formulation"} value={formulation || ""} register={register} />
+                    <div className='md:col-span-2'>
+                        {
+                            category && <CustomDropdown dropdownOptions={category} handleSetValue={handleSetValue} selectedOption={categoryId} />
+                        }
+                        {
+                            errors && (
+                                <p className='text-red-900 ms-1 text-sm'>{errors?.categoryId?.message}</p>
+                            )
+                        }
+                    </div>
+                    <div className='md:col-span-2'>
+                        <CustomTextField
+                            {...{ label: "name", value: name || "", register, maxLength: 24, minLength: 4, errors }}
+                        />
+                    </div>
+                    <div className='md:col-span-2'>
+                        <CustomTextField
+                            {...{ label: "description", value: description || "", register, maxLength: 54, minLength: 4, errors }}
+                        />
                     </div>
                     <div>
-                        <CustomTextField label={"Description and Size"} value={online || ""} register={register} />
+                        <CustomTextField
+                            {...{ label: "tag", value: tag || "", register, maxLength: 28, minLength: 3, errors }}
+                        />
                     </div>
                     <div className="">
-                        <CustomTextField label={"Main Uses "} value={getValues()?.tag || ""} register={register} />
+                        <CustomTextField
+                            {...{ label: "online", value: online || "", register, maxLength: 5, minLength: 4, errors }}
+                        />
                     </div>
                     <div>
-                        <CustomTextField label={"Active Ingredients"} value={getValues()?.tag || ""} register={register} />
+                        <CustomTextField
+                            {...{ label: "date", value: date || "", register, maxLength: 24, minLength: 6, errors }}
+                        />
                     </div>
                     <div className="">
-                        <CustomTextField label={"Dosage"} value={getValues()?.tag || ""} register={register} />
+                        <CustomTextField
+                            {...{ label: "purchase price", value: purchasePrice || "", register, maxLength: 12, minLength: 1, errors }}
+                        />
                     </div>
                     <div>
-                        <CustomTextField label={"Side Effects"} value={getValues()?.tag || ""} register={register} />
-                    </div>
-                    <div className="">
-                        <CustomTextField label={"Potential Allergens"} value={getValues()?.tag || ""} register={register} />
+                        <CustomTextField
+                            {...{ label: "sale price", value: salePrice || "", register, maxLength: 12, minLength: 1, errors }}
+                        />
                     </div>
                     <div>
-                        <CustomTextField label={"Manufacturer"} value={getValues()?.tag || ""} register={register} />
+                        <CustomTextField
+                            {...{ label: "unit", value: unit || "", register, maxLength: 24, minLength: 1, errors }}
+                        />
                     </div>
 
                 </div>
@@ -135,8 +197,8 @@ const EditProduct = () => {
     )
 }
 
-
-const CustomTextField = ({ label, value, register, }) => {
+const CustomTextField = ({ label, value, register, errors, maxLength, minLength }) => {
+    const errorValue = errors?.[formatLabel(label)]?.message;
 
     return (
         <div>
@@ -147,15 +209,33 @@ const CustomTextField = ({ label, value, register, }) => {
                 {label}
             </Typography>
             <Input
-                {...register(label?.toLowerCase()?.replace(/\s+/g, ''), { required: true, maxLength: 20 })}
+                maxLength={maxLength || 46}
+                {...register(formatLabel(label), {
+                    required: {
+                        value: true,
+                        message: `${label} is required`,
+                    },
+                    maxLength: {
+                        value: maxLength || 46,
+                        message: `Maximum length is ${maxLength || 46} characters`,
+                    },
+                    minLength: {
+                        value: minLength || 1,
+                        message: 'Minimum length is 3 characters',
+                    },
+                })}
                 defaultValue={value}
                 type="text"
                 className="!border !border-gray-300 bg-white text-gray-900 shadow-lg shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 placeholder:opacity-100 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
                 labelProps={{
                     className: "hidden",
                 }}
-                // readOnly
                 containerProps={{ className: "min-w-[100px]" }} />
+            {
+                errors && (
+                    <p className='text-red-900 ms-1 text-sm'>{errorValue}</p>
+                )
+            }
         </div>
     )
 }

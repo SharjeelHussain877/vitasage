@@ -5,17 +5,16 @@ import {
   Typography,
   IconButton,
 } from "@material-tailwind/react";
-import CartItems from "../CartsProduct";
-
+import { cartItems as carts } from "../../constants";
 import {
   Card,
-  CardHeader,
   CardBody,
-  CardFooter,
-
+  CardFooter
 } from "@material-tailwind/react";
+import CartItems from "./../CartsProduct/index";
 
 export default function CustomRightSidebar({ openDrawerRight, closeDrawerRight, openRight }) {
+  const sumAllCartItems = carts.reduce((accumulator, currentElem) => accumulator + currentElem.salePrice, 0)
 
   return (
     <React.Fragment>
@@ -53,45 +52,37 @@ export default function CustomRightSidebar({ openDrawerRight, closeDrawerRight, 
         </div>
         <div className="h-full w-full flex-2 flex flex-col">
           <div className="flex flex-col gap-2 overflow-y-scroll overflow-x-hidden py-4 scrollbar-hide">
-            <CartItems />
-            <CartItems />
-            <CartItems />
-            <CartItems />
-            <CartItems />
-            <CartItems />
-            <CartItems />
-            <CartItems />
-            <CartItems />
-            <CartItems />
-            <CartItems />
-            <CartItems />
-          </div>
-          {/* absolute bottom-2 right-2 max-w-[17.5rem] w-full */}
-          <div className="">
-            <Card variant="gradient" className="w-full p-4 bg-primary">
-              <CardBody className="p-0">
-                <div className="flex items-center justify-between text-white">
-                  <h1>Total Price</h1>
-                  <h1>${200}</h1>
+            {
+              carts?.map((elem) => (
+                <div key={elem.id}>
+                  <CartItems {...elem}/>
                 </div>
-                <div className="flex items-center justify-between text-white">
-                  <h1>Tax</h1>
-                  <h1>${2}</h1>
-                </div>
-              </CardBody>
-              <CardFooter className="mt-12 p-0">
-                <Button
-                  size="lg"
-                  color="white"
-                  className="hover:scale-[1.02] focus:scale-[1.02] active:scale-100"
-                  ripple={false}
-                  fullWidth={true}
-                >
-                  Check out
-                </Button>
-              </CardFooter>
-            </Card>
+              ))
+            }
           </div>
+          <Card variant="gradient" className="w-full p-4 bg-primary mb-12">
+            <CardBody className="p-0">
+              <div className="flex items-center justify-between text-white">
+                <h1>Total Price</h1>
+                <h1>${sumAllCartItems || "00.00"}</h1>
+              </div>
+              <div className="flex items-center justify-between text-white">
+                <h1>Tax</h1>
+                <h1>${Math.ceil(sumAllCartItems / 100 * 12) }</h1>
+              </div>
+            </CardBody>
+            <CardFooter className="mt-2 p-0">
+              <Button
+                size="lg"
+                color="white"
+                className="hover:scale-[1.02] focus:scale-[1.02] active:scale-100"
+                ripple={false}
+                fullWidth={true}
+              >
+                Check out
+              </Button>
+            </CardFooter>
+          </Card>
         </div>
       </Drawer>
     </React.Fragment>

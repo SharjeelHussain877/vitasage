@@ -68,14 +68,14 @@ const Main = () => {
         <div className='flex-grow m-4'>
           {
             lastSegment.replace(/[\/-]/g, ' ') === "bulk" && (
-              <Button onClick={handleGoBack} className='bg-transparent text-gray-500 flex items-center gap-2 shadow-none'>
+              <Button onClick={handleGoBack} className='bg-transparent text-gray-500 flex items-center gap-2 !shadow-none'>
                 <MdKeyboardBackspace size={20} /><span>Back</span>
               </Button>
             )
           }
           {
             lastSegment.replace(/[\/-]/g, ' ') === "edit" && (
-              <Button onClick={handleGoBack} className='bg-transparent text-gray-500 flex items-center gap-2 shadow-none'>
+              <Button onClick={handleGoBack} className='bg-transparent text-gray-500 flex items-center gap-2 !shadow-none'>
                 <MdKeyboardBackspace size={20} /><span>Back</span>
               </Button>
             )

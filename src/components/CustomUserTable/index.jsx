@@ -18,21 +18,6 @@ import {
 import { LiaTimesSolid } from 'react-icons/lia';
 import CustomUserDetailsCard from '../CustomUserDetailsCard';
 
-const TABS = [
-    {
-        label: "All",
-        value: "all",
-    },
-    {
-        label: "Monitored",
-        value: "monitored",
-    },
-    {
-        label: "Unmonitored",
-        value: "unmonitored",
-    },
-];
-
 const TABLE_HEAD = ["name", "email", "subscription plan", "action"];
 
 
@@ -76,7 +61,7 @@ export default function CustomUserTable({ users }) {
                     />
                 </div>
             </CardHeader>
-            <CardBody className="px-0 !overflow-x-auto lg:overflow-x-hidden w-full">
+            <CardBody className="px-0 lg:overflow-x-hidden w-full max-w-96 sm:min-w-full overflow-x-auto">
                 <table className="mt-4 w-full table-auto text-left">
                     <thead>
                         <tr>

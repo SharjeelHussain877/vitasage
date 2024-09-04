@@ -1,35 +1,198 @@
-import React, { useState } from 'react'
-import Inputs from './Input'
-import { Button, Card, Typography } from '@material-tailwind/react'
+// import React, { useState } from 'react'
+// import Inputs from './Input'
+// import { Button, Card, Typography } from '@material-tailwind/react'
+// import { IoCloudUploadOutline } from "react-icons/io5";
+// import { IoIosInformationCircleOutline } from "react-icons/io";
+// import { GoTrash } from 'react-icons/go';
+// import { Link } from 'react-router-dom';
+// import { useForm } from 'react-hook-form';
+
+// export const AddProduct = () => {
+//     const [uploadedFile, setUploadedFile] = useState(null)
+
+//     const { control, register, watch, getValues, setValue, handleSubmit } = useForm({
+//         defaultValues: {
+//             name: "",
+//             categoryId: "",
+//             date: "",
+//             description: "",
+//             id: "",
+//             img: null,
+//             online: "",
+//             purchasePrice: "",
+//             salePrice: "",
+//             tag: "",
+//             unit: "",
+//             formulation: ""
+//         },
+//     })
+
+//     const { name, categoryId, date, description, id, img, online, purchasePrice, salePrice, tag, unit, formulation } = getValues()
+
+//     const onSubmit = (data) => console.log(data)
+
+//     const handleFileChange = (e) => {
+//         const files = e.target.files;
+//         if (files.length > 0) {
+//             const file = files[0];
+//             const fileURL = URL.createObjectURL(file);
+//             setUploadedFile(fileURL)
+//             setValue('img', files);
+//         }
+//     };
+
+//     // console.log(getValues())
+
+//     return (
+//         <>
+//             <form onSubmit={handleSubmit(onSubmit)}>
+//                 <Card className='w-full p-2 border shadow-md'>
+//                     <div>
+//                         <Typography className="mt-3 font-bold text-[#212636]">
+//                             Upload Image
+//                         </Typography>
+//                         {
+//                             uploadedFile ? (
+//                                 <Card className='flex flex-row items-center justify-between p-4 my-2'>
+//                                     <div className='flex items-center gap-4'>
+//                                         <img src={uploadedFile && URL.createObjectURL(uploadedFile)} alt='file error' className='h-36 w-36 rounded-lg object-cover' />
+//                                         <h3>{uploadedFile?.name}</h3>
+//                                     </div>
+//                                     <div>
+//                                         <GoTrash size={20} onClick={() => setUploadedFile(null)} className='cursor-pointer' />
+//                                     </div>
+//                                 </Card>
+//                             ) : (
+//                                 <div className='flex items-center flex-col border border-dotted bg-gray-100 rounded-xl py-7 my-2'>
+//                                     <div className='bg-white shadow-lg w-12 h-12 p-4 rounded-full'>
+//                                         <div className="flex items-center ">
+//                                             <label
+//                                                 htmlFor="file-upload"
+//                                                 className="flex items-center cursor-pointer "
+//                                             >
+//                                                 <IoCloudUploadOutline size={20} />
+//                                             </label>
+//                                             <input
+//                                                 id="file-upload"
+//                                                 type="file"
+//                                                 className="hidden"
+//                                                 onChange={handleFileChange} // Handle the file selection here
+//                                             />
+//                                         </div>
+//                                     </div>
+//                                     <Typography variant="small" className="mt-3 font-normal text-gray-500">
+//                                         Click to upload or drag and drop
+//                                     </Typography>
+//                                     <Typography variant="small" className="mt-3 font-normal flex items-center gap-1 text-gray-600">
+//                                         <IoIosInformationCircleOutline />   JPG, JPEG and Png (Max. File size: 25 MB)
+//                                     </Typography>
+//                                 </div>
+//                             )
+//                         }
+//                     </div>
+//                     <div className="grid  grid-cols-1 md:grid-cols-2 gap-4">
+//                         <div className='md:col-span-2'><Inputs Label={"Product Name"} /></div>
+//                         <div className='md:col-span-2'><Inputs Label={"Brand"} /></div>
+//                         <div className="">
+//                             <Inputs Label={"Formulation "} />
+//                         </div>
+//                         <div>
+//                             <Inputs Label={"Description and Size"} />
+//                         </div>
+//                         <div className="">
+//                             <Inputs Label={"Main Uses "} />
+//                         </div>
+//                         <div>
+//                             <Inputs Label={"Active Ingredients"} />
+//                         </div>
+//                         <div className="">
+//                             <Inputs Label={"Dosage"} />
+//                         </div>
+//                         <div>
+//                             <Inputs Label={"Side Effects"} />
+//                         </div>
+//                         <div className="">
+//                             <Inputs Label={"Potential Allergens "} />
+//                         </div>
+//                         <div>
+//                             <Inputs Label={" Manufacturer"} />
+//                         </div>
+
+//                     </div>
+//                     <div className="grid grid-cols-2 py-5">
+//                         <div className="col-span-2 sm:col-span-1">
+//                             <Button className='w-full sm:w-auto'>
+//                                 <Link to={'/dashboard/add-product/bulk'}>
+//                                     Bulk Upload
+//                                 </Link>
+//                             </Button>
+//                         </div>
+//                         <div className="flex justify-end gap-2 col-span-2 sm:col-span-1">
+//                             <Button className='bg-white text-black border'>
+//                                 Cancel
+//                             </Button>
+//                             <Button type='submit' className='bg-primary'>
+//                                 Add
+//                             </Button>
+//                         </div>
+//                     </div>
+
+
+//                 </Card>
+//             </form>
+//         </>
+//     )
+// }
+
+import React, { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { Button, Card, Typography, Input } from '@material-tailwind/react'
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { IoIosInformationCircleOutline } from "react-icons/io";
-import { GoTrash } from 'react-icons/go';
-import { Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+import { GoTrash } from "react-icons/go";
+import { showToast } from '../../utils/toastify';
+import CustomDropdown from '../CustomDropdown';
+import { categories } from '../../constants';
 
-export const AddProduct = () => {
+
+const category = categories.map(v => ({ value: v.id, label: v.name }))
+
+const formatLabel = (label) =>
+    label.toLowerCase().replace(/(?:\s+|^)(\w)/g, (match, p1, offset) =>
+        offset ? p1.toUpperCase() : match).replace(/\s+/g, '');
+
+const AddProduct = () => {
+
     const [uploadedFile, setUploadedFile] = useState(null)
 
-    const { control, register, watch, getValues, setValue, handleSubmit } = useForm({
-        defaultValues: {
-            name: "",
-            categoryId: "",
-            date: "",
-            description: "",
-            id: "",
-            img: null,
-            online: "",
-            purchasePrice: "",
-            salePrice: "",
-            tag: "",
-            unit: "",
-            formulation: ""
-        },
+    const { register, getValues, setValue, handleSubmit, setError, clearErrors, reset, formState: { errors } } = useForm({
+        defaultValues: {},
     })
 
-    const { name, categoryId, date, description, id, img, online, purchasePrice, salePrice, tag, unit, formulation } = getValues()
+    const { name, categoryId, date, description, id, img, online, purchasePrice, salePrice, tag, unit, } = getValues()
 
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = (data) => {
+        if (!data.categoryId) {
+            setError('categoryId', {
+                type: 'required',
+                message: 'Category is required',
+            });
+            return;
+        }
+        if (!data.img) {
+            setError('img', {
+                type: 'required',
+                message: 'image is required',
+            });
+            return;
+        }
+        setUploadedFile(null)
+        clearErrors();
+        reset()
+        showToast('success', "Save changes successfully!")
+        console.log(data)
+    }
 
     const handleFileChange = (e) => {
         const files = e.target.files;
@@ -38,40 +201,42 @@ export const AddProduct = () => {
             const fileURL = URL.createObjectURL(file);
             setUploadedFile(fileURL)
             setValue('img', files);
+            clearErrors('img');
         }
     };
 
-    console.log(getValues())
+    function handleSetValue(v) {
+        clearErrors('categoryId');
+        setValue('categoryId', v.value)
+    }
 
     return (
-        <>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <Card className='w-full p-2 border shadow-md'>
-                    <div>
-                        <Typography className="mt-3 font-bold text-[#212636]">
-                            Upload Image
-                        </Typography>
-                        {
-                            uploadedFile ? (
-                                <Card className='flex flex-row items-center justify-between p-4 my-2'>
-                                    <div className='flex items-center gap-4'>
-                                        <img src={uploadedFile && URL.createObjectURL(uploadedFile)} alt='file error' className='h-36 w-36 rounded-lg object-cover' />
-                                        <h3>{uploadedFile?.name}</h3>
-                                    </div>
-                                    <div>
-                                        <GoTrash size={20} onClick={() => setUploadedFile(null)} className='cursor-pointer' />
-                                    </div>
-                                </Card>
-                            ) : (
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <Card className='w-full p-2 px-4 border shadow-none'>
+                <div>
+                    <Typography className="mt-3 font-bold text-[#212636]">
+                        Upload Image
+                    </Typography>
+                    {
+                        uploadedFile ? (
+                            <Card className='flex flex-row items-center justify-between p-4 my-2'>
+                                <div className='flex items-center gap-4'>
+                                    <img src={uploadedFile && uploadedFile} alt='file error' className='h-36 w-36 rounded-lg object-cover' />
+                                    <h3>{uploadedFile}</h3>
+                                </div>
+                                <div>
+                                    <GoTrash size={20} onClick={() => setUploadedFile(null)} className='cursor-pointer' />
+                                </div>
+                            </Card>
+                        ) : (
+                            <label
+                                htmlFor="file-upload"
+                                className="cursor-pointer"
+                            >
                                 <div className='flex items-center flex-col border border-dotted bg-gray-100 rounded-xl py-7 my-2'>
                                     <div className='bg-white shadow-lg w-12 h-12 p-4 rounded-full'>
-                                        <div className="flex items-center ">
-                                            <label
-                                                htmlFor="file-upload"
-                                                className="flex items-center cursor-pointer "
-                                            >
-                                                <IoCloudUploadOutline size={20} />
-                                            </label>
+                                        <div className="flex items-center" htmlFor="file-upload">
+                                            <IoCloudUploadOutline size={20} />
                                             <input
                                                 id="file-upload"
                                                 type="file"
@@ -87,59 +252,133 @@ export const AddProduct = () => {
                                         <IoIosInformationCircleOutline />   JPG, JPEG and Png (Max. File size: 25 MB)
                                     </Typography>
                                 </div>
+                            </label>
+                        )
+                    }
+                    {
+                        errors && (
+                            <p className='text-red-900 ms-1 text-sm'>{errors?.img?.message}</p>
+                        )
+                    }
+                </div>
+                <div className="grid  grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className='md:col-span-2'>
+                        <Typography
+                            variant="small"
+                            color="blue-gray"
+                            className="mb-1 font-semibold capitalize">
+                            category
+                        </Typography>
+                        {
+                            category && <CustomDropdown dropdownOptions={category} handleSetValue={handleSetValue} selectedOption={categoryId} register={register} lable={'categoryId'} />
+                        }
+                        {
+                            errors && (
+                                <p className='text-red-900 ms-1 text-sm'>{errors?.categoryId?.message}</p>
                             )
                         }
                     </div>
-                    <div className="grid  grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className='md:col-span-2'><Inputs Label={"Product Name"} /></div>
-                        <div className='md:col-span-2'><Inputs Label={"Brand"} /></div>
-                        <div className="">
-                            <Inputs Label={"Formulation "} />
-                        </div>
-                        <div>
-                            <Inputs Label={"Description and Size"} />
-                        </div>
-                        <div className="">
-                            <Inputs Label={"Main Uses "} />
-                        </div>
-                        <div>
-                            <Inputs Label={"Active Ingredients"} />
-                        </div>
-                        <div className="">
-                            <Inputs Label={"Dosage"} />
-                        </div>
-                        <div>
-                            <Inputs Label={"Side Effects"} />
-                        </div>
-                        <div className="">
-                            <Inputs Label={"Potential Allergens "} />
-                        </div>
-                        <div>
-                            <Inputs Label={" Manufacturer"} />
-                        </div>
-
+                    <div className='md:col-span-2'>
+                        <CustomTextField
+                            {...{ label: "name", value: name || "", register, maxLength: 24, minLength: 4, errors }}
+                        />
                     </div>
-                    <div className="grid grid-cols-2 py-5">
-                        <div className="col-span-2 sm:col-span-1">
-                            <Button className='w-full sm:w-auto'>
-                                <Link to={'/dashboard/add-product/bulk'}>
-                                    Bulk Upload
-                                </Link>
-                            </Button>
-                        </div>
-                        <div className="flex justify-end gap-2 col-span-2 sm:col-span-1">
-                            <Button className='bg-white text-black border'>
-                                Cancel
-                            </Button>
-                            <Button type='submit' className='bg-primary'>
-                                Add
-                            </Button>
-                        </div>
+                    <div className='md:col-span-2'>
+                        <CustomTextField
+                            {...{ label: "description", value: description || "", register, maxLength: 54, minLength: 4, errors }}
+                        />
+                    </div>
+                    <div>
+                        <CustomTextField
+                            {...{ label: "tag", value: tag || "", register, maxLength: 28, minLength: 3, errors }}
+                        />
+                    </div>
+                    <div className="">
+                        <CustomTextField
+                            {...{ label: "online", value: online || "", register, maxLength: 5, minLength: 4, errors }}
+                        />
+                    </div>
+                    <div>
+                        <CustomTextField
+                            {...{ label: "date", value: date || "", register, maxLength: 24, minLength: 6, errors }}
+                        />
+                    </div>
+                    <div className="">
+                        <CustomTextField
+                            {...{ label: "purchase price", value: purchasePrice || "", register, maxLength: 12, minLength: 1, errors }}
+                        />
+                    </div>
+                    <div>
+                        <CustomTextField
+                            {...{ label: "sale price", value: salePrice || "", register, maxLength: 12, minLength: 1, errors }}
+                        />
+                    </div>
+                    <div>
+                        <CustomTextField
+                            {...{ label: "unit", value: unit || "", register, maxLength: 24, minLength: 1, errors }}
+                        />
                     </div>
 
+                </div>
+                <div className="grid grid-cols-2 py-5">
+                    <div className="col-span-2 sm:col-span-1">
+                    </div>
+                    <div className="flex justify-end gap-2 col-span-2 sm:col-span-1">
+                        <Button className='bg-white text-black border'>
+                            Cancel
+                        </Button>
+                        <Button type='submit' className='bg-primary' onClick={handleSubmit(onSubmit)}>
+                            Save changes
+                        </Button>
+                    </div>
+                </div>
 
-                </Card>
-            </form>
-        </>
+
+            </Card>
+        </form>
     )
 }
+
+const CustomTextField = ({ label, value, register, errors, maxLength, minLength }) => {
+    const errorValue = errors?.[formatLabel(label)]?.message;
+
+    return (
+        <div>
+            <Typography
+                variant="small"
+                color="blue-gray"
+                className="mb-1 font-semibold capitalize">
+                {label}
+            </Typography>
+            <Input
+                maxLength={maxLength || 46}
+                {...register(formatLabel(label), {
+                    required: {
+                        value: true,
+                        message: `${label} is required`,
+                    },
+                    maxLength: {
+                        value: maxLength || 46,
+                        message: `Maximum length is ${maxLength || 46} characters`,
+                    },
+                    minLength: {
+                        value: minLength || 1,
+                        message: 'Minimum length is 3 characters',
+                    },
+                })}
+                defaultValue={value}
+                type="text"
+                className="!border !border-gray-300 bg-white text-gray-900 shadow-lg shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 placeholder:opacity-100 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
+                labelProps={{
+                    className: "hidden",
+                }}
+                containerProps={{ className: "min-w-[100px]" }} />
+            {
+                errors && (
+                    <p className='text-red-900 ms-1 text-sm'>{errorValue}</p>
+                )
+            }
+        </div>
+    )
+}
+export { AddProduct }
