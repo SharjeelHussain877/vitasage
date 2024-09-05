@@ -1,20 +1,21 @@
 import React from 'react'
-import CustomSideBar from '../components/CustomSideBar'
-import { Outlet, Route, Routes, useLocation, useNavigate, Navigate, Link } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate, Navigate, Link } from 'react-router-dom';
+import { MdKeyboardBackspace } from 'react-icons/md';
 import { Button, Typography } from '@material-tailwind/react';
-import CustomProductTable from '../components/CustomProductTable';
-import CustomUserTable from '../components/CustomUserTable';
-import BeautyProducts from '../components/BeautyProducts';
-import { users } from '../constants';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { CreateCategory } from '../components/CreateCategory';
 import { IoAddSharp } from "react-icons/io5";
 import { AddProduct } from '../components/AddProduct';
-import BulkProduct from '../components/BulkProduct';
-import EditProduct from '../components/EditProduct';
-import { MdKeyboardBackspace } from 'react-icons/md';
-import CustomRightSidebar from '../components/CustomRightSidebar';
-import { BsCart } from "react-icons/bs";
-import { GiHamburgerMenu } from 'react-icons/gi';
 import { RxCross1 } from 'react-icons/rx';
+import { BsCart } from "react-icons/bs";
+import { users } from '../constants';
+import EditProduct from '../components/EditProduct';
+import BulkProduct from '../components/BulkProduct';
+import CustomSideBar from '../components/CustomSideBar'
+import BeautyProducts from '../components/BeautyProducts';
+import CustomUserTable from '../components/CustomUserTable';
+import CustomRightSidebar from '../components/CustomRightSidebar';
+import CustomProductTable from '../components/CustomProductTable';
 
 
 function DashboardRoute() {
@@ -29,6 +30,7 @@ function DashboardRoute() {
       <Route path="beauty-products" element={<BeautyProducts />} />
       <Route path="add-product/*" element={<AddProductRoutes />} />
       <Route path="edit" element={<EditProduct />} />
+      <Route path="category/create" element={<CreateCategory />} />
     </Routes>
   );
 }

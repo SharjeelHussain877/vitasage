@@ -13,8 +13,7 @@ import { formatLabel } from '../../utils/formatKeyForForm';
 
 const category = categories.map(v => ({ value: v.id, label: v.name }))
 
-const AddProduct = () => {
-    const [searchParams] = useSearchParams()
+const CreateCategory = () => {
     const navigate = useNavigate()
 
     const [uploadedFile, setUploadedFile] = useState(null)
@@ -115,11 +114,7 @@ const AddProduct = () => {
                     }
                 </div>
                 <div className="grid  grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className='md:col-span-2'>
-                        {
-                            category && <CustomDropdown dropdownOptions={category} handleSetValue={handleSetValue} selectedOption={online} label={'category id'} errors={errors} />
-                        }
-                    </div>
+
                     <div className='md:col-span-2'>
                         <CustomTextField
                             {...{ label: "name", value: name || "", register, maxLength: 24, minLength: 4, errors }}
@@ -223,4 +218,4 @@ const CustomTextField = ({ label, value, register, errors, maxLength, minLength 
 }
 
 
-export { AddProduct }
+export { CreateCategory }

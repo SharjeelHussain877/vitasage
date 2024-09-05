@@ -8,12 +8,10 @@ import { GoTrash } from "react-icons/go";
 import { showToast } from '../../utils/toastify';
 import CustomDropdown from '../CustomDropdown';
 import { products, categories } from '../../constants';
+import CustomDatePicker from '../CustomDatePicker';
+import { formatLabel } from '../../utils/formatKeyForForm';
 
 const category = categories.map(v => ({ value: v.id, label: v.name }))
-
-const formatLabel = (label) =>
-    label.toLowerCase().replace(/(?:\s+|^)(\w)/g, (match, p1, offset) =>
-        offset ? p1.toUpperCase() : match).replace(/\s+/g, '');
 
 const EditProduct = () => {
     const [searchParams] = useSearchParams()
@@ -69,10 +67,12 @@ const EditProduct = () => {
         }
     };
 
-    function handleSetValue(v) {
-        clearErrors('categoryId');
-        setValue('categoryId', v.value)
+    function handleSetValue(label, v) {
+        console.log(label, v)
+        clearErrors(label);
+        setValue(label, v.value)
     }
+
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -128,12 +128,7 @@ const EditProduct = () => {
                 <div className="grid  grid-cols-1 md:grid-cols-2 gap-4">
                     <div className='md:col-span-2'>
                         {
-                            category && <CustomDropdown dropdownOptions={category} handleSetValue={handleSetValue} selectedOption={categoryId} />
-                        }
-                        {
-                            errors && (
-                                <p className='text-red-900 ms-1 text-sm'>{errors?.categoryId?.message}</p>
-                            )
+                            category && <CustomDropdown dropdownOptions={category} handleSetValue={handleSetValue} selectedOption={online} label={'category id'} errors={errors}/>
                         }
                     </div>
                     <div className='md:col-span-2'>
@@ -151,17 +146,15 @@ const EditProduct = () => {
                             {...{ label: "tag", value: tag || "", register, maxLength: 28, minLength: 3, errors }}
                         />
                     </div>
-                    <div className="">
-                        <CustomTextField
-                            {...{ label: "online", value: online || "", register, maxLength: 5, minLength: 4, errors }}
-                        />
+                    <div>
+                        <CustomDropdown
+                            dropdownOptions={[{ value: true, label: "Online" }, { value: false, label: "Ofline" }]}
+                            handleSetValue={handleSetValue} selectedOption={online} label={'online'} />
                     </div>
                     <div>
-                        <CustomTextField
-                            {...{ label: "date", value: date || "", register, maxLength: 24, minLength: 6, errors }}
-                        />
+                        <CustomDatePicker {...{ label: "date", value: date || "", handleSetValue, errors }} />
                     </div>
-                    <div className="">
+                    <div>
                         <CustomTextField
                             {...{ label: "purchase price", value: purchasePrice || "", register, maxLength: 12, minLength: 1, errors }}
                         />
@@ -239,4 +232,6 @@ const CustomTextField = ({ label, value, register, errors, maxLength, minLength 
         </div>
     )
 }
+
+
 export default EditProduct

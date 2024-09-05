@@ -123,7 +123,7 @@ export default function CustomSideBar() {
           <AccordionBody className="py-1 pl-6">
             <List className="p-0">
               <CustomListItem
-                // link='/dashboard/beauty-products'
+                link='/dashboard/category/create'
                 // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
                 text='create category'
               />
