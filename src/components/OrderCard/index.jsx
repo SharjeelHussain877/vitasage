@@ -51,22 +51,28 @@ function OrderCard({ img,
                         </Typography>
 
                     </div>
+
                     <Typography variant="h4" color="blue-gray" className="mb-2 text-xl font-normal">
                         {name || 'no name available'}
                     </Typography>
+                    
                     <Typography color="gray" className="mb-8 font-normal text-sm">
                         {description || "ohdfiohfiolhslfo"}
                     </Typography>
+                
                 </div>
                 <div className="w-full flex justify-between items-center select-none">
+                
                     <Typography color="blue-gray" className="flex font-bold">
                         ${qty * Number(salePrice)}
                     </Typography>
+                
                     <div className="flex items-center gap-4">
                         <FiMinus className="text-gray-700 hover:text-black cursor-pointer p-1 text-3xl bg-gray-200 rounded-full" onClick={decrement} />
                         <span className='text-2xl'>{qty}</span>
                         <IoMdAdd className="text-gray-700 hover:text-black cursor-pointer p-1 text-3xl bg-gray-200 rounded-full" onClick={increment} />
                     </div>
+                
                 </div>
             </CardBody>
         </Card>
