@@ -3,6 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-color: #829d70; 
+  --secondary-color: #8ca57c;
+  --accent-color: #95ac86; 
+  --text-color: #76737e;   
+  --background-color: #9cb18e; 
+}
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
@@ -24,13 +31,13 @@
 }
 
 .scrollbar-w-small::-webkit-scrollbar-thumb {
-  background-color: #ffcc00;
+  background-color: var(--accent-color);
   border-radius: 10px;
   border: 2px solid #f0f0f0;
 }
 
 .scrollbar-w-small::-webkit-scrollbar-thumb:hover {
-  background-color: #ffa500;
+  background-color: var(--primary-color);
 }
 
 

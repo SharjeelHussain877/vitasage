@@ -41,7 +41,7 @@ function DashboardRoute() {
       <Route path="categories" element={<Categories />} />
       <Route path="category/create" element={<CreateCategory />} />
       <Route path="place-orders" element={<PlaceOrders />} />
-      <Route path="suppliers" element={<Suppliers  users={users} />} />
+      <Route path="suppliers" element={<Suppliers users={users} />} />
       <Route path="add-supliers" element={<AddSuplier />} />
       <Route path="category/purchase-order" element={<PurchaseOrder />} />
       <Route path="supplier-deliveries" element={<SupplierDevliveries />} />
@@ -78,7 +78,7 @@ const Main = () => {
     <main className='mx-auto'>
       <div className='flex'>
         <div className={`h-full hidden lg:block z-10 w-[300px] xl:w-[280px] transition-all duration-300 ease-in-out lg:left-0 ${showDrawer ? 'left-0' : "left-[-290px]"}`}>
-          <CustomSideBar handleDrawerToggle={handleDrawerToggle}/>
+          <CustomSideBar handleDrawerToggle={handleDrawerToggle} />
           <RxCross1 size={24} className='z-40 lg:hidden absolute right-2 top-4 cursor-pointer' onClick={handleDrawerToggle} />
         </div>
         <div className='flex-grow lg:ms-24 xl:m-4'>
@@ -114,7 +114,11 @@ const Main = () => {
                   </Link>
                 )
               }
-              <Button onClick={openDrawerRight} className='flex items-center gap-1 bg-primary'><BsCart size={18} className='m-0 p-0' />Cart</Button>
+              {
+                lastSegment.replace(/[\/-]/g, ' ').toLocaleLowerCase().trim() === 'order' && (
+                  <Button onClick={openDrawerRight} className='flex items-center gap-1 bg-primary'><BsCart size={18} className='m-0 p-0' />Cart</Button>
+                )
+              }
             </div>
           </div>
           <DashboardRoute />
