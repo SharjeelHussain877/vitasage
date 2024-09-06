@@ -16,7 +16,7 @@ import {
     DialogBody,
 } from "@material-tailwind/react";
 import { LiaTimesSolid } from 'react-icons/lia';
-import CustomUserDetailsCard from '../CustomUserDetailsCard';
+import CustomUserDetailsCard from '../../components/CustomUserDetailsCard';
 
 const TABLE_HEAD = ["name", "email", "subscription plan", "action"];
 

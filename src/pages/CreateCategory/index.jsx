@@ -6,30 +6,19 @@ import { IoCloudUploadOutline } from "react-icons/io5";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { GoTrash } from "react-icons/go";
 import { showToast } from '../../utils/toastify';
-import CustomDropdown from '../CustomDropdown';
-import { products, categories } from '../../constants';
-import CustomDatePicker from '../CustomDatePicker';
+import CustomDropdown from '../../components/CustomDropdown';
+import { categories } from '../../constants';
+import CustomDatePicker from '../../components/CustomDatePicker';
 import { formatLabel } from '../../utils/formatKeyForForm';
 
 const category = categories.map(v => ({ value: v.id, label: v.name }))
 
-const EditProduct = () => {
-    const [searchParams] = useSearchParams()
+const CreateCategory = () => {
     const navigate = useNavigate()
 
-    const paramId = searchParams.get('id');
-
     const [uploadedFile, setUploadedFile] = useState(null)
-    const [currentProducts, setCurrentProducts] = useState(products.find(elem => elem.id === Number(paramId)))
 
-
-    useEffect(() => {
-        setUploadedFile(currentProducts.img)
-    }, [currentProducts])
-
-    const { register, getValues, setValue, handleSubmit, clearErrors, setError, reset, formState: { errors } } = useForm({
-        defaultValues: currentProducts,
-    })
+    const { register, getValues, setValue, handleSubmit, clearErrors, setError, reset, formState: { errors } } = useForm({})
 
     const { name, categoryId, date, description, id, img, online, purchasePrice, salePrice, tag, unit, } = getValues()
 
@@ -68,7 +57,6 @@ const EditProduct = () => {
     };
 
     function handleSetValue(label, v) {
-        // console.log(label, v)
         clearErrors(label);
         setValue(label, v.value)
     }
@@ -126,11 +114,7 @@ const EditProduct = () => {
                     }
                 </div>
                 <div className="grid  grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className='md:col-span-2'>
-                        {
-                            category && <CustomDropdown dropdownOptions={category} handleSetValue={handleSetValue} selectedOption={online} label={'category id'} errors={errors}/>
-                        }
-                    </div>
+
                     <div className='md:col-span-2'>
                         <CustomTextField
                             {...{ label: "name", value: name || "", register, maxLength: 24, minLength: 4, errors }}
@@ -234,4 +218,4 @@ const CustomTextField = ({ label, value, register, errors, maxLength, minLength 
 }
 
 
-export default EditProduct
+export { CreateCategory }

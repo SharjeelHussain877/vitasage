@@ -20,7 +20,7 @@ import {
 } from "@material-tailwind/react";
 import NoData from "../NoData";
 import { LiaTimesSolid } from "react-icons/lia";
-import { ProductCard } from "../Card";
+import { ProductCard } from "./../../components/Card";
 import { Link } from "react-router-dom";
 
 

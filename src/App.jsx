@@ -1,6 +1,6 @@
 import React from 'react';
-import Auth from './page/Auth';
-import Main from './page/Main';
+import Auth from './routes/Auth.jsx';
+import Main from './routes/Main.jsx';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
 function Routing() {

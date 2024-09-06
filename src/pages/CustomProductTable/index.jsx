@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from 'react'
-
+import React, { useState } from 'react'
 import {
     Card,
     Dialog,
     DialogBody,
 } from "@material-tailwind/react";
-
-import CustomCard from '../CustomProductCard';
 import { products } from '../../constants';
 import { LiaTimesSolid } from "react-icons/lia";
-import { ProductCard } from '../Card';
+import { ProductCard } from '../../components/Card';
+import CustomCard from '../../components/CustomProductCard';
 
 export default function CustomProductTable({ users }) {
     const [open, setOpen] = useState(false);

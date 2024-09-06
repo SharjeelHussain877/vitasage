@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { Button, Card, Typography, Input } from '@material-tailwind/react'
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { GoTrash } from "react-icons/go";
 import { showToast } from '../../utils/toastify';
-import CustomDropdown from '../CustomDropdown';
+import CustomDropdown from '../../components/CustomDropdown';
 import { categories } from '../../constants';
-import CustomDatePicker from '../CustomDatePicker';
+import CustomDatePicker from '../../components/CustomDatePicker';
 import { formatLabel } from '../../utils/formatKeyForForm';
 
 const category = categories.map(v => ({ value: v.id, label: v.name }))
 
-const CreateCategory = () => {
+const AddProduct = () => {
+    const [searchParams] = useSearchParams()
     const navigate = useNavigate()
 
     const [uploadedFile, setUploadedFile] = useState(null)
@@ -61,7 +62,7 @@ const CreateCategory = () => {
         setValue(label, v.value)
     }
 
-
+   
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <Card className='w-full p-2 px-4 border shadow-none'>
@@ -114,7 +115,11 @@ const CreateCategory = () => {
                     }
                 </div>
                 <div className="grid  grid-cols-1 md:grid-cols-2 gap-4">
-
+                    <div className='md:col-span-2'>
+                        {
+                            category && <CustomDropdown dropdownOptions={category} handleSetValue={handleSetValue} selectedOption={online} label={'category id'} errors={errors} />
+                        }
+                    </div>
                     <div className='md:col-span-2'>
                         <CustomTextField
                             {...{ label: "name", value: name || "", register, maxLength: 24, minLength: 4, errors }}
@@ -157,6 +162,11 @@ const CreateCategory = () => {
                 </div>
                 <div className="grid grid-cols-2 py-5">
                     <div className="col-span-2 sm:col-span-1">
+                        <Link to='/dashboard/add-product/bulk'>
+                            <Button className='shadow-none'>
+                                Bulk upload
+                            </Button>
+                        </Link>
                     </div>
                     <div className="flex justify-end gap-2 col-span-2 sm:col-span-1">
                         <Button className='bg-white text-black border'>
@@ -218,4 +228,4 @@ const CustomTextField = ({ label, value, register, errors, maxLength, minLength 
 }
 
 
-export { CreateCategory }
+export { AddProduct }

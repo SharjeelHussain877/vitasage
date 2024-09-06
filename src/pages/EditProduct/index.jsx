@@ -1,25 +1,35 @@
 import React, { useEffect, useState } from 'react'
-import { useSearchParams, useNavigate, Link } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { Button, Card, Typography, Input } from '@material-tailwind/react'
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { GoTrash } from "react-icons/go";
 import { showToast } from '../../utils/toastify';
-import CustomDropdown from '../CustomDropdown';
-import { categories } from '../../constants';
-import CustomDatePicker from '../CustomDatePicker';
+import CustomDropdown from '../../components/CustomDropdown';
+import { products, categories } from '../../constants';
+import CustomDatePicker from '../../components/CustomDatePicker';
 import { formatLabel } from '../../utils/formatKeyForForm';
 
 const category = categories.map(v => ({ value: v.id, label: v.name }))
 
-const AddProduct = () => {
+const EditProduct = () => {
     const [searchParams] = useSearchParams()
     const navigate = useNavigate()
 
-    const [uploadedFile, setUploadedFile] = useState(null)
+    const paramId = searchParams.get('id');
 
-    const { register, getValues, setValue, handleSubmit, clearErrors, setError, reset, formState: { errors } } = useForm({})
+    const [uploadedFile, setUploadedFile] = useState(null)
+    const [currentProducts, setCurrentProducts] = useState(products.find(elem => elem.id === Number(paramId)))
+
+
+    useEffect(() => {
+        setUploadedFile(currentProducts.img)
+    }, [currentProducts])
+
+    const { register, getValues, setValue, handleSubmit, clearErrors, setError, reset, formState: { errors } } = useForm({
+        defaultValues: currentProducts,
+    })
 
     const { name, categoryId, date, description, id, img, online, purchasePrice, salePrice, tag, unit, } = getValues()
 
@@ -58,11 +68,12 @@ const AddProduct = () => {
     };
 
     function handleSetValue(label, v) {
+        // console.log(label, v)
         clearErrors(label);
         setValue(label, v.value)
     }
 
-   
+
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <Card className='w-full p-2 px-4 border shadow-none'>
@@ -117,7 +128,7 @@ const AddProduct = () => {
                 <div className="grid  grid-cols-1 md:grid-cols-2 gap-4">
                     <div className='md:col-span-2'>
                         {
-                            category && <CustomDropdown dropdownOptions={category} handleSetValue={handleSetValue} selectedOption={online} label={'category id'} errors={errors} />
+                            category && <CustomDropdown dropdownOptions={category} handleSetValue={handleSetValue} selectedOption={online} label={'category id'} errors={errors}/>
                         }
                     </div>
                     <div className='md:col-span-2'>
@@ -162,11 +173,6 @@ const AddProduct = () => {
                 </div>
                 <div className="grid grid-cols-2 py-5">
                     <div className="col-span-2 sm:col-span-1">
-                        <Link to='/dashboard/add-product/bulk'>
-                            <Button className='shadow-none'>
-                                Bulk upload
-                            </Button>
-                        </Link>
                     </div>
                     <div className="flex justify-end gap-2 col-span-2 sm:col-span-1">
                         <Button className='bg-white text-black border'>
@@ -228,4 +234,4 @@ const CustomTextField = ({ label, value, register, errors, maxLength, minLength 
 }
 
 
-export { AddProduct }
+export default EditProduct
