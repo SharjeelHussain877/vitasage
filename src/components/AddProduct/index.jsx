@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { Button, Card, Typography, Input } from '@material-tailwind/react'
 import { IoCloudUploadOutline } from "react-icons/io5";
@@ -61,7 +61,6 @@ const AddProduct = () => {
         clearErrors(label);
         setValue(label, v.value)
     }
-
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -162,6 +161,11 @@ const AddProduct = () => {
                 </div>
                 <div className="grid grid-cols-2 py-5">
                     <div className="col-span-2 sm:col-span-1">
+                        <Link to='/dashboard/add-product/bulk'>
+                            <Button className='shadow-none'>
+                                Bulk upload
+                            </Button>
+                        </Link>
                     </div>
                     <div className="flex justify-end gap-2 col-span-2 sm:col-span-1">
                         <Button className='bg-white text-black border'>
