@@ -16,6 +16,13 @@ import BeautyProducts from '../components/BeautyProducts';
 import CustomUserTable from '../components/CustomUserTable';
 import CustomRightSidebar from '../components/CustomRightSidebar';
 import CustomProductTable from '../components/CustomProductTable';
+import Categories from '../components/Categories';
+import ShowOrders from '../components/ShowOrders';
+import PlaceOrders from '../components/PlaceOrders';
+import Suppliers from '../components/Suppliers';
+import AddSuplier from '../components/AddSupplier';
+import SupplierDevliveries from '../components/SupplierDeliveries';
+import PurchaseOrder from '../components/PurchaseOrder';
 
 
 function DashboardRoute() {
@@ -30,7 +37,14 @@ function DashboardRoute() {
       <Route path="beauty-products" element={<BeautyProducts />} />
       <Route path="add-product/*" element={<AddProductRoutes />} />
       <Route path="edit" element={<EditProduct />} />
+      <Route path="show-orders" element={<ShowOrders />} />
+      <Route path="categories" element={<Categories />} />
+      <Route path="place-orders" element={<PlaceOrders />} />
+      <Route path="suppliers" element={<Suppliers />} />
+      <Route path="add-supliers" element={<AddSuplier />} />
       <Route path="category/create" element={<CreateCategory />} />
+      <Route path="category/purchase-order" element={<PurchaseOrder />} />
+      <Route path="supplier-deliveries" element={<SupplierDevliveries />} />
     </Routes>
   );
 }
@@ -82,7 +96,7 @@ const Main = () => {
               </Button>
             )
           }
-          <div className='ps-4 my-4 flex justify-between'>
+          <div className='px-4 my-4 flex justify-between'>
             <Typography
               variant="h3"
               className="font-bold leading-none capitalize text-gray-800 flex gap-2 items-center">

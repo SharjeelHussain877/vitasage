@@ -18,7 +18,7 @@ import { TbPointFilled } from "react-icons/tb";
 const CustomListItem = ({ text, prefix, link = "#" }) => {
   return (
     <NavLink to={link}>
-      <ListItem className="text-white hover:text-white active:text-white focus:text-white hover:bg-primary-500 active:bg-transparent focus:bg-primary select-none">
+      <ListItem className="text-white capitalize hover:text-white active:text-white focus:text-white hover:bg-primary-500 active:bg-transparent focus:bg-primary select-none">
         {
           prefix && (
             <ListItemPrefix>
@@ -128,7 +128,7 @@ export default function CustomSideBar() {
                 text='create category'
               />
               <CustomListItem
-                // link='/dashboard/products'
+                link='/dashboard/categories'
                 // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
                 text='show all categories'
               />
@@ -157,12 +157,12 @@ export default function CustomSideBar() {
           <AccordionBody className="py-1 pl-6">
             <List className="p-0">
               <CustomListItem
-                // link='/dashboard/users'
+                link='/dashboard/show-orders'
                 // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
                 text='show order'
               />
               <CustomListItem
-                // link='/dashboard/products'
+                link='/dashboard/place-orders'
                 // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
                 text='Place order'
               />
@@ -183,7 +183,7 @@ export default function CustomSideBar() {
               <ListItemPrefix>
                 <TbPointFilled className="h-5 w-5 text-white" />
               </ListItemPrefix>
-              <Typography color="blue-gray" className="mr-auto font-normal text-white">
+              <Typography color="blue-gray" className="mr-auto font-normal text-white capitalize">
                 suppliers
               </Typography>
             </AccordionHeader>
@@ -191,22 +191,22 @@ export default function CustomSideBar() {
           <AccordionBody className="py-1 pl-6">
             <List className="p-0">
               <CustomListItem
-                // link='/dashboard/users'
+                link='/dashboard/suppliers'
                 // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
                 text=' Show all suppliers'
               />
               <CustomListItem
-                // link='/dashboard/products'
+                link='/dashboard/add-supliers'
                 // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
                 text='Add Supplier'
               />
               <CustomListItem
-                // link='/dashboard/beauty-products'
+                link='/dashboard/purchase-order'  
                 // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
                 text='Purchase order'
               />
               <CustomListItem
-                // link='/dashboard/beauty-products'
+                link='/dashboard/supplier-deliveries'
                 // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
                 text='Supplier deliveries'
               />
