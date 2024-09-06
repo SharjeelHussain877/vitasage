@@ -3,17 +3,37 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Add this to your global CSS file */
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
 
 .scrollbar-hide {
   -ms-overflow-style: none;
-  /* IE and Edge */
   scrollbar-width: none;
-  /* Firefox */
 }
+
+
+.scrollbar-w-small::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-w-small::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+  border-radius: 10px; 
+}
+
+.scrollbar-w-small::-webkit-scrollbar-thumb {
+  background-color: #ffcc00;
+  border-radius: 10px;
+  border: 2px solid #f0f0f0;
+}
+
+.scrollbar-w-small::-webkit-scrollbar-thumb:hover {
+  background-color: #ffa500;
+}
+
+
 
 .line-clamp-2 {
   display: -webkit-box;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import {

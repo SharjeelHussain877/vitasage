@@ -15,9 +15,9 @@ import drawerIcon from "./../../assets/drawer-icon.svg";
 import { NavLink } from "react-router-dom";
 import { TbPointFilled } from "react-icons/tb";
 
-const CustomListItem = ({ text, prefix, link = "#" }) => {
+const CustomListItem = ({ text, prefix, link = "#", handleDrawerToggle }) => {
   return (
-    <NavLink to={link}>
+    <NavLink to={link} onClick={handleDrawerToggle}>
       <ListItem className="text-white capitalize hover:text-white active:text-white focus:text-white hover:bg-primary-500 active:bg-transparent focus:bg-primary select-none">
         {
           prefix && (
@@ -32,7 +32,7 @@ const CustomListItem = ({ text, prefix, link = "#" }) => {
   )
 }
 
-export default function CustomSideBar() {
+export default function CustomSideBar({ handleDrawerToggle }) {
   const [open, setOpen] = React.useState(0);
 
   const handleOpen = (value) => {
@@ -46,18 +46,21 @@ export default function CustomSideBar() {
       </div>
       <List>
         <CustomListItem
+          handleDrawerToggle={handleDrawerToggle}
           link='/dashboard/users'
           prefix={<TbPointFilled size={24} className="h-5 w-5 text-white" />}
           text='Dashboard'
         />
 
         <CustomListItem
+          handleDrawerToggle={handleDrawerToggle}
           link='/dashboard/inventory'
           prefix={<TbPointFilled size={24} className="h-5 w-5 text-white" />}
           text='Inventory'
         />
 
         <CustomListItem
+          handleDrawerToggle={handleDrawerToggle}
           link='/dashboard/customers'
           prefix={<TbPointFilled size={24} className="h-5 w-5 text-white" />}
           text='Customers'
@@ -84,16 +87,19 @@ export default function CustomSideBar() {
           <AccordionBody className="py-1 pl-6">
             <List className="p-0">
               <CustomListItem
+                handleDrawerToggle={handleDrawerToggle}
                 link='/dashboard/products'
                 // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
                 text='show all products'
               />
               <CustomListItem
+                handleDrawerToggle={handleDrawerToggle}
                 link='/dashboard/add-product'
                 // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
                 text='add product'
               />
               <CustomListItem
+                handleDrawerToggle={handleDrawerToggle}
                 link='/dashboard/beauty-products'
                 // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
                 text='beauty products'
@@ -123,11 +129,13 @@ export default function CustomSideBar() {
           <AccordionBody className="py-1 pl-6">
             <List className="p-0">
               <CustomListItem
+                handleDrawerToggle={handleDrawerToggle}
                 link='/dashboard/category/create'
                 // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
                 text='create category'
               />
               <CustomListItem
+                handleDrawerToggle={handleDrawerToggle}
                 link='/dashboard/categories'
                 // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
                 text='show all categories'
@@ -157,11 +165,13 @@ export default function CustomSideBar() {
           <AccordionBody className="py-1 pl-6">
             <List className="p-0">
               <CustomListItem
+                handleDrawerToggle={handleDrawerToggle}
                 link='/dashboard/show-orders'
                 // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
                 text='show order'
               />
               <CustomListItem
+                handleDrawerToggle={handleDrawerToggle}
                 link='/dashboard/place-orders'
                 // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
                 text='Place order'
@@ -191,21 +201,25 @@ export default function CustomSideBar() {
           <AccordionBody className="py-1 pl-6">
             <List className="p-0">
               <CustomListItem
+                handleDrawerToggle={handleDrawerToggle}
                 link='/dashboard/suppliers'
                 // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
                 text=' Show all suppliers'
               />
               <CustomListItem
+                handleDrawerToggle={handleDrawerToggle}
                 link='/dashboard/add-supliers'
                 // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
                 text='Add Supplier'
               />
               <CustomListItem
-                link='/dashboard/purchase-order'  
+                handleDrawerToggle={handleDrawerToggle}
+                link='/dashboard/purchase-order'
                 // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
                 text='Purchase order'
               />
               <CustomListItem
+                handleDrawerToggle={handleDrawerToggle}
                 link='/dashboard/supplier-deliveries'
                 // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
                 text='Supplier deliveries'
@@ -216,18 +230,21 @@ export default function CustomSideBar() {
 
 
         <CustomListItem
+          handleDrawerToggle={handleDrawerToggle}
           // link='/dashboard/add-product/bulk'
           prefix={<TbPointFilled className="h-5 w-5 text-white" />}
           text='Sections'
         />
 
         <CustomListItem
+          handleDrawerToggle={handleDrawerToggle}
           // link='/dashboard/add-product/bulk'
           prefix={<TbPointFilled className="h-5 w-5 text-white" />}
           text='Lifespan'
         />
 
         <CustomListItem
+          handleDrawerToggle={handleDrawerToggle}
           // link='/dashboard/add-product/bulk'
           prefix={<TbPointFilled className="h-5 w-5 text-white" />}
           text='Reports'

@@ -173,7 +173,7 @@ const AddProduct = () => {
                             Cancel
                         </Button>
                         <Button type='submit' className='bg-primary' onClick={handleSubmit(onSubmit)}>
-                            Save changes
+                            Add
                         </Button>
                     </div>
                 </div>

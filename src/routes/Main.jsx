@@ -1,8 +1,8 @@
 import React from 'react'
 import { Route, Routes, useLocation, useNavigate, Navigate, Link } from 'react-router-dom';
 import { MdKeyboardBackspace } from 'react-icons/md';
-import { Button, Typography } from '@material-tailwind/react';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { Button, Typography } from '@material-tailwind/react';
 import { CreateCategory } from '../pages/CreateCategory';
 import { IoAddSharp } from "react-icons/io5";
 import { AddProduct } from '../pages/AddProduct';
@@ -41,7 +41,7 @@ function DashboardRoute() {
       <Route path="categories" element={<Categories />} />
       <Route path="category/create" element={<CreateCategory />} />
       <Route path="place-orders" element={<PlaceOrders />} />
-      <Route path="suppliers" element={<Suppliers />} />
+      <Route path="suppliers" element={<Suppliers  users={users} />} />
       <Route path="add-supliers" element={<AddSuplier />} />
       <Route path="category/purchase-order" element={<PurchaseOrder />} />
       <Route path="supplier-deliveries" element={<SupplierDevliveries />} />
@@ -77,11 +77,11 @@ const Main = () => {
     // max-w-screen-2xl
     <main className='mx-auto'>
       <div className='flex'>
-        <div className={`h-full fixed flex lg:relative z-10 lg:block  w-[300px] xl:w-[280px] transition-all duration-300 ease-in-out lg:left-0 ${showDrawer ? 'left-0' : "left-[-290px]"}`}>
-          <CustomSideBar />
-          <RxCross1 size={24} className='z-40 lg:hidden absolute right-2 top-4' onClick={handleDrawerToggle} />
+        <div className={`h-full hidden lg:block z-10 w-[300px] xl:w-[280px] transition-all duration-300 ease-in-out lg:left-0 ${showDrawer ? 'left-0' : "left-[-290px]"}`}>
+          <CustomSideBar handleDrawerToggle={handleDrawerToggle}/>
+          <RxCross1 size={24} className='z-40 lg:hidden absolute right-2 top-4 cursor-pointer' onClick={handleDrawerToggle} />
         </div>
-        <div className='flex-grow m-4'>
+        <div className='flex-grow lg:ms-24 xl:m-4'>
           {
             lastSegment.replace(/[\/-]/g, ' ') === "bulk" && (
               <Button onClick={handleGoBack} className='bg-transparent text-gray-500 flex items-center gap-2 !shadow-none'>
@@ -100,7 +100,7 @@ const Main = () => {
             <Typography
               variant="h3"
               className="font-bold leading-none capitalize text-gray-800 flex gap-2 items-center">
-              <GiHamburgerMenu className='lg:hidden' onClick={handleDrawerToggle} />
+              <GiHamburgerMenu className='lg:hidden cursor-pointer' onClick={handleDrawerToggle} />
               {lastSegment.replace(/[\/-]/g, ' ')}
             </Typography>
 

@@ -7,11 +7,8 @@ import { IoIosInformationCircleOutline } from "react-icons/io";
 import { GoTrash } from "react-icons/go";
 import { showToast } from '../../utils/toastify';
 import CustomDropdown from '../../components/CustomDropdown';
-import { categories } from '../../constants';
 import CustomDatePicker from '../../components/CustomDatePicker';
 import { formatLabel } from '../../utils/formatKeyForForm';
-
-const category = categories.map(v => ({ value: v.id, label: v.name }))
 
 const CreateCategory = () => {
     const navigate = useNavigate()
@@ -20,16 +17,10 @@ const CreateCategory = () => {
 
     const { register, getValues, setValue, handleSubmit, clearErrors, setError, reset, formState: { errors } } = useForm({})
 
-    const { name, categoryId, date, description, id, img, online, purchasePrice, salePrice, tag, unit, } = getValues()
+    const { name, description } = getValues()
 
     const onSubmit = (data) => {
-        if (!data.categoryId) {
-            setError('categoryId', {
-                type: 'required',
-                message: 'Category is required',
-            });
-            return;
-        }
+
         if (!data.img) {
             setError('img', {
                 type: 'required',
@@ -40,7 +31,7 @@ const CreateCategory = () => {
         setUploadedFile(null)
         clearErrors();
         reset()
-        showToast('success', "Save changes successfully!")
+        showToast('success', "Category created successfully!")
         console.log(data)
         navigate(-1)
     }
@@ -55,11 +46,6 @@ const CreateCategory = () => {
             clearErrors('img');
         }
     };
-
-    function handleSetValue(label, v) {
-        clearErrors(label);
-        setValue(label, v.value)
-    }
 
 
     return (
@@ -90,6 +76,7 @@ const CreateCategory = () => {
                                         <div className="flex items-center" htmlFor="file-upload">
                                             <IoCloudUploadOutline size={20} />
                                             <input
+                                                accept="image/*"
                                                 id="file-upload"
                                                 type="file"
                                                 className="hidden"
@@ -123,34 +110,6 @@ const CreateCategory = () => {
                     <div className='md:col-span-2'>
                         <CustomTextField
                             {...{ label: "description", value: description || "", register, maxLength: 54, minLength: 4, errors }}
-                        />
-                    </div>
-                    <div>
-                        <CustomTextField
-                            {...{ label: "tag", value: tag || "", register, maxLength: 28, minLength: 3, errors }}
-                        />
-                    </div>
-                    <div>
-                        <CustomDropdown
-                            dropdownOptions={[{ value: true, label: "Online" }, { value: false, label: "Ofline" }]}
-                            handleSetValue={handleSetValue} selectedOption={online} label={'online'} />
-                    </div>
-                    <div>
-                        <CustomDatePicker {...{ label: "date", value: date || "", handleSetValue, errors }} />
-                    </div>
-                    <div>
-                        <CustomTextField
-                            {...{ label: "purchase price", value: purchasePrice || "", register, maxLength: 12, minLength: 1, errors }}
-                        />
-                    </div>
-                    <div>
-                        <CustomTextField
-                            {...{ label: "sale price", value: salePrice || "", register, maxLength: 12, minLength: 1, errors }}
-                        />
-                    </div>
-                    <div>
-                        <CustomTextField
-                            {...{ label: "unit", value: unit || "", register, maxLength: 24, minLength: 1, errors }}
                         />
                     </div>
 
