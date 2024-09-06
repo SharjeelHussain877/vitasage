@@ -62,6 +62,7 @@ const AddProduct = () => {
         setValue(label, v.value)
     }
 
+   
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <Card className='w-full p-2 px-4 border shadow-none'>
