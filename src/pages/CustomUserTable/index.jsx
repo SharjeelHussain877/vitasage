@@ -17,7 +17,6 @@ import {
 } from "@material-tailwind/react";
 import { LiaTimesSolid } from 'react-icons/lia';
 import CustomUserDetailsCard from '../../components/CustomUserDetailsCard';
-import CustomSpinner from '../../components/Loader';
 
 const TABLE_HEAD = ["name", "email", "subscription plan", "action"];
 
@@ -37,18 +36,15 @@ export default function CustomUserTable({ users }) {
         setOpen(!open)
     };
 
-    const handleRowsPerPageChange = (value) => {
-        setRowsPerPage(Number(value));
-        setCurrentPage(1); // Reset to the first page when changing rows per page
-    };
-
-    const totalPages = Math.ceil(users.length / rowsPerPage);
-
-    const handlePageChange = (page) => {
-        if (page > 0 && page <= totalPages) {
-            setCurrentPage(page);
-        }
-    };
+    const handleChangeNextPage = () => {
+        if (currentPage * rowsPerPage > allUsers.length) return
+        setCurrentPage(currentPage + 1)
+    }
+    
+    const handleChangePreviousPage = () => {
+        if (currentPage <= 1) return
+        setCurrentPage(currentPage - 1)
+    }
 
     const displayedData = allUsers.slice(
         (currentPage - 1) * rowsPerPage,
@@ -157,13 +153,13 @@ export default function CustomUserTable({ users }) {
             </CardBody>
             <CardFooter className="flex items-center justify-between">
                 <Typography variant="small" color="blue-gray" className="font-normal">
-                    Page 1 of 10
+                    Page {currentPage} of {rowsPerPage}
                 </Typography>
                 <div className="flex gap-2">
-                    <Button variant="outlined" size="sm">
+                    <Button variant="outlined" size="sm" onClick={handleChangePreviousPage}>
                         Previous
                     </Button>
-                    <Button variant="outlined" size="sm">
+                    <Button variant="outlined" size="sm" onClick={handleChangeNextPage}>
                         Next
                     </Button>
                 </div>

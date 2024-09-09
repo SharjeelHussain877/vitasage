@@ -10,7 +10,6 @@ import {
   AccordionBody,
 } from "@material-tailwind/react";
 import { IoIosArrowDown, IoIosArrowUp, IoIosArrowForward } from "react-icons/io";
-import { IoBarChart } from "react-icons/io5";
 import drawerIcon from "./../../assets/drawer-icon.svg";
 import { NavLink } from "react-router-dom";
 import { TbPointFilled } from "react-icons/tb";
