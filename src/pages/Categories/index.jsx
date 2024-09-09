@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Button, Card, CardBody, Dialog, DialogBody, Input, Typography, } from '@material-tailwind/react'
+import { Button, Card, CardBody, CardHeader, Dialog, DialogBody, Input, Typography, } from '@material-tailwind/react'
 import { CiSearch } from 'react-icons/ci';
 import { LiaTimesSolid } from 'react-icons/lia';
 import { products } from "./../../constants"
@@ -10,6 +10,7 @@ import { showToast } from '../../utils/toastify';
 import { IoIosInformationCircleOutline } from 'react-icons/io';
 import { IoCloudUploadOutline } from 'react-icons/io5';
 import { GoTrash } from 'react-icons/go';
+import { HiMiniMagnifyingGlass } from 'react-icons/hi2';
 
 const Categories = () => {
   const [productsArray, setProducts] = React.useState(products || []);
@@ -39,7 +40,7 @@ const Categories = () => {
 
 
   const onSubmit = (data) => {
-    
+
     if (!uploadedFile && (!data.img || (typeof data.img === 'string' && data.img.trim() === '') || (data.img instanceof FileList && data.img.length === 0))) {
       setError('img', {
         type: 'required',
@@ -47,7 +48,7 @@ const Categories = () => {
       });
       return;
     }
-    
+
     setUploadedFile(null)
     handleEditorOpen()
     clearErrors();
@@ -82,7 +83,7 @@ const Categories = () => {
     }
   };
 
-  function filterProductByName(value) {
+  function filterByName(value) {
 
     if (timeoutId) {
       clearTimeout(timeoutId);
@@ -96,18 +97,17 @@ const Categories = () => {
   }
 
   return (
-    <Card className='p-4'>
-      <Input
-        onChange={(e) => filterProductByName(e.target.value)}
-        defaultValue={''}
-        placeholder="Search Category"
-        className="!border !border-gray-300 w-full  bg-white text-gray-900  ring-4 ring-transparent placeholder:text-gray-500 placeholder:opacity-100 focus:!border-gray-900 "
-        icon={<CiSearch size={20} />}
-        labelProps={{
-          className: "hidden",
-        }}
-      />
-      <CardBody className='p-0'>
+    <Card className='min-h-screen'>
+      <CardHeader floated={false} shadow={false} className="rounded-none ">
+        <div className="flex flex-col items-center justify-between gap-4 md:flex-row p-2">
+          <Input
+            onChange={(e) => filterByName(e.target.value)}
+            label="Search"
+            icon={<HiMiniMagnifyingGlass className="h-5 w-5" />}
+          />
+        </div>
+      </CardHeader>
+      <CardBody >
 
         {
           productsArray?.length ?

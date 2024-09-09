@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { CiSearch } from "react-icons/ci";
 import { products } from "../../constants";
 import { CiEdit } from "react-icons/ci";
 import { IoTrashOutline } from "react-icons/io5";
@@ -17,17 +16,20 @@ import {
     IconButton,
     Dialog,
     DialogBody,
+    CardHeader,
 } from "@material-tailwind/react";
 import NoData from "../NoData";
 import { LiaTimesSolid } from "react-icons/lia";
 import { ProductCard } from "./../../components/Card";
 import { Link } from "react-router-dom";
+import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 
 
 export default function BeautyProducts() {
     const [open, setOpen] = useState(false);
     const [currentData, setCurrentData] = useState(null);
-    const [beautyProducts, setBeautyProducts] = useState(products.length && products.filter(elem => elem.categoryId == 1));
+    const [beautyProducts, setBeautyProducts] = useState(products.filter(elem => elem.categoryId == 1) || []);
+    const [timeoutId, setTimeoutId] = React.useState(null);
 
     const handleOpen = (id) => {
         const findCurrentProduct = products.find(elem => elem.id === id)
@@ -35,20 +37,32 @@ export default function BeautyProducts() {
         setOpen(!open)
     };
 
+    function filterByName(value) {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+      const newTimeoutId = setTimeout(() => {
+        const filteredData = products.filter(elem => elem.name.toLowerCase().includes(value.toLowerCase()) && elem.categoryId === 1);
+        setBeautyProducts(filteredData);
+      }, 400);
+  
+      setTimeoutId(newTimeoutId);
+    }
     return (
-        <Card className="min-h-screen rounded-lg border w-full">
+        <Card className="w-full">
+            <CardHeader floated={false} shadow={false} className="rounded-none ">
+                <div className="flex flex-col items-center justify-between gap-4 md:flex-row p-2">
+                    <Input
+                        onChange={(e) => filterByName(e.target.value)}
+                        label="Search"
+                        icon={<HiMiniMagnifyingGlass className="h-5 w-5" />}
+                    />
+                </div>
+            </CardHeader>
             <CardBody >
-                <Input
-                    placeholder="Search Products"
-                    className="!border !border-gray-300 w-full  bg-white text-gray-900  ring-4 ring-transparent placeholder:text-gray-500 placeholder:opacity-100 focus:!border-gray-900 "
-                    icon={<CiSearch size={20} />}
-                    labelProps={{
-                        className: "hidden",
-                    }}
-                />
 
-                <table className=" w-full  table-auto my-5  ">
-                    <tbody className=" ">
+                <table className="w-full table-auto">
+                    <tbody>
                         {
                             beautyProducts?.length ?
                                 beautyProducts?.map(

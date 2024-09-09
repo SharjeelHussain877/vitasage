@@ -20,7 +20,6 @@
   scrollbar-width: none;
 }
 
-
 .scrollbar-w-small::-webkit-scrollbar {
   width: 6px;
 }
@@ -40,8 +39,6 @@
   background-color: var(--primary-color);
 }
 
-
-
 .line-clamp-2 {
   display: -webkit-box;
   line-clamp: 2;
@@ -49,4 +46,9 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.active {
+  background-color: #9cb18e;
+  border-radius: 6px;
 }

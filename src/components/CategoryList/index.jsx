@@ -32,7 +32,7 @@ const CategoryList = ({ img, name, description, handleOpen, handleEditorOpen }) 
         <IconButton className="bg-primary-100 shadow-none" onClick={() => handleEditorOpen({ img, name, description, })}>
           <CiEdit color="white" size={20} />
         </IconButton>
-        <IconButton className="bg-red-900" onClick={() => handleOpen({ img, name, description, })}>
+        <IconButton className="bg-red-700" onClick={() => handleOpen({ img, name, description, })}>
           <IoTrashOutline color="white" size={20} />
         </IconButton>
       </div>

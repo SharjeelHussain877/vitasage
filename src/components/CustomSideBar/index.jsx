@@ -40,7 +40,7 @@ export default function CustomSideBar({ handleDrawerToggle }) {
   };
 
   return (
-    <Card className="h-[calc(100vh)] scrollbar-hide overflow-y-auto overflow-x-hidden fixed w-full max-w-[16rem] p-4 shadow-xl shadow-blue-gray-900/5 bg-primary rounded-bl-none rounded-tl-none">
+    <Card className="h-[calc(100vh)] scrollbar-hide overflow-y-auto overflow-x-hidden w-auto max-w-[16rem] shadow-xl shadow-blue-gray-900/5 bg-primary rounded-bl-none rounded-tl-none">
       <div className="mb-2 p-4">
         <img src={drawerIcon} className="w-20" />
       </div>
@@ -231,21 +231,21 @@ export default function CustomSideBar({ handleDrawerToggle }) {
 
         <CustomListItem
           handleDrawerToggle={handleDrawerToggle}
-          // link='/dashboard/add-product/bulk'
+          link='/dashboard/sections'
           prefix={<TbPointFilled className="h-5 w-5 text-white" />}
           text='Sections'
         />
 
         <CustomListItem
           handleDrawerToggle={handleDrawerToggle}
-          // link='/dashboard/add-product/bulk'
+          link='/dashboard/lifespan'
           prefix={<TbPointFilled className="h-5 w-5 text-white" />}
           text='Lifespan'
         />
 
         <CustomListItem
           handleDrawerToggle={handleDrawerToggle}
-          // link='/dashboard/add-product/bulk'
+          link='/dashboard/report'
           prefix={<TbPointFilled className="h-5 w-5 text-white" />}
           text='Reports'
         />

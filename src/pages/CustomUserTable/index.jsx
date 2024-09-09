@@ -22,10 +22,13 @@ const TABLE_HEAD = ["name", "email", "subscription plan", "action"];
 
 
 export default function CustomUserTable({ users }) {
+
+    const [allUsers, setAllUsers] = useState(users || []);
     const [currentPage, setCurrentPage] = useState(1);
     const [rowsPerPage, setRowsPerPage] = useState(10);
     const [open, setOpen] = useState(false);
     const [currentData, setCurrentData] = useState(null);
+    const [timeoutId, setTimeoutId] = React.useState(null);
 
     const handleOpen = (id) => {
         const findCurrentUser = users.find(elem => elem.uid === id)
@@ -46,22 +49,38 @@ export default function CustomUserTable({ users }) {
         }
     };
 
-    const displayedData = users.slice(
+    const displayedData = allUsers.slice(
         (currentPage - 1) * rowsPerPage,
         currentPage * rowsPerPage
     );
+
+    
+  function filterByName(value) {
+
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    const newTimeoutId = setTimeout(() => {
+      const filteredData = users.filter(elem => elem.firstName.toLowerCase().includes(value.toLowerCase()) || elem.lastName.toLowerCase().includes(value.toLowerCase()));
+      setAllUsers(filteredData);
+    }, 400);
+
+    setTimeoutId(newTimeoutId);
+  }
     
     return (
-        <Card className="min-h-screen w-full">
-            <CardHeader floated={false} shadow={false} className="rounded-none py-2">
-                <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+        <Card className="w-full border min-h-screen">
+            
+            <CardHeader floated={false} shadow={false} className="rounded-none ">
+                <div className="flex flex-col items-center justify-between gap-4 md:flex-row p-2">
                     <Input
+                    onChange={(e) => filterByName(e.target.value)}
                         label="Search"
                         icon={<HiMiniMagnifyingGlass className="h-5 w-5" />}
                     />
                 </div>
             </CardHeader>
-            <CardBody className="px-0 lg:overflow-x-hidden w-full max-w-96 sm:min-w-full overflow-x-auto">
+            <CardBody className="px-0 lg:overflow-x-hidden w-full sm:min-w-full overflow-x-auto">
                 <table className="mt-4 w-full table-auto text-left">
                     <thead>
                         <tr>
