@@ -6,17 +6,20 @@ import {
     Typography,
     Radio,
 } from "@material-tailwind/react";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { FaRegEyeSlash } from "react-icons/fa";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 
 
 function SignIn() {
+    const navigate = useNavigate()
     const [showPassword, setShowPassword] = useState(false);
 
     const handlePasswordToggle = () => {
         setShowPassword(!showPassword);
     };
+
+    const handleUserAuth = () => navigate('/dashboard/users')
 
     return (
         <Card color="transparent" shadow={false}>
@@ -98,7 +101,7 @@ function SignIn() {
                         </button>
                     </div>
                 </div>
-                <Button className="mt-6 bg-primary tracking-wide normal-case	" fullWidth>
+                <Button className="mt-6 bg-primary tracking-wide normal-cas" fullWidth onClick={handleUserAuth}>
                     Log in
                 </Button>
                 <Typography color="gray" className="mt-4 text-center font-normal">

@@ -12,6 +12,10 @@ function FormRoute() {
       <Route path="/" element={<Navigate to="sign-in" />} />
       <Route path="/sign-in" element={<SignIn />} />
       <Route path="/sign-up" element={<SignUp />} />
+      <Route
+        path="*"
+        element={<Navigate to="sign-in" />}
+      />
     </Routes>
   );
 }

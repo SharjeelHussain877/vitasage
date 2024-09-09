@@ -45,6 +45,10 @@ function DashboardRoute() {
       <Route path="add-supliers" element={<AddSuplier />} />
       <Route path="category/purchase-order" element={<PurchaseOrder />} />
       <Route path="supplier-deliveries" element={<SupplierDevliveries />} />
+      <Route
+        path="*"
+        element={<Navigate to="users" />}
+      />
     </Routes>
   );
 }
