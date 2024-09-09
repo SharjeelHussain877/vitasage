@@ -20,7 +20,7 @@ function SignIn() {
 
     return (
         <Card color="transparent" shadow={false}>
-            <Typography variant="h4" className='text-white lg:text-gray-800'>
+            <Typography variant="h4" className='text-gray-900 lg:text-gray-800'>
                 Sign In
             </Typography>
             <form className="mt-4 mb-2 w-80 max-w-screen-lg sm:w-96">
@@ -30,7 +30,7 @@ function SignIn() {
                         label={
                             <Typography
                                 color="blue-gray"
-                                className="flex font-medium text-blue-gray-500"
+                                className="flex font-medium text-blue-gray-600"
                             >
                                 Sign in as a super admin
                             </Typography>
@@ -41,7 +41,7 @@ function SignIn() {
                         label={
                             <Typography
                                 color="blue-gray"
-                                className="flex font-medium text-blue-gray-500"
+                                className="flex font-medium text-blue-gray-600"
                             >
                                 Sign in as an admin
                             </Typography>
@@ -52,7 +52,7 @@ function SignIn() {
                         label={
                             <Typography
                                 color="blue-gray"
-                                className="flex font-medium text-blue-gray-500"
+                                className="flex font-medium text-blue-gray-600"
                             >
                                 Sign in as an operator
                             </Typography>
@@ -60,18 +60,18 @@ function SignIn() {
                     />
                 </div>
                 <div className="mb-1 flex flex-col gap-6">
-                    <Typography variant="h6" className="-mb-6 text-gray-200 lg:text-gray-800">
+                    <Typography variant="h6" className="-mb-6 text-gray-800">
                         Your Email
                     </Typography>
                     <Input
                         size="lg"
                         placeholder="example@gmail.com"
-                        className="text-gray-200 lg:text-gray-900 border-t-blue-gray-200 focus:backdrop-blur-md focus:!border-blue-gray-100 lg:focus:!border-primary placeholder:text-gray-700"
+                        className="text-gray-900 border-t-gray-800 focus:!border-gray-800 lg:focus:!border-primary placeholder:text-gray-600"
                         labelProps={{
                             className: "before:content-none after:content-none",
                         }}
                     />
-                    <Typography variant="h6" className="-mb-6 text-gray-200 lg:text-gray-800">
+                    <Typography variant="h6" className="-mb-6 text-gray-800">
                         Password
                     </Typography>
                     <div className="relative">
@@ -80,7 +80,7 @@ function SignIn() {
                             size="lg"
                             type={showPassword ? "text" : "password"}
                             placeholder="password"
-                            className="text-gray-200 lg:text-gray-900 border-t-blue-gray-200 focus:backdrop-blur-md focus:!border-blue-gray-100 lg:focus:!border-primary placeholder:text-gray-700"
+                            className="text-gray-900 border-t-gray-800 focus:!border-gray-800 lg:focus:!border-primary placeholder:text-gray-600"
                             labelProps={{
                                 className: "before:content-none after:content-none",
                             }}
@@ -103,7 +103,7 @@ function SignIn() {
                 </Button>
                 <Typography color="gray" className="mt-4 text-center font-normal">
                     Don’t have an account?{" "}
-                    <NavLink to="/auth/sign-up" className="font-medium text-gray-900 hover:underline">
+                    <NavLink to="/auth/sign-up" className="font-semibold text-gray-900 hover:underline">
                         Sign Up
                     </NavLink>
                 </Typography>

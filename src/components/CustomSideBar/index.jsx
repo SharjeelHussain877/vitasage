@@ -11,6 +11,7 @@ import {
 } from "@material-tailwind/react";
 import { IoIosArrowDown, IoIosArrowUp, IoIosArrowForward } from "react-icons/io";
 import drawerIcon from "./../../assets/drawer-icon.svg";
+import logoutIcon from "./../../assets/logout.svg";
 import { NavLink } from "react-router-dom";
 import { TbPointFilled } from "react-icons/tb";
 
@@ -39,11 +40,11 @@ export default function CustomSideBar({ handleDrawerToggle }) {
   };
 
   return (
-    <Card className="h-[calc(100vh)] scrollbar-hide overflow-y-auto overflow-x-hidden w-auto max-w-[16rem] shadow-xl shadow-blue-gray-900/5 bg-primary rounded-bl-none rounded-tl-none">
-      <div className="mb-2 p-4">
-        <img src={drawerIcon} className="w-20" />
-      </div>
+    <Card className="h-[calc(100vh)] scrollbar-hide overflow-y-auto overflow-x-hidden w-auto max-w-[16rem] shadow-xl shadow-blue-gray-900/5 bg-primary rounded-bl-none rounded-tl-none flex flex-col justify-between pb-8">
       <List>
+        <div className="mb-2 p-4">
+          <img src={drawerIcon} className="w-20" />
+        </div>
         <CustomListItem
           handleDrawerToggle={handleDrawerToggle}
           link='/dashboard/users'
@@ -249,6 +250,12 @@ export default function CustomSideBar({ handleDrawerToggle }) {
           text='Reports'
         />
       </List>
+      <CustomListItem
+        handleDrawerToggle={handleDrawerToggle}
+        link='/auth/sign-in'
+        prefix={<img src={logoutIcon} className="h-5 text-white" />}
+        text='Logout'
+      />
     </Card>
   );
 }
