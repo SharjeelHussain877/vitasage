@@ -42,7 +42,6 @@ const AddProduct = () => {
         clearErrors();
         reset()
         showToast('success', "Save changes successfully!")
-        console.log(data)
         navigate(-1)
     }
 

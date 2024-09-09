@@ -59,8 +59,6 @@ const AddSuplier = () => {
     setValue(label, v.value)
   }
 
-  console.log(errors)
-
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

@@ -68,7 +68,6 @@ const EditProduct = () => {
     };
 
     function handleSetValue(label, v) {
-        // console.log(label, v)
         clearErrors(label);
         setValue(label, v.value)
     }

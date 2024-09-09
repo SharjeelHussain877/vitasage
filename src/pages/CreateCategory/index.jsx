@@ -50,7 +50,7 @@ const CreateCategory = () => {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <Card className='w-full p-2 px-4 border shadow-none'>
+            <Card className='w-full p-2 px-4 border shadow-none min-h-screen'>
                 <div>
                     <Typography className="mt-3 font-bold text-[#212636]">
                         Upload Image

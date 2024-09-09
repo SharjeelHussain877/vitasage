@@ -20,7 +20,7 @@ const ShowOrders = () => {
     <Card className='shadow-none'>
       <CardBody>
         <div className='h-[90vh] flex flex-col md:flex-row justify-between gap-4'>
-          <div className='order-2 lg:order-1 mx-auto col-span-12 lg:col-span-8 max-w-full md:overflow-y-scroll scrollbar-w-small  flex flex-col gap-2'>
+          <div className='order-2 lg:order-1 mx-auto col-span-12 lg:col-span-8 md:overflow-y-scroll scrollbar-w-small  flex flex-col gap-2 flex-grow flex-shrink'>
             {
               cartItems?.length && cartItems.map(elem => (
                 <div key={elem.id}>
@@ -29,8 +29,8 @@ const ShowOrders = () => {
               ))
             }
           </div>
-          <div className='order-1 flex-grow w-full mt-4 mx-auto'>
-            <Card className="w-auto min-w-80 md:max-w-96 lg:mx-auto shadow-none border border-gray-300">
+          <div className='order-1 mt-4 w-full lg:w-auto mx-auto'>
+            <Card className="w-auto min-w-80 lg:mx-auto shadow-none border border-gray-300">
               <CardHeader
                 variant="gradient"
                 color="gray"
