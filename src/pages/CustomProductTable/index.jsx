@@ -71,16 +71,26 @@ export default function CustomProductTable() {
                     />
                 </div>
             </CardHeader>
-            <CardBody className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 ">
+            <CardBody>
                 {
-                    allProducts.length ? allProducts.map((elem, index) => (
-                        <CustomCard
-                            handleOpen={handleOpen}
-                            key={index}
-                            {...elem}
-                        />
-                    )) : (
-                        <NoData />
+                    allProducts.length ? 
+                    (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                            {
+                                allProducts.map((elem, index) => (
+                                    <CustomCard
+                                        handleOpen={handleOpen}
+                                        key={index}
+                                        {...elem}
+                                    />
+                                ))
+                            }
+                        </div>
+                    ) :
+                    (
+                        <div className='w-full'>
+                            <NoData />
+                        </div>
                     )
                 }
             </CardBody>
