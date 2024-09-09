@@ -17,6 +17,7 @@ import {
 } from "@material-tailwind/react";
 import { LiaTimesSolid } from 'react-icons/lia';
 import CustomUserDetailsCard from '../../components/CustomUserDetailsCard';
+import CustomSpinner from '../../components/Loader';
 
 const TABLE_HEAD = ["name", "email", "subscription plan", "action"];
 
@@ -70,7 +71,6 @@ export default function CustomUserTable({ users }) {
     
     return (
         <Card className="w-full border min-h-screen">
-            
             <CardHeader floated={false} shadow={false} className="rounded-none ">
                 <div className="flex flex-col items-center justify-between gap-4 md:flex-row p-2">
                     <Input
