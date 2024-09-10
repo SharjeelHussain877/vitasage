@@ -64,33 +64,39 @@ export default function CustomProductTable() {
             <CardHeader floated={false} shadow={false} className="rounded-none ">
                 <div className="flex flex-col items-center justify-between gap-4 md:flex-row p-2">
                     <Input
+                        type="text"
+                        placeholder="type to search..."
                         onChange={(e) => filterByName(e.target.value)}
-                        label="Search"
+                        className="!border !border-gray-300 bg-white text-gray-900 shadow-lg shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 placeholder:opacity-100 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
+                        labelProps={{
+                            className: "hidden",
+                        }}
+                        containerProps={{ className: "min-w-[100px]" }}
                         icon={<HiMiniMagnifyingGlass className="h-5 w-5" />}
                     />
                 </div>
             </CardHeader>
             <CardBody>
                 {
-                    allProducts.length ? 
-                    (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                            {
-                                allProducts.map((elem, index) => (
-                                    <CustomCard
-                                        handleOpen={handleOpen}
-                                        key={index}
-                                        {...elem}
-                                    />
-                                ))
-                            }
-                        </div>
-                    ) :
-                    (
-                        <div className='w-full'>
-                            <NoData />
-                        </div>
-                    )
+                    allProducts.length ?
+                        (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                                {
+                                    allProducts.map((elem, index) => (
+                                        <CustomCard
+                                            handleOpen={handleOpen}
+                                            key={index}
+                                            {...elem}
+                                        />
+                                    ))
+                                }
+                            </div>
+                        ) :
+                        (
+                            <div className='w-full'>
+                                <NoData />
+                            </div>
+                        )
                 }
             </CardBody>
             <section>

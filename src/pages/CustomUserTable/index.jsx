@@ -39,7 +39,7 @@ export default function CustomUserTable({ users }) {
         if (currentPage * rowsPerPage > allUsers.length) return
         setCurrentPage(currentPage + 1)
     }
-    
+
     const handleChangePreviousPage = () => {
         if (currentPage <= 1) return
         setCurrentPage(currentPage - 1)
@@ -50,27 +50,33 @@ export default function CustomUserTable({ users }) {
         currentPage * rowsPerPage
     );
 
-    
-  function filterByName(value) {
 
-    if (timeoutId) {
-      clearTimeout(timeoutId);
+    function filterByName(value) {
+
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+        }
+        const newTimeoutId = setTimeout(() => {
+            const filteredData = users.filter(elem => elem.firstName.toLowerCase().includes(value.toLowerCase()) || elem.lastName.toLowerCase().includes(value.toLowerCase()));
+            setAllUsers(filteredData);
+        }, 400);
+
+        setTimeoutId(newTimeoutId);
     }
-    const newTimeoutId = setTimeout(() => {
-      const filteredData = users.filter(elem => elem.firstName.toLowerCase().includes(value.toLowerCase()) || elem.lastName.toLowerCase().includes(value.toLowerCase()));
-      setAllUsers(filteredData);
-    }, 400);
 
-    setTimeoutId(newTimeoutId);
-  }
-    
     return (
         <Card className="w-full border min-h-screen">
             <CardHeader floated={false} shadow={false} className="rounded-none ">
                 <div className="flex flex-col items-center justify-between gap-4 md:flex-row p-2">
                     <Input
-                    onChange={(e) => filterByName(e.target.value)}
-                        label="Search"
+                        type="text"
+                        placeholder="type to search..."
+                        onChange={(e) => filterByName(e.target.value)}
+                        className="!border !border-gray-300 bg-white text-gray-900 shadow-lg shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 placeholder:opacity-100 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
+                        labelProps={{
+                            className: "hidden",
+                        }}
+                        containerProps={{ className: "min-w-[100px]" }}
                         icon={<HiMiniMagnifyingGlass className="h-5 w-5" />}
                     />
                 </div>
@@ -96,7 +102,7 @@ export default function CustomUserTable({ users }) {
                     </thead>
                     <tbody>
                         {displayedData.map(
-                            ({ profile_image, firstName, lastName, email, subscriptionPlan, startDate, endDate,uid }, index) => {
+                            ({ profile_image, firstName, lastName, email, subscriptionPlan, startDate, endDate, uid }, index) => {
                                 const isLast = index === displayedData.length - 1;
                                 const classes = isLast
                                     ? "p-3"
@@ -112,7 +118,7 @@ export default function CustomUserTable({ users }) {
                                                     color="blue-gray"
                                                     className="font-normal"
                                                 >
-                                                    {`${firstName} ${lastName}`} 
+                                                    {`${firstName} ${lastName}`}
                                                 </Typography>
                                             </div>
                                         </td>
@@ -139,7 +145,7 @@ export default function CustomUserTable({ users }) {
                                             </div>
                                         </td>
                                         <td className={classes}>
-                                            <IconButton variant="text" onClick={() => handleOpen({ profile_image, firstName, lastName, email, subscriptionPlan, startDate, endDate,uid })}>
+                                            <IconButton variant="text" onClick={() => handleOpen({ profile_image, firstName, lastName, email, subscriptionPlan, startDate, endDate, uid })}>
                                                 <MdOutlineRemoveRedEye className="h-4 w-4" />
                                             </IconButton>
                                         </td>

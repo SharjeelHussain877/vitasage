@@ -141,15 +141,9 @@ const Main = () => {
                   </Link>
                 )
               }
-
-              {
-                lastSegment.replace(/[\/-]/g, ' ').toLocaleLowerCase().trim() != 'order' && lastSegment.replace(/[\/-]/g, ' ').toLocaleLowerCase().trim() != 'customers' && (
-                  <Link to={'/dashboard/place-order'} className='flex items-center gap-1 px-[8px] py-[4px] bg-primary normal-case shadow-none hover:shadow-none rounded-lg text-sm text-white'>
-                    Place order
-                  </Link>
-                )
-              }
-
+              <Link to={'/dashboard/place-order'} className='flex items-center gap-1 px-[8px] py-[4px] bg-primary normal-case shadow-none hover:shadow-none rounded-lg text-sm text-white'>
+                Place order
+              </Link>
             </div>
           </div>
           <DashboardRoute />

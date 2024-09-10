@@ -1,13 +1,3 @@
-// import React from 'react'
-
-// const Suppliers = () => {
-//   return (
-//     <div>All Suppliers</div>
-//   )
-// }
-
-// export default Suppliers
-
 import React, { useState } from 'react'
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 import { MdOutlineRemoveRedEye } from "react-icons/md";

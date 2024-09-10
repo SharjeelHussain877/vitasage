@@ -37,23 +37,29 @@ export default function BeautyProducts() {
     };
 
     function filterByName(value) {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-      const newTimeoutId = setTimeout(() => {
-        const filteredData = products.filter(elem => elem.name.toLowerCase().includes(value.toLowerCase()) && elem.categoryId === 1);
-        setBeautyProducts(filteredData);
-      }, 400);
-  
-      setTimeoutId(newTimeoutId);
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+        }
+        const newTimeoutId = setTimeout(() => {
+            const filteredData = products.filter(elem => elem.name.toLowerCase().includes(value.toLowerCase()) && elem.categoryId === 1);
+            setBeautyProducts(filteredData);
+        }, 400);
+
+        setTimeoutId(newTimeoutId);
     }
     return (
         <Card className="w-full">
             <CardHeader floated={false} shadow={false} className="rounded-none ">
                 <div className="flex flex-col items-center justify-between gap-4 md:flex-row p-2">
                     <Input
+                        type="text"
+                        placeholder="type to search..."
                         onChange={(e) => filterByName(e.target.value)}
-                        label="Search"
+                        className="!border !border-gray-300 bg-white text-gray-900 shadow-lg shadow-gray-900/5 ring-4 ring-transparent placeholder:text-gray-500 placeholder:opacity-100 focus:!border-gray-900 focus:!border-t-gray-900 focus:ring-gray-900/10"
+                        labelProps={{
+                            className: "hidden",
+                        }}
+                        containerProps={{ className: "min-w-[100px]" }}
                         icon={<HiMiniMagnifyingGlass className="h-5 w-5" />}
                     />
                 </div>
@@ -69,7 +75,7 @@ export default function BeautyProducts() {
                                         const classes = " border-b border-blue-gray-50 py-4  h-full";
                                         return (
                                             <tr className="h-full cursor-pointer" key={index}>
-                                                <td className={classes} onClick={() => handleOpen({img, tag, name})}>
+                                                <td className={classes} onClick={() => handleOpen({ img, tag, name })}>
                                                     <div className="flex items-center gap-3">
                                                         <Avatar src={img} className="h-16  w-16" variant="rounded" alt="product" />
                                                         <div className="flex flex-col">
