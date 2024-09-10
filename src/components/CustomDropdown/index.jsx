@@ -11,8 +11,7 @@ export default function CustomDropdown({ dropdownOptions, handleSetValue, select
 
     const handleChange = (v) => {
         handleSetValue(formatLabel(label), v)
-    }
-    
+    }    
     return (
         <>
             <Typography
@@ -43,7 +42,7 @@ export default function CustomDropdown({ dropdownOptions, handleSetValue, select
                 }}
                 defaultValue={selectedOption || selectedValue}
                 onChange={handleChange}
-                options={dropdownOptions}
+                options={[{value: 0, label: "Add new category"},...dropdownOptions]}
             />
             <p className='text-red-900 ms-1 text-sm'>{errors?.categoryId?.message}</p>
         </>

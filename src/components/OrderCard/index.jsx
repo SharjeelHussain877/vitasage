@@ -27,11 +27,11 @@ function OrderCard({ img,
     const increment = () => setQty(qty + 1);
     const decrement = () => setQty(qty > 1 ? qty - 1 : 1);
     return (
-        <Card className="rounded me-4 flex-col sm:flex-row md:flex-col lg:flex-row xl:flex-row  border-2 border-gray-300 shadow-none">
+        <Card className="w-full me-4 flex-col sm:flex-row md:flex-row lg:flex-row xl:flex-row border-2 rounded-xl border-gray-300 shadow-none">
             <CardHeader
                 shadow={false}
                 floated={false}
-                className="m-0 sm:w-2/6 md:w-full lg:w-2/6 xl:w-2/6 lg:max-w-[400px] shrink-0 rounded-r-none"
+                className="m-0 sm:w-2/6 md:w-3/6 lg:w-2/6 xl:w-2/6 lg:max-w-[200px] shrink-0 rounded-r-none"
             >
                 <img
                     src={img ? img : "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"}

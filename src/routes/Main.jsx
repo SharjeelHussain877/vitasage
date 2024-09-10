@@ -42,9 +42,9 @@ function DashboardRoute() {
       <Route path="add-product/*" element={<AddProductRoutes />} />
       <Route path="edit" element={<EditProduct />} />
       <Route path="show-orders" element={<ShowOrders />} />
+      <Route path="place-order" element={<ShowOrders />} />
       <Route path="categories" element={<Categories />} />
       <Route path="category/create" element={<CreateCategory />} />
-      <Route path="place-order" element={<PlaceOrders />} />
       <Route path="suppliers" element={<Suppliers users={users} />} />
       <Route path="add-supliers" element={<AddSuplier />} />
       <Route path="category/purchase-order" element={<PurchaseOrder />} />
@@ -130,8 +130,10 @@ const Main = () => {
                 )
               }
               {
-                lastSegment.replace(/[\/-]/g, ' ').toLocaleLowerCase().trim() === 'order' && (
-                  <Button onClick={openDrawerRight} className='flex items-center gap-1 bg-primary'><BsCart size={18} className='m-0 p-0' />Cart</Button>
+                true && (
+                  <Link to={'#'} onClick={openDrawerRight} className='flex items-center gap-1 px-[8px] py-[4px] bg-primary normal-case shadow-none hover:shadow-none rounded-lg text-sm text-white'>
+                    <BsCart size={18} className='m-0 p-0' />Cart
+                  </Link>
                 )
               }
               {

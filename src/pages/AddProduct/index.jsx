@@ -60,6 +60,12 @@ const AddProduct = () => {
         clearErrors(label);
         setValue(label, v.value)
     }
+    
+    useEffect(function () {
+        if (categoryId === 0) {
+                navigate("/dashboard/category/create")
+        }
+    }, [getValues()])
    
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
