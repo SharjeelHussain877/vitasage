@@ -22,9 +22,8 @@ export default function CustomProductTable() {
     // const [currentPage, setCurrentPage] = useState(1);
     // const [rowsPerPage, setRowsPerPage] = useState(10);
 
-    const handleOpen = (id) => {
-        const findCurrentProduct = products.find(elem => elem.id === id)
-        setCurrentData(findCurrentProduct)
+    const handleOpen = (obj) => {
+        setCurrentData(obj)
         setOpen(!open)
     };
 

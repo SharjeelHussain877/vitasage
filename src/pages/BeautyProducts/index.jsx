@@ -31,9 +31,8 @@ export default function BeautyProducts() {
     const [beautyProducts, setBeautyProducts] = useState(products.filter(elem => elem.categoryId == 1) || []);
     const [timeoutId, setTimeoutId] = React.useState(null);
 
-    const handleOpen = (id) => {
-        const findCurrentProduct = products.find(elem => elem.id === id)
-        setCurrentData(findCurrentProduct)
+    const handleOpen = (obj) => {
+        setCurrentData(obj)
         setOpen(!open)
     };
 
@@ -70,7 +69,7 @@ export default function BeautyProducts() {
                                         const classes = " border-b border-blue-gray-50 py-4  h-full";
                                         return (
                                             <tr className="h-full cursor-pointer" key={index}>
-                                                <td className={classes} onClick={() => handleOpen(id)}>
+                                                <td className={classes} onClick={() => handleOpen({img, tag, name})}>
                                                     <div className="flex items-center gap-3">
                                                         <Avatar src={img} className="h-16  w-16" variant="rounded" alt="product" />
                                                         <div className="flex flex-col">

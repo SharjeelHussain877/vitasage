@@ -30,9 +30,8 @@ export default function CustomUserTable({ users }) {
     const [currentData, setCurrentData] = useState(null);
     const [timeoutId, setTimeoutId] = React.useState(null);
 
-    const handleOpen = (id) => {
-        const findCurrentUser = users.find(elem => elem.uid === id)
-        setCurrentData(findCurrentUser)
+    const handleOpen = (obj) => {
+        setCurrentData(obj)
         setOpen(!open)
     };
 
@@ -97,7 +96,7 @@ export default function CustomUserTable({ users }) {
                     </thead>
                     <tbody>
                         {displayedData.map(
-                            ({ profile_image, firstName, lastName, email, subscriptionPlan,uid }, index) => {
+                            ({ profile_image, firstName, lastName, email, subscriptionPlan, startDate, endDate,uid }, index) => {
                                 const isLast = index === displayedData.length - 1;
                                 const classes = isLast
                                     ? "p-3"
@@ -140,7 +139,7 @@ export default function CustomUserTable({ users }) {
                                             </div>
                                         </td>
                                         <td className={classes}>
-                                            <IconButton variant="text" onClick={() => handleOpen(uid)}>
+                                            <IconButton variant="text" onClick={() => handleOpen({ profile_image, firstName, lastName, email, subscriptionPlan, startDate, endDate,uid })}>
                                                 <MdOutlineRemoveRedEye className="h-4 w-4" />
                                             </IconButton>
                                         </td>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Routes, useLocation, useNavigate, Navigate, Link } from 'react-router-dom';
-import { MdKeyboardBackspace } from 'react-icons/md';
+import { MdAdd, MdKeyboardBackspace } from 'react-icons/md';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { Button, Typography } from '@material-tailwind/react';
 import { CreateCategory } from '../pages/CreateCategory';
@@ -8,7 +8,7 @@ import { IoAddSharp } from "react-icons/io5";
 import { AddProduct } from '../pages/AddProduct';
 import { RxCross1 } from 'react-icons/rx';
 import { BsCart } from "react-icons/bs";
-import { users } from '../constants';
+import { users, products } from '../constants';
 import EditProduct from '../pages/EditProduct';
 import BulkProduct from '../pages/BulkProduct';
 import CustomSideBar from '../components/CustomSideBar'
@@ -23,6 +23,9 @@ import ShowOrders from '../pages/ShowOrders';
 import PlaceOrders from '../pages/PlaceOrders';
 import PurchaseOrder from '../pages/PurchaseOrder';
 import SupplierDevliveries from '../pages/SupplierDeliveries';
+import InternetConnectionStatus from '../components/InternetConnectionStatus';
+import Inventry from '../pages/Inventry';
+import CreateCustomer from '../pages/CreateCustomer';
 
 
 function DashboardRoute() {
@@ -31,16 +34,17 @@ function DashboardRoute() {
     <Routes>
       <Route path="/" element={<Navigate to="users" />} />
       <Route path="users" element={<CustomUserTable users={users} />} />
-      <Route path="inventory" element={<CustomProductTable />} />
+      <Route path="inventory" element={<Inventry products={products} />} />
       <Route path="products" element={<CustomProductTable />} />
       <Route path="customers" element={<CustomUserTable users={users} />} />
       <Route path="beauty-products" element={<BeautyProducts />} />
+      <Route path="create-customer" element={<CreateCustomer />} />
       <Route path="add-product/*" element={<AddProductRoutes />} />
       <Route path="edit" element={<EditProduct />} />
       <Route path="show-orders" element={<ShowOrders />} />
       <Route path="categories" element={<Categories />} />
       <Route path="category/create" element={<CreateCategory />} />
-      <Route path="place-orders" element={<PlaceOrders />} />
+      <Route path="place-order" element={<PlaceOrders />} />
       <Route path="suppliers" element={<Suppliers users={users} />} />
       <Route path="add-supliers" element={<AddSuplier />} />
       <Route path="category/purchase-order" element={<PurchaseOrder />} />
@@ -77,9 +81,15 @@ const Main = () => {
   const handleDrawerToggle = () => setShowDrawer(!showDrawer);
 
   const handleGoBack = () => navigate(-1);
+
+  const isOnline = navigator.onLine
+
   return (
     // max-w-screen-2xl
     <main className='md:max-h-[100vh] overflow-hidden bg-gray-200'>
+      {
+        isOnline && <InternetConnectionStatus />
+      }
       <div className='flex'>
         <div className={`h-[100vh] fixed z-10 block lg:hidden transition-all duration-300 ease-in-out lg:left-0 ${showDrawer ? 'left-0' : "left-[-290px]"}`}>
           <CustomSideBar handleDrawerToggle={handleDrawerToggle} />
@@ -114,10 +124,8 @@ const Main = () => {
             <div className='flex flex-wrap items-center gap-2'>
               {
                 lastSegment.replace(/[\/-]/g, ' ').toLocaleLowerCase().trim() === 'products' && (
-                  <Link to={'/dashboard/add-product'}>
-                    <Button className='flex items-center gap-1 p-2 bg-primary'>
-                      <IoAddSharp size={24} className='m-0 p-0' />Add product
-                    </Button>
+                  <Link to={'/dashboard/add-product'} className='flex items-center gap-1 px-[8px] py-[4px] bg-primary normal-case shadow-none hover:shadow-none rounded-lg text-sm text-white'>
+                    <MdAdd size={18} className='m-0 p-0' />Add product
                   </Link>
                 )
               }
@@ -126,6 +134,22 @@ const Main = () => {
                   <Button onClick={openDrawerRight} className='flex items-center gap-1 bg-primary'><BsCart size={18} className='m-0 p-0' />Cart</Button>
                 )
               }
+              {
+                lastSegment.replace(/[\/-]/g, ' ').toLocaleLowerCase().trim() === 'customers' && (
+                  <Link to={'/dashboard/create-customer'} className='flex items-center gap-1 px-[8px] py-[4px] bg-primary normal-case shadow-none hover:shadow-none rounded-lg text-sm text-white'>
+                    Create customer
+                  </Link>
+                )
+              }
+
+              {
+                lastSegment.replace(/[\/-]/g, ' ').toLocaleLowerCase().trim() != 'order' && lastSegment.replace(/[\/-]/g, ' ').toLocaleLowerCase().trim() != 'customers' && (
+                  <Link to={'/dashboard/place-order'} className='flex items-center gap-1 px-[8px] py-[4px] bg-primary normal-case shadow-none hover:shadow-none rounded-lg text-sm text-white'>
+                    Place order
+                  </Link>
+                )
+              }
+
             </div>
           </div>
           <DashboardRoute />

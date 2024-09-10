@@ -2,6 +2,7 @@ import { Avatar, Card, Typography } from "@material-tailwind/react";
 
 
 export default function CustomUserDetailsCard({ lastName,firstName,  email, subscriptionPlan, startDate, endDate, profile_image }) {
+
     return (
         <div>
             <div className="flex items-center gap-3">

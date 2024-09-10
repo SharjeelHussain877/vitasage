@@ -13,7 +13,7 @@ export default function CustomDatePicker({ label, value, handleSetValue, errros 
                 variant="small"
                 color="blue-gray"
                 className="mb-1 font-semibold capitalize">
-                Date
+                {label}
             </Typography>
             <div className="flex justify-end items-center col-span-1 sm:col-span-2 lg:col-span-1">
                 <Input

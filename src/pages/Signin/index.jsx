@@ -35,18 +35,7 @@ function SignIn() {
                                 color="blue-gray"
                                 className="flex font-medium text-blue-gray-600"
                             >
-                                Sign in as a super admin
-                            </Typography>
-                        }
-                    />
-                    <Radio
-                        name="type"
-                        label={
-                            <Typography
-                                color="blue-gray"
-                                className="flex font-medium text-blue-gray-600"
-                            >
-                                Sign in as an admin
+                                Sign in as a manager
                             </Typography>
                         }
                     />
@@ -58,6 +47,17 @@ function SignIn() {
                                 className="flex font-medium text-blue-gray-600"
                             >
                                 Sign in as an operator
+                            </Typography>
+                        }
+                    />
+                    <Radio
+                        name="type"
+                        label={
+                            <Typography
+                                color="blue-gray"
+                                className="flex font-medium text-blue-gray-600"
+                            >
+                                Sign in as an cashier
                             </Typography>
                         }
                     />
@@ -110,6 +110,7 @@ function SignIn() {
                         Sign Up
                     </NavLink>
                 </Typography>
+
             </form>
         </Card>
     );

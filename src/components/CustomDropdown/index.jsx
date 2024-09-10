@@ -3,15 +3,16 @@ import Select from 'react-select';
 import { formatLabel } from '../../utils/formatKeyForForm';
 import { Typography } from '@material-tailwind/react';
 
-// function handleSetValue (v) {
-//     setValue(v)
-// }
 
 export default function CustomDropdown({ dropdownOptions, handleSetValue, selectedOption, register, label, errors }) {
 
     const findCategory = dropdownOptions.find(elem => elem.value == selectedOption)
     const selectedValue = findCategory && new Object({ value: findCategory.value, label: findCategory['name'] })
 
+    const handleChange = (v) => {
+        handleSetValue(formatLabel(label), v)
+    }
+    
     return (
         <>
             <Typography
@@ -41,7 +42,7 @@ export default function CustomDropdown({ dropdownOptions, handleSetValue, select
                     }),
                 }}
                 defaultValue={selectedOption || selectedValue}
-                onChange={(v) => handleSetValue(formatLabel(label), v)}
+                onChange={handleChange}
                 options={dropdownOptions}
             />
             <p className='text-red-900 ms-1 text-sm'>{errors?.categoryId?.message}</p>

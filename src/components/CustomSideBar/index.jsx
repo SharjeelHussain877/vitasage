@@ -172,7 +172,7 @@ export default function CustomSideBar({ handleDrawerToggle }) {
               />
               <CustomListItem
                 handleDrawerToggle={handleDrawerToggle}
-                link='/dashboard/place-orders'
+                link='/dashboard/place-order'
                 // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
                 text='Place order'
               />

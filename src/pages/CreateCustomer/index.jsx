@@ -13,7 +13,7 @@ import { formatLabel } from '../../utils/formatKeyForForm';
 
 const category = categories.map(v => ({ value: v.id, label: v.name }))
 
-const AddProduct = () => {
+const CreateCustomer = () => {
     const [searchParams] = useSearchParams()
     const navigate = useNavigate()
 
@@ -21,16 +21,10 @@ const AddProduct = () => {
 
     const { register, getValues, setValue, handleSubmit, clearErrors, setError, reset, formState: { errors } } = useForm({})
 
-    const { name, categoryId, date, description, id, img, online, purchasePrice, salePrice, tag, unit, } = getValues()
+    const { firstName, lastName, email, img,phone, subscriptionPlan, startDate, endDate } = getValues()
 
     const onSubmit = (data) => {
-        if (!data.categoryId) {
-            setError('categoryId', {
-                type: 'required',
-                message: 'Category is required',
-            });
-            return;
-        }
+
         if (!data.img) {
             setError('img', {
                 type: 'required',
@@ -60,10 +54,10 @@ const AddProduct = () => {
         clearErrors(label);
         setValue(label, v.value)
     }
-   
+
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <Card className='w-full p-2 px-4 border shadow-none'>
+            <Card className='w-full p-2 px-4 border shadow-none min-h-screen'>
                 <div>
                     <Typography className="mt-3 font-bold text-[#212636]">
                         Upload Image
@@ -113,67 +107,47 @@ const AddProduct = () => {
                     }
                 </div>
                 <div className="grid  grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className='md:col-span-2'>
-                        {
-                            category && <CustomDropdown dropdownOptions={category} handleSetValue={handleSetValue} selectedOption={online} label={'category id'} errors={errors} />
-                        }
-                    </div>
-                    <div className='md:col-span-2'>
-                        <CustomTextField
-                            {...{ label: "name", value: name || "", register, maxLength: 24, minLength: 4, errors }}
-                        />
-                    </div>
-                    <div className='md:col-span-2'>
-                        <CustomTextField
-                            {...{ label: "description", value: description || "", register, maxLength: 54, minLength: 4, errors }}
-                        />
-                    </div>
-                    {/* <div>
-                        <CustomTextField
-                            {...{ label: "tag", value: tag || "", register, maxLength: 28, minLength: 3, errors }}
-                        />
-                    </div>
-                    <div>
-                        <CustomDropdown
-                            dropdownOptions={[{ value: true, label: "Online" }, { value: false, label: "Ofline" }]}
-                            handleSetValue={handleSetValue} selectedOption={online} label={'online'} />
-                    </div> 
-                    <div>
-                        <CustomDatePicker {...{ label: "date", value: date || "", handleSetValue, errors }} />
-                    </div> */}
                     <div>
                         <CustomTextField
-                            {...{ label: "purchase price", value: purchasePrice || "", register, maxLength: 12, minLength: 1, errors }}
+                            {...{ label: "first name", value: name || "", register, maxLength: 24, minLength: 4, errors }}
                         />
                     </div>
                     <div>
                         <CustomTextField
-                            {...{ label: "sale price", value: salePrice || "", register, maxLength: 12, minLength: 1, errors }}
+                            {...{ label: "last name", value: email || "", register, maxLength: 54, minLength: 4, errors }}
                         />
                     </div>
                     <div>
                         <CustomTextField
-                            {...{ label: "unit", value: unit || "", register, maxLength: 24, minLength: 1, errors }}
+                            {...{ label: "email", value: email || "", register, maxLength: 54, minLength: 4, errors }}
                         />
+                    </div>
+                    <div>
+                        <CustomTextField
+                            {...{ label: "phone", value: email || "", register, maxLength: 54, minLength: 4, errors }}
+                        />
+                    </div>
+                    <div >
+                        <CustomTextField
+                            {...{ label: "subscription plan", value: email || "", register, maxLength: 54, minLength: 4, errors }}
+                        />
+                    </div>
+                    <div>
+                        <CustomDatePicker {...{ label: "start date", value: startDate || "", handleSetValue, errors }} />
+                    </div>
+                    <div>
+                        <CustomDatePicker {...{ label: "end date", value: startDate || "", handleSetValue, errors }} />
                     </div>
 
                 </div>
-                <div className="grid grid-cols-2 py-5">
-                    <div className="col-span-2 sm:col-span-1">
-                        <Link to='/dashboard/add-product/bulk'>
-                            <Button className='shadow-none'>
-                                Bulk upload
-                            </Button>
-                        </Link>
-                    </div>
-                    <div className="flex justify-end gap-2 col-span-2 sm:col-span-1">
-                        <Button className='bg-white text-black border'>
-                            Cancel
-                        </Button>
-                        <Button type='submit' className='bg-primary' onClick={handleSubmit(onSubmit)}>
-                            Add
-                        </Button>
-                    </div>
+                <div className="flex justify-end gap-4 mt-4">
+
+                    <Button className='bg-white text-black border'>
+                        Cancel
+                    </Button>
+                    <Button type='submit' className='bg-primary' onClick={handleSubmit(onSubmit)}>
+                        Add
+                    </Button>
                 </div>
 
 
@@ -226,4 +200,4 @@ const CustomTextField = ({ label, value, register, errors, maxLength, minLength 
 }
 
 
-export { AddProduct }
+export default CreateCustomer 
