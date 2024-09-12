@@ -24,7 +24,7 @@ import CreateCategory from '../pages/CreateCategory';
 import PurchaseOrder from '../pages/PurchaseOrder';
 import InternetConnectionStatus from '../components/InternetConnectionStatus';
 import Inventry from '../pages/Inventry';
-import AllCutomerWithOrderedProducts from '../pages/CustomerAllProducts';
+import AllCutomerWithOrderedProducts from '../pages/ShowOrders';
 
 function DashboardRoute() {
 
