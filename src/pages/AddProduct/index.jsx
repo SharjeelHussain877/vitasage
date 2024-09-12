@@ -63,7 +63,7 @@ const AddProduct = () => {
     
     useEffect(function () {
         if (categoryId === 0) {
-                navigate("/dashboard/category/create")
+                navigate("/dashboard/create-category")
         }
     }, [getValues()])
    

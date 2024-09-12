@@ -1,32 +1,30 @@
 import React from 'react'
 import { Route, Routes, useLocation, useNavigate, Navigate, Link } from 'react-router-dom';
 import { MdAdd, MdKeyboardBackspace } from 'react-icons/md';
-import { GiHamburgerMenu } from 'react-icons/gi';
 import { Button, Typography } from '@material-tailwind/react';
-import { CreateCategory } from '../pages/CreateCategory';
-import { IoAddSharp } from "react-icons/io5";
-import { AddProduct } from '../pages/AddProduct';
+import { GiHamburgerMenu } from 'react-icons/gi';
 import { RxCross1 } from 'react-icons/rx';
 import { BsCart } from "react-icons/bs";
+import Suppliers from '../pages/Suppliers';
+import PlaceOrders from '../pages/PlaceOrders';
+import Categories from '../pages/Categories';
+import AddSuplier from '../pages/AddSupplier';
 import { users, products } from '../constants';
 import EditProduct from '../pages/EditProduct';
 import BulkProduct from '../pages/BulkProduct';
-import CustomSideBar from '../components/CustomSideBar'
+import { AddProduct } from '../pages/AddProduct';
 import BeautyProducts from '../pages/BeautyProducts';
+import CreateCustomer from '../pages/CreateCustomer';
 import CustomUserTable from '../pages/CustomUserTable';
+import CustomSideBar from '../components/CustomSideBar'
 import CustomRightSidebar from '../components/CustomRightSidebar';
-import CustomProductTable from '../pages/CustomProductTable';
-import Suppliers from '../pages/Suppliers';
-import Categories from '../pages/Categories';
-import AddSuplier from '../pages/AddSupplier';
-import ShowOrders from '../pages/ShowOrders';
-import PlaceOrders from '../pages/PlaceOrders';
-import PurchaseOrder from '../pages/PurchaseOrder';
 import SupplierDevliveries from '../pages/SupplierDeliveries';
+import CustomProductTable from '../pages/CustomProductTable';
+import CreateCategory from '../pages/CreateCategory';
+import PurchaseOrder from '../pages/PurchaseOrder';
 import InternetConnectionStatus from '../components/InternetConnectionStatus';
 import Inventry from '../pages/Inventry';
-import CreateCustomer from '../pages/CreateCustomer';
-
+import AllCutomerWithOrderedProducts from '../pages/CustomerAllProducts';
 
 function DashboardRoute() {
 
@@ -35,16 +33,16 @@ function DashboardRoute() {
       <Route path="/" element={<Navigate to="users" />} />
       <Route path="users" element={<CustomUserTable users={users} />} />
       <Route path="inventory" element={<Inventry products={products} />} />
-      <Route path="products" element={<CustomProductTable />} />
       <Route path="customers" element={<CustomUserTable users={users} />} />
-      <Route path="beauty-products" element={<BeautyProducts />} />
-      <Route path="create-customer" element={<CreateCustomer />} />
+      <Route path="products" element={<CustomProductTable />} />
       <Route path="add-product/*" element={<AddProductRoutes />} />
-      <Route path="edit" element={<EditProduct />} />
-      <Route path="show-orders" element={<ShowOrders />} />
-      <Route path="place-order" element={<ShowOrders />} />
+      <Route path="beauty-products" element={<BeautyProducts />} />
+      <Route path="products/edit" element={<EditProduct />} />
+      <Route path="create-category" element={<CreateCategory />} />
       <Route path="categories" element={<Categories />} />
-      <Route path="category/create" element={<CreateCategory />} />
+      <Route path="show-orders" element={<AllCutomerWithOrderedProducts />} />
+      <Route path="place-order" element={<PlaceOrders />} />
+      <Route path="create-customer" element={<CreateCustomer />} />
       <Route path="suppliers" element={<Suppliers users={users} />} />
       <Route path="add-supliers" element={<AddSuplier />} />
       <Route path="category/purchase-order" element={<PurchaseOrder />} />
@@ -115,13 +113,13 @@ const Main = () => {
           }
           <div className='px-4 my-4 flex justify-between'>
             <Typography
-              variant="h3"
-              className="font-bold leading-none capitalize text-gray-800 flex gap-2 items-center">
+              variant="h4"
+              className="leading-none capitalize text-gray-800 flex gap-2 items-center">
               <GiHamburgerMenu className='lg:hidden cursor-pointer' onClick={handleDrawerToggle} />
               {lastSegment.replace(/[\/-]/g, ' ')}
             </Typography>
 
-            <div className='flex flex-wrap items-center gap-2'>
+            <div className='flex flex-wrap items-center gap-2 flex-shrink-0'>
               {
                 lastSegment.replace(/[\/-]/g, ' ').toLocaleLowerCase().trim() === 'products' && (
                   <Link to={'/dashboard/add-product'} className='flex items-center gap-1 px-[8px] py-[4px] bg-primary normal-case shadow-none hover:shadow-none rounded-lg text-sm text-white'>
@@ -130,7 +128,7 @@ const Main = () => {
                 )
               }
               {
-                true && (
+                false && (
                   <Link to={'#'} onClick={openDrawerRight} className='flex items-center gap-1 px-[8px] py-[4px] bg-primary normal-case shadow-none hover:shadow-none rounded-lg text-sm text-white'>
                     <BsCart size={18} className='m-0 p-0' />Cart
                   </Link>

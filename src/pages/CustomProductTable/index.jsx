@@ -13,6 +13,7 @@ import { ProductCard } from '../../components/Card';
 import CustomCard from '../../components/CustomProductCard';
 import NoData from '../NoData';
 import { HiMiniMagnifyingGlass } from 'react-icons/hi2';
+import { Outlet } from 'react-router-dom';
 
 export default function CustomProductTable() {
     const [timeoutId, setTimeoutId] = React.useState(null);
@@ -60,7 +61,8 @@ export default function CustomProductTable() {
     }
 
     return (
-        <Card className='min-h-full'>
+        <Card className='min-h-screen'>
+            <Outlet />
             <CardHeader floated={false} shadow={false} className="rounded-none ">
                 <div className="flex flex-col items-center justify-between gap-4 md:flex-row p-2">
                     <Input

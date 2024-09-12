@@ -20,7 +20,7 @@ const CategoryList = ({ img, name, description, handleOpen, handleEditorOpen }) 
               description &&
               <Typography
                 variant="h6"
-                className="opacity-1 pt-2  font-normal text-gray-600 "
+                className="opacity-1  font-normal text-gray-600 "
               >
                 {description}
               </Typography>

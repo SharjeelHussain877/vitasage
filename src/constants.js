@@ -656,4 +656,197 @@ const cartItems = [
   },
 ];
 
-export { users, products, categories, cartItems }
+
+const allCustomerWithOrderedProducts = [
+  {
+    uid: 1,
+    profile_icon: icon,
+    name: "Sharjeel Hussain",
+    type: "customer",
+    phone: "03252105103",
+    email: "sharjeel@gmail.com",
+    subscriptionPlan: "annual",
+
+      products: [
+          {
+              id: 1,
+              product_name: "Tony stark",
+              product_img: productImg_1,
+              description:
+                  "Create a UI for ecommerce site where a buyer can see adds related his category.",
+              status: "pending",
+              qty: 1,
+              mfg: "20 july 2024",
+              expiry: "22 july 2025",
+              category: {
+                id: 1,
+                name: "General",
+                description: "category description 1",
+                image: "https://images.pexels.com/photos/3735655/pexels-photo-3735655.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+              }
+          },
+          {
+              id: 2,
+              product_name: "Tony stark",
+              product_img: productImg_1,
+              description:
+                  "Create a UI for ecommerce site where a buyer can see adds related his category.",
+              status: "pending",
+              qty: 1,
+              mfg: "20 july 2024",
+              expiry: "22 july 2025",
+              category: {
+                id: 1,
+                name: "General",
+                description: "category description 1",
+                image: "https://images.pexels.com/photos/3735655/pexels-photo-3735655.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+              }
+          },
+          {
+              id: 3,
+              product_name: "Captain",
+              product_img: productImg_2,
+              description:
+                  "Create a UI for ecommerce site where a buyer can see adds related his category. Create a UI for ecommerce site where a buyer can see adds related his category. Create a UI for ecommerce site where a buyer can see adds related his category.",
+              status: "rejected",
+              qty: 2,
+              mfg: "20 july 2024",
+              expiry: "22 july 2025",
+              category: {
+                id: 1,
+                name: "General",
+                description: "category description 1",
+                image: "https://images.pexels.com/photos/3735655/pexels-photo-3735655.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+              }
+          },
+      ],
+  },
+  {
+    uid: 1,
+    profile_icon: icon,
+    name: "Fakhir Iqbal",
+    type: "customer",
+    phone: "03252105103",
+    email: "sharjeel@gmail.com",
+    subscriptionPlan: "annual",
+
+      products: [
+          {
+              id: 1,
+              product_name: "Tony stark",
+              product_img: productImg_1,
+              description:
+                  "Create a UI for ecommerce site where a buyer can see adds related his category.",
+              status: "pending",
+              qty: 1,
+              mfg: "20 july 2024",
+              expiry: "22 july 2025",
+               category: {
+                id: 1,
+                name: "category 1",
+                description: "category description 1",
+                image: "https://images.pexels.com/photos/3735655/pexels-photo-3735655.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+              }
+          },
+          {
+              id: 2,
+              product_name: "Tony stark",
+              product_img: productImg_1,
+              description:
+                  "Create a UI for ecommerce site where a buyer can see adds related his category.",
+              status: "pending",
+              qty: 1,
+              mfg: "20 july 2024",
+              expiry: "22 july 2025",
+               category: {
+                id: 1,
+                name: "General",
+                description: "category description 1",
+                image: "https://images.pexels.com/photos/3735655/pexels-photo-3735655.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+              }
+          },
+          {
+              id: 3,
+              product_name: "Captain",
+              product_img: productImg_2,
+              description:
+                  "Create a UI for ecommerce site where a buyer can see adds related his category.",
+              status: "pending",
+              qty: 2,
+              mfg: "20 july 2024",
+              expiry: "22 july 2025",
+               category: {
+                id: 1,
+                name: "General",
+                description: "category description 1",
+                image: "https://images.pexels.com/photos/3735655/pexels-photo-3735655.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+              }
+          },
+      ],
+  },
+  {
+    uid: 1,
+    profile_icon: icon,
+    name: "Fahad Alam",
+    type: "customer",
+    phone: "03252105103",
+    email: "sharjeel@gmail.com",
+    subscriptionPlan: "annual",
+
+      products: [
+          {
+              id: 1,
+              product_name: "Tony stark",
+              product_img: productImg_1,
+              description:
+                  "Create a UI for ecommerce site where a buyer can see adds related his category.",
+              status: "completed",
+              qty: 1,
+              mfg: "20 july 2024",
+              expiry: "22 july 2025",
+               category: {
+                id: 1,
+                name: "General",
+                description: "category description 1",
+                image: "https://images.pexels.com/photos/3735655/pexels-photo-3735655.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+              }
+          },
+          {
+              id: 2,
+              product_name: "Tony stark",
+              product_img: productImg_1,
+              description:
+                  "Create a UI for ecommerce site where a buyer can see adds related his category.",
+              status: "completed",
+              qty: 1,
+              mfg: "20 july 2024",
+              expiry: "22 july 2025",
+               category: {
+                id: 1,
+                name: "General",
+                description: "category description 1",
+                image: "https://images.pexels.com/photos/3735655/pexels-photo-3735655.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+              }
+          },
+          {
+              id: 3,
+              product_name: "Captain",
+              product_img: productImg_2,
+              description:
+                  "Create a UI for ecommerce site where a buyer can see adds related his category.",
+              status: "completed",
+              qty: 2,
+              mfg: "20 july 2024",
+              expiry: "22 july 2025",
+               category: {
+                id: 1,
+                name: "General",
+                description: "category description 1",
+                image: "https://images.pexels.com/photos/3735655/pexels-photo-3735655.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+              }
+          },
+      ],
+  },
+];
+
+export { users, products, categories, cartItems, allCustomerWithOrderedProducts }

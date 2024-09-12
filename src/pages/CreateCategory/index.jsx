@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { Button, Card, Typography, Input } from '@material-tailwind/react'
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { GoTrash } from "react-icons/go";
 import { showToast } from '../../utils/toastify';
-import CustomDropdown from '../../components/CustomDropdown';
-import CustomDatePicker from '../../components/CustomDatePicker';
+// import CustomDropdown from '../../components/CustomDropdown';
+// import CustomDatePicker from '../../components/CustomDatePicker';
 import { formatLabel } from '../../utils/formatKeyForForm';
 
 const CreateCategory = () => {
@@ -177,4 +177,4 @@ const CustomTextField = ({ label, value, register, errors, maxLength, minLength 
 }
 
 
-export { CreateCategory }
+export default CreateCategory

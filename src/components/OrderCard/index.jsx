@@ -31,7 +31,7 @@ function OrderCard({ img,
             <CardHeader
                 shadow={false}
                 floated={false}
-                className="m-0 sm:w-2/6 md:w-3/6 lg:w-2/6 xl:w-2/6 lg:max-w-[200px] shrink-0 rounded-r-none"
+                className="m-0 sm:w-2/6 md:w-3/6 lg:max-w-[200px] lg:max-h-[200px] shrink-0 rounded-r-none"
             >
                 <img
                     src={img ? img : "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"}
@@ -39,24 +39,24 @@ function OrderCard({ img,
                     className="h-full w-full object-cover "
                 />
             </CardHeader>
-            <CardBody className='w-full flex flex-col justify-between'>
+            <CardBody className='w-full flex flex-col justify-between lg:max-h-[194px] '>
                 <div>
                     <div className='grid grid-cols-2'>
-                        <Typography variant="h4" color="blue-gray" className="mb-2 text-xl">
+                        <Typography variant="" color="blue-gray" className="text-sm">
                             {tag || 'tag not defined'}
                         </Typography>
 
-                        <Typography variant="h6" color="gray" className="mb-4 flex justify-end">
+                        <Typography variant="h6" color="gray" className="flex justify-end">
                             <GoTrash size={22} color='red' className='cursor-pointer'/>
                         </Typography>
 
                     </div>
 
-                    <Typography variant="h4" color="blue-gray" className="mb-2 text-xl font-normal">
+                    <Typography variant="h5" color="blue-gray" className=" text-lg font-normal">
                         {name || 'no name available'}
                     </Typography>
                     
-                    <Typography color="gray" className="mb-8 font-normal text-sm line-clamp-2">
+                    <Typography color="gray" className="mb-8 font-normal text-sm line-clamp-2 !hidden sm:!block">
                         {description || "no description"}
                     </Typography>
                 
@@ -68,9 +68,9 @@ function OrderCard({ img,
                     </Typography>
                 
                     <div className="flex items-center gap-4">
-                        <FiMinus className="text-gray-700 hover:text-black cursor-pointer p-1 text-3xl bg-gray-200 rounded-full" onClick={decrement} />
+                        <FiMinus className="text-gray-700 hover:text-black cursor-pointer p-1 text-2xl bg-gray-200 rounded-full" onClick={decrement} />
                         <span className='text-2xl'>{qty}</span>
-                        <IoMdAdd className="text-gray-700 hover:text-black cursor-pointer p-1 text-3xl bg-gray-200 rounded-full" onClick={increment} />
+                        <IoMdAdd className="text-gray-700 hover:text-black cursor-pointer p-1 text-2xl bg-gray-200 rounded-full" onClick={increment} />
                     </div>
                 
                 </div>

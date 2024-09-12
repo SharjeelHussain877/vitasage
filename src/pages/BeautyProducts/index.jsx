@@ -97,12 +97,12 @@ export default function BeautyProducts() {
                                                 <td className="border-b border-blue-gray-50 z-10 max-w-2">
                                                     <Menu placement="bottom-end">
                                                         <MenuHandler>
-                                                            <IconButton className="bg-transparent shadow-none focus:shadow-none">
+                                                            <IconButton className="bg-transparent shadow-none hover:shadow-none">
                                                                 <BsThreeDotsVertical className="h-4 w-4" color="black" />
                                                             </IconButton>
                                                         </MenuHandler>
                                                         <MenuList >
-                                                            <Link to={`/dashboard/edit?id=${id}`}>
+                                                            <Link to={`/dashboard/products/edit?id=${id}`}>
                                                                 <MenuItem className='flex items-center gap-2 capitalize tracking-wide'>
                                                                     <CiEdit size={20} />edit
                                                                 </MenuItem>

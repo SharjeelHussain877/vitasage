@@ -270,7 +270,6 @@ const Categories = () => {
               errors?.description?.message && <Typography className='text-red-900 text-sm'>{errors?.description?.message}</Typography>
             }
             <div className='flex justify-end gap-3'>
-              <Button type='submit' className='mt-4 capitalize bg-red-900'>Cancel</Button>
               <Button type='submit' className='mt-4 capitalize'>Submit</Button>
             </div>
           </form>

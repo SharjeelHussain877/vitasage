@@ -18,7 +18,7 @@ import { TbPointFilled } from "react-icons/tb";
 const CustomListItem = ({ text, prefix, link = "#", handleDrawerToggle }) => {
   return (
     <NavLink to={link} onClick={handleDrawerToggle}>
-      <ListItem className="text-white capitalize hover:text-white active:text-white focus:text-white hover:bg-primary-500 active:bg-transparent focus:bg-primary select-none">
+      <ListItem className="text-white capitalize hover:text-white active:text-white focus:text-white hover:bg-primary-300 active:bg-transparent focus:bg-primary select-none">
         {
           prefix && (
             <ListItemPrefix>
@@ -75,7 +75,7 @@ export default function CustomSideBar({ handleDrawerToggle }) {
             />
           }>
           <ListItem className="p-0" selected={open === 1}>
-            <AccordionHeader onClick={() => handleOpen(1)} className="border-b-0 p-3 text-white hover:text-white hover:bg-primary-500 rounded-lg">
+            <AccordionHeader onClick={() => handleOpen(1)} className="border-b-0 p-3 text-white hover:text-white hover:bg-primary-300 rounded-lg">
               <ListItemPrefix>
                 <TbPointFilled className="h-5 w-5 text-white" />
               </ListItemPrefix>
@@ -117,7 +117,7 @@ export default function CustomSideBar({ handleDrawerToggle }) {
             />
           }>
           <ListItem className="p-0" selected={open === 2}>
-            <AccordionHeader onClick={() => handleOpen(2)} className="border-b-0 p-3 text-white hover:text-white hover:bg-primary-500">
+            <AccordionHeader onClick={() => handleOpen(2)} className="border-b-0 p-3 text-white hover:text-white hover:bg-primary-300">
               <ListItemPrefix>
                 <TbPointFilled className="h-5 w-5 text-white" />
               </ListItemPrefix>
@@ -130,7 +130,7 @@ export default function CustomSideBar({ handleDrawerToggle }) {
             <List className="p-0">
               <CustomListItem
                 handleDrawerToggle={handleDrawerToggle}
-                link='/dashboard/category/create'
+                link='/dashboard/create-category'
                 // prefix={<IoIosArrowForward size={24} className="h-3 w-5 text-white" />}
                 text='create category'
               />
@@ -153,7 +153,7 @@ export default function CustomSideBar({ handleDrawerToggle }) {
             />
           }>
           <ListItem className="p-0" selected={open === 3}>
-            <AccordionHeader onClick={() => handleOpen(3)} className="border-b-0 p-3 text-white hover:text-white hover:bg-primary-500">
+            <AccordionHeader onClick={() => handleOpen(3)} className="border-b-0 p-3 text-white hover:text-white hover:bg-primary-300">
               <ListItemPrefix>
                 <TbPointFilled className="h-5 w-5 text-white" />
               </ListItemPrefix>
@@ -189,7 +189,7 @@ export default function CustomSideBar({ handleDrawerToggle }) {
             />
           }>
           <ListItem className="p-0" selected={open === 4}>
-            <AccordionHeader onClick={() => handleOpen(4)} className="border-b-0 p-3 text-white hover:text-white hover:bg-primary-500">
+            <AccordionHeader onClick={() => handleOpen(4)} className="border-b-0 p-3 text-white hover:text-white hover:bg-primary-300">
               <ListItemPrefix>
                 <TbPointFilled className="h-5 w-5 text-white" />
               </ListItemPrefix>

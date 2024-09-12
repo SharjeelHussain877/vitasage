@@ -28,7 +28,7 @@ const CustomCard = ({ img, name, date, tag, id, handleOpen }) => {
               </IconButton>
             </MenuHandler>
             <MenuList className='p-2'>
-              <Link to={`/dashboard/edit?id=${id}`}>
+              <Link to={`/dashboard/products/edit?id=${id}`}>
                 <MenuItem className='flex items-center gap-2 capitalize tracking-wide'>
                   <BiEditAlt size={20} />edit
                 </MenuItem>
